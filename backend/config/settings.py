@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Ajout des bibliothèques nécessaires
     'corsheaders',  # Pour gérer les CORS
     'rest_framework',  # Pour l'API REST
+    'api', # pour l'app api
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',  # URL de votre frontend Vue.js
 ]
+# Autoriser tous les domaines pour le développement (à restreindre en production)
+# CORS_ALLOW_ALL_ORIGINS = True
