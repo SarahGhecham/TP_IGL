@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # Ajout des bibliothèques nécessaires
     'corsheaders',  # Pour gérer les CORS
     'rest_framework',  # Pour l'API REST
-    'api', # pour l'app api
+    'api.apps.ApiConfig', # pour l'app api
 ]
 
 MIDDLEWARE = [
