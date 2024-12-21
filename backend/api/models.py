@@ -56,3 +56,31 @@ class DPI(models.Model):
 
     def __str__(self):
         return f"DPI de {self.patient.user.get_full_name()}"
+
+# Le modèle Consultation, chaque consultation est liée à un seul DPI
+class Consultation(models.Model):
+    dpi = models.ForeignKey(DPI, on_delete=models.CASCADE, related_name='consultations')
+    date_consultation = models.DateTimeField()
+    motif = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"Consultation du {self.date_consultation} pour {self.dpi}"
+
+# Le modèle BilanBiologique, chaque bilan est lié à une seule consultation
+class BilanBiologique(models.Model):
+    consultation = models.OneToOneField(Consultation, on_delete=models.CASCADE, related_name='bilan')
+    # autres champs relatifs au bilan 
+
+    def __str__(self):
+        return f"Bilan biologique du {self.date_bilan}"
+
+# Le modèle ExamenBiologique, chaque examen est lié à un seul bilan
+class ExamenBiologique(models.Model):
+    bilan = models.ForeignKey(BilanBiologique, on_delete=models.CASCADE, related_name='examens')
+    type_examen = models.CharField(max_length=255)
+    resultat = models.FloatField()  # Valeur du résultat (par exemple, glycémie, cholestérol, etc.)
+    unite = models.CharField(max_length=50)  # Unité de mesure du résultat (mg/dl, mmHg, etc.)
+    date_examen = models.DateTimeField()
+
+    def __str__(self):
+        return f"Examen {self.type_examen} du {self.date_examen} - Résultat: {self.resultat} {self.unite}"
