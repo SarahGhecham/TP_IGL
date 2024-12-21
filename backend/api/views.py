@@ -1,14 +1,41 @@
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.permissions import AllowAny,IsAuthenticated # Permet l'accès à tous
-from .models import DPI, Medecin
+from .models import DPI, Medecin,ExamenBiologique
 from .serializers import DPISerializer
 from rest_framework.exceptions import NotFound
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 from .qr_utils import generate_qr_code, scan_qr_code
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+import matplotlib.pyplot as plt
+from io import BytesIO
+from django.shortcuts import get_object_or_404
+
+
+def generate_trend_graph(request, dpi_id, examen_type):
+    # Récupérer le DPI par ID
+    dpi = get_object_or_404(DPI, id=dpi_id)
+
+    # Filtrer les examens biologiques pour le DPI et le type d'examen (glycémie, cholestérol, etc.)
+    examens = ExamenBiologique.objects.filter(bilan__consultation__dpi=dpi, type_examen=examen_type).order_by('date_examen')
+
+    if not examens:
+        return JsonResponse({"message": "Aucun examen trouvé pour ce DPI et ce type d'examen."}, status=404)
+
+    # Extraire les dates et les résultats
+    dates = [examen.date_examen.strftime('%Y-%m-%d') for examen in examens]
+    resultats = [examen.resultat for examen in examens]
+    patient=dpi.patient.user.get_full_name()
+
+    # Retourner les données sous forme de JSON
+    return JsonResponse({
+        "dates": dates,
+        "resultats": resultats,
+        "examen_type": examen_type,
+        "patient": patient,
+    })
 
 
 class SearchDPIByQRView(APIView):

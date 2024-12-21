@@ -71,8 +71,6 @@ class BilanBiologique(models.Model):
     consultation = models.OneToOneField(Consultation, on_delete=models.CASCADE, related_name='bilan')
     # autres champs relatifs au bilan 
 
-    def __str__(self):
-        return f"Bilan biologique du {self.date_bilan}"
 
 # Le modèle ExamenBiologique, chaque examen est lié à un seul bilan
 class ExamenBiologique(models.Model):
