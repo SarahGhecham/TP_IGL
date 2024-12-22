@@ -1,6 +1,22 @@
 <!-- src/app/shared/navbar/navbar.component.html -->
-<nav>
-    <a routerLink="/">Home</a>
-    <a routerLink="/signIn">Sign in</a>
-    <a routerLink="/products">Products</a>
-  </nav>
+<div class="flex flex-row justify-between items-center p-2 bg-white shadow-md mb-10">
+  <a class="ml-5 pb-2">
+    <img class="logo" src="assets/images/logo_navbar.svg" alt="logo" />
+  </a>
+  <div>
+    <button
+      class="bg-green-main flex flex-row text-white px-4 py-1 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+    >
+      <a>search  </a> <span class="hidden md:block ml-1">a patient</span>
+    </button>
+  </div>
+  <div class="flex flex-row items-center mr-8">
+    <a class=" pl-2 md:pl-4" href=""><img src="assets/images/logout.svg" alt="" /></a>
+    <a class="pl-2 md:pl-4" href=""
+      ><img src="assets/images/notification.svg" alt=""/>
+    </a>
+    <a class="pl-2 md:pl-4" href=""
+      ><img src="assets/images/profile-circle.svg" alt=""
+    /></a>
+  </div>
+</div>

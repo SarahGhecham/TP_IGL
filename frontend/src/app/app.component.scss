@@ -1,0 +1,8 @@
+:root {
+    --background-color: #f0f0f0;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    min-height: 100vh;
+  }
