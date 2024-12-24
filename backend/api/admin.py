@@ -1,9 +1,13 @@
 from django.contrib import admin
 
-from .models import Patient, DPI, Consultation, BilanBiologique, ExamenBiologique , Medecin , Infirmier , Laborantin , Radiologue , Administratif , BilanRadiologique
+from .models import *
 
 # Register your models here.
 admin.site.register(Medecin)
+admin.site.register(Administratif)
+admin.site.register(Infirmier)
+admin.site.register(Laborantin)
+admin.site.register(Radiologue)
 admin.site.register(Patient)
 admin.site.register(DPI)
 admin.site.register(Consultation)

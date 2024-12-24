@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import DPI , BilanBiologique , Consultation , BilanRadiologique
+from .models import *
 
 class DPISerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,4 +21,9 @@ class BilanRadiologiqueSerializer(serializers.ModelSerializer):
     class Meta:
         model = BilanRadiologique
         fields = ['consultation', 'date_bilan', 'image', 'comment']
+
+class ExamenBiologiqueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ExamenBiologique
+        fields = ['type_examen', 'resultat', 'unite', 'date_examen']
         

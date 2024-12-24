@@ -6,14 +6,17 @@ from api.views import (
     home ,
     create_bilan_Bilologique ,
     create_bilan_Radiologique ,
+    create_consultation ,
+    create_examen ,
 )
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home, name='home'),
-    path('dpi/consultation/<int:consultation_id>/bilan/Biologique', create_bilan_Bilologique, name='create_bilan_biologique'),
-    path('dpi/consultation/<int:consultation_id>/bilan/Radiologique', create_bilan_Radiologique, name='create_bilan_radiologique'),
+    path('dpi/consultation/<int:consultation_id>/bilanBiologique', create_bilan_Bilologique, name='create_bilan_biologique'),
+    path('dpi/consultation/<int:consultation_id>/bilanRadiologique', create_bilan_Radiologique, name='create_bilan_radiologique'),
+    path('dpi/consultation/<int:consultation_id>/bilanBiologique/examen', create_examen, name='create_examen'),
 
 ]
 
