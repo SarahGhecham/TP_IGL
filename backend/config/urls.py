@@ -14,6 +14,7 @@ from api.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home, name='home'),
+    path('dpi/<int:nss>/consultation', create_consultation, name='create_consultation'),
     path('dpi/consultation/<int:consultation_id>/bilanBiologique', create_bilan_Bilologique, name='create_bilan_biologique'),
     path('dpi/consultation/<int:consultation_id>/bilanRadiologique', create_bilan_Radiologique, name='create_bilan_radiologique'),
     path('dpi/consultation/<int:consultation_id>/bilanBiologique/examen', create_examen, name='create_examen'),

@@ -63,7 +63,7 @@ class DPI(models.Model):
 
 class Consultation(models.Model):
     dpi = models.ForeignKey(DPI, on_delete=models.CASCADE, related_name='consultations')
-    date_consultation = models.DateTimeField()
+    date_consultation = models.DateTimeField(auto_now_add=True)
     motif = models.CharField(max_length=255)
     resume = models.TextField(blank=True , null=True)
 

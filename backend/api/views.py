@@ -21,8 +21,18 @@ def home(request):
 
 
 @api_view(['POST'])
-def create_consultation(request):
-    pass
+def create_consultation(request , nss):
+    print(request.user)
+    try:
+        dpi = get_object_or_404(DPI, nss=nss)
+    except Exception as e:
+        raise NotFound("Vous n'avez pas encore de DPI")
+    serializer = ConsultationSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(dpi=dpi)
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
+
 
 @api_view(['POST'])
 def create_bilan_Bilologique(request , consultation_id):

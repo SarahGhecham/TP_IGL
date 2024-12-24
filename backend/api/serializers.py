@@ -15,7 +15,7 @@ class BilanBiologiqueSerializer(serializers.ModelSerializer):
 class ConsultationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Consultation
-        fields = ['dpi', 'date_consultation', 'motif']
+        fields = ['date_consultation', 'motif']
 
 class BilanRadiologiqueSerializer(serializers.ModelSerializer):
     class Meta:
