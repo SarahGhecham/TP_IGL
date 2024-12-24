@@ -93,7 +93,7 @@ class BilanRadiologique(models.Model):
 class ExamenBiologique(models.Model):
     bilan = models.ForeignKey(BilanBiologique, on_delete=models.CASCADE, related_name='examens')
     type_examen = models.CharField(max_length=255)
-    resultat = models.FloatField(default=0)  
+    resultat = models.FloatField(blank=True , null=True)  
     unite = models.CharField(max_length=50 , blank=True , null=True)  
     date_examen = models.DateTimeField(auto_now_add=True)
 

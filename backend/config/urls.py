@@ -3,21 +3,27 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from api.views import (
-    home ,
-    create_bilan_Bilologique ,
-    create_bilan_Radiologique ,
-    create_consultation ,
-    create_examen ,
+    DPI_list ,
+    DPI_detail ,
+    bilan_Bilologique_detail ,
+    bilan_Radiologique_detail ,
+    consultation_list ,
+    consultation_detail ,
+    examen_list ,
+    examen_detail ,
 )
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home, name='home'),
-    path('dpi/<int:nss>/consultation', create_consultation, name='create_consultation'),
-    path('dpi/consultation/<int:consultation_id>/bilanBiologique', create_bilan_Bilologique, name='create_bilan_biologique'),
-    path('dpi/consultation/<int:consultation_id>/bilanRadiologique', create_bilan_Radiologique, name='create_bilan_radiologique'),
-    path('dpi/consultation/<int:consultation_id>/bilanBiologique/examen', create_examen, name='create_examen'),
+    path('dpi/',DPI_list, name='DPI_list'),
+    path('dpi/<int:nss>/', DPI_detail, name='DPI_detail'),
+    path('dpi/<int:nss>/consultation/', consultation_list, name='consultation_list'),
+    path('dpi/consultation/<int:consultation_id>/', consultation_detail, name='consultation_detail'),
+    path('dpi/consultation/<int:consultation_id>/bilanBiologique/', bilan_Bilologique_detail, name='bilan_biologique_detail'),
+    path('dpi/consultation/<int:consultation_id>/bilanRadiologique/', bilan_Radiologique_detail, name='bilan_radiologique_detail'), 
+    path('dpi/consultation/<int:consultation_id>/bilanBiologique/examen/', examen_list, name='examen_list'), 
+    path('dpi/consultation/bilanBiologique/examen/<int:examen_id>/', examen_detail, name='examen_detail'),
 
 ]
 
