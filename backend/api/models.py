@@ -70,6 +70,15 @@ class Consultation(models.Model):
     def __str__(self):
         return f"Consultation du id {self.id}"
     
+class Ordonnance(models.Model):
+    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='ordonnance')
+    date_ordonnance = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(blank=True , null=True)
+    valid = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Ordonnance pour {self.consultation}"
+    
 
 class BilanBiologique(models.Model):
     consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='bilanBiologique')

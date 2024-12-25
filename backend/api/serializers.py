@@ -33,4 +33,9 @@ class ExamenBiologiqueSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExamenBiologique
         fields = ['id','bilan' ,'type_examen', 'resultat', 'unite', 'date_examen']
+
+class OrdonnanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ordonnance
+        fields = ['id', 'consultation', 'date_ordonnance', 'text' , 'valid']
         
