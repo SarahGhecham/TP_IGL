@@ -1,1 +1,113 @@
-<p>home works!</p>
+<app-navbar></app-navbar>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <div class="content">
+    <!-- Section Left (Informations générales) -->
+    <div class="left-section">
+        <div class="welcome-card">
+            <div class="welcome-card-left">
+              <h2 class="welcome-text">Welcome</h2>
+              <h3 class="doctor-name">Dr. Souha Linda</h3>
+              <p class="speciality">(Cardiology)</p>
+            </div>
+            <div class="welcome-card-right">
+              <img src="assets/images/Doctor.svg" alt="Doctor Photo">
+            </div>
+        </div>
+          
+
+      <div class="report-section">
+        <h2 class="report-title">Report</h2>
+        <div class="report-item">
+          <h3>Total Patients</h3>
+          <p>240</p>
+        </div>
+        <div class="report-item">
+          <h3>Total Consultations</h3>
+          <p>450</p>
+        </div>
+        <div class="report-item">
+            <h3>Total Bilans</h3>
+            <p>120</p>
+        </div>
+      </div>
+
+      <div class="patients-section">
+        <div class="patients-header">
+          <input type="text" placeholder="Search" />
+          <button class="scan-btn">
+              Scan to Search
+          </button>
+          <button class="add-btn">Add Patient</button>
+          <div class="search-icon">
+            <mat-icon>search</mat-icon>
+          </div>
+          <div class="scan-icon">
+            <mat-icon>qr_code_scanner</mat-icon> 
+          </div>
+        </div>
+        <div class="patients-list">
+            <div class="patient-frame">
+              <div class="patient-image">
+                <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />
+                    <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />
+                </svg>                  
+              </div>
+              <div class="patient-name">
+                <p>John Doe</p> <!-- Nom du patient -->
+              </div>
+              <button class="see-details">See Details</button>
+            </div>
+            <div class="patient-frame">
+                <div class="patient-image">
+                    <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />
+                        <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />
+                    </svg> 
+                </div>
+                <div class="patient-name">
+                  <p>John Doe</p> <!-- Nom du patient -->
+                </div>
+                <button class="see-details">See Details</button>
+              </div>
+              <div class="patient-frame">
+                <div class="patient-image">
+                    <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />
+                        <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />
+                    </svg> 
+                </div>
+                <div class="patient-name">
+                  <p>John Doe</p> <!-- Nom du patient -->
+                </div>
+                <button class="see-details">See Details</button>
+              </div>
+          </div>          
+      </div>
+    </div>
+
+    <!-- Section Right (Calendrier et Historique) -->
+    <div class="right-section">
+      <div>
+        <app-calendar></app-calendar>
+      </div>
+      <div class="Test-section">
+        <div class="Test"><h3>Ready Medical Test Results</h3></div>
+        <div class="test-list">
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
