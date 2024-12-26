@@ -247,37 +247,57 @@
           }
           
           .see-details:hover {
-            background-color: #005f87; /* Changement de couleur au survol */
+            background-color: white; /* Changement de couleur au survol */
           }
           
       }
     }
   
     .right-section {
-      .history-section {
-        background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      .Test-section {
+        display: grid;
+        background: #ffffff;
         margin-right: 80px;
-        padding: 20px;
         border-radius: 10px;
-  
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-  
-          li {
-            margin: 10px 0;
-            padding: 10px;
-            background: #fff;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-  
-            span {
-              margin-left: 10px;
-            }
-          }
-        }
+        font-family: 'Gilroy';
+        font-weight: bold;
+        font-size: 19.46px;
+        color:#023E8A;
+        margin-top:0px;
+      }
+      .Test{
+        padding: 40px 40px 20px 40px;
+      }
+      .test-list {
+        display: grid; /* Utilise une grille pour afficher les éléments */
+        grid-template-columns: 1fr;
+        gap: 10px; /* Espacement entre les rectangles */
+        margin-left:25px;
+        overflow-y: auto; /* Permet le défilement vertical */
+        max-height: 334.58px;
+      }
+      .test-list::-webkit-scrollbar {
+        display: none;  /* Cache la barre de défilement */
+      }
+      
+      .test-item {
+        background-color: rgba(0, 119, 182, 0.07); /* Couleur de fond pour les rectangles */
+        border-radius: 8px; /* Coins arrondis */
+        padding: center;
+        width:290.59px;
+        height: 47.43px; /* Hauteur des rectangles */
+        display: flex;
+        align-items: center; /* Centrer verticalement le texte */
+        justify-content: center; /* Centrer horizontalement le texte */
+        font-size: 13.12px;
+        font-family: 'Gilroy';
+        color: #0077B6; /* Couleur du texte */
+      }
+      .mat-icon{
+        margin-right: 8px;
+        color: #023E8A;
       }
     }
   

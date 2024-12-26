@@ -1,0 +1,64 @@
+/* Styles de base pour le calendrier */
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/assets/fonts/Gilroy-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/assets/fonts/Gilroy-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+.calendar-container {
+    border: 1px solid #E5E5E5;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width:334px;
+    font-size: 10.48px;
+    font-family: 'Gilroy';
+  }
+  
+  .calendar-header {
+    color:#023E8A;
+    padding-left:20px;
+    padding-right: 20px;;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 19.46px;
+    font-weight: bold;
+  }
+  
+  .calendar-grid {
+    color:#888888;
+    padding:0px 20px 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .calendar-grid span {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 34.98px;
+    height: 34.98px;
+    cursor: pointer;
+  }
+  
+  .calendar-grid span:hover {
+    background-color: #f0f0f0;
+  }
+  .calendar-day.today span {
+    border-radius: 50%; /* Cercle */
+    background-color: #38CFBB; /* Vert */
+    color: white;
+  }
+  
