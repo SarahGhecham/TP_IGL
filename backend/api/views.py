@@ -49,6 +49,13 @@ def consultation_list(request , nss):
         dpi = get_object_or_404(DPI, nss=nss)
     except Http404:
             return Response({"error": "Vous n'avez pas encore de DPI."}, status=404)
+    user = request.user
+    if hasattr(user , 'medecin') and user.medecin == dpi.medecin_traitant:
+        pass
+    elif hasattr(user ,'patient') and user.patient == dpi.patient and request.method == 'GET':
+        pass
+    else:
+        raise PermissionDenied("Vous n'avez pas la permission pour consulter ces consultation.")
     if request.method == 'POST':
         
         serializer = ConsultationSerializer(data=request.data)
@@ -67,6 +74,14 @@ def consultation_detail(request , consultation_id):
         consultation = get_object_or_404(Consultation, id=consultation_id)
     except Http404:
         return Response({"error": "La consultation n'existe pas."}, status=404)
+    user = request.user
+    if hasattr(user , 'medecin') and user.medecin == consultation.dpi.medecin_traitant:
+        pass
+    elif hasattr(user ,'patient') and user.patient == consultation.dpi.patient and request.method == 'GET':
+        pass
+    else:
+        raise PermissionDenied("Vous n'avez pas la permission pour consulter cette consultation.")
+
     if request.method == 'GET':
         serializer = ConsultationSerializer(consultation)
         return Response(serializer.data)
@@ -89,6 +104,14 @@ def bilan_Bilologique_detail(request , consultation_id):
         consultation = get_object_or_404(Consultation, id=consultation_id)
     except Http404:
         return Response({"error": "La consultation n'existe pas."}, status=404)
+    user = request.user
+    if hasattr(user , 'medecin') and user.medecin == consultation.dpi.medecin_traitant:
+        pass
+    elif hasattr(user ,'patient') and user.patient == consultation.dpi.patient and request.method == 'GET':
+        pass
+    else:
+        raise PermissionDenied("Vous n'avez pas la permission pour consulter cette consultation.")
+
     if request.method == 'POST':
         request.data['consultation'] = consultation.id
         serializer = BilanBiologiqueSerializer(data=request.data)
@@ -131,6 +154,15 @@ def bilan_Radiologique_detail(request , consultation_id):
         consultation = get_object_or_404(Consultation, id=consultation_id)
     except Http404:
         return Response({"error": "La consultation n'existe pas."}, status=404)
+    user = request.user
+    if hasattr(user , 'medecin') and user.medecin == consultation.dpi.medecin_traitant:
+        pass
+    elif hasattr(user ,'patient') and user.patient == consultation.dpi.patient and request.method == 'GET':
+        pass
+    else:
+        raise PermissionDenied("Vous n'avez pas la permission pour consulter cette consultation.")
+    
+
     if request.method == 'POST':
         request.data['consultation'] = consultation.id
         serializer = BilanRadiologiqueSerializer(data=request.data)
@@ -165,8 +197,6 @@ def bilan_Radiologique_detail(request , consultation_id):
         return Response(status=204)
     
 
-
-
 #handles examen biologique
 @api_view(['POST' , 'GET'])
 @permission_classes([IsAuthenticated])
@@ -179,6 +209,13 @@ def examen_list(request , consultation_id):
         bilan = get_object_or_404(BilanBiologique, consultation=consultation)
     except Http404:
         return Response({"error": "Aucun bilan biologique n'existe pour cette consultation."}, status=404)
+    user = request.user
+    if hasattr(user , 'medecin') and user.medecin == bilan.consultation.dpi.medecin_traitant:
+        pass
+    elif hasattr(user ,'patient') and user.patient == bilan.consultation.dpi.patient and request.method == 'GET':
+        pass
+    else:
+        raise PermissionDenied("Vous n'avez pas la permission pour consulter les examens.")
     
     if request.method == 'POST':
         serializer = ExamenBiologiqueSerializer(data=request.data)
@@ -198,6 +235,13 @@ def examen_detail(request , examen_id):
         examen = get_object_or_404(ExamenBiologique, id=examen_id)
     except Http404:
         return Response({"error": "L'examen n'existe pas."}, status=404)
+    user = request.user
+    if hasattr(user , 'medecin') and user.medecin == examen.bilan.consultation.dpi.medecin_traitant:
+        pass
+    elif hasattr(user ,'patient') and user.patient == examen.bilan.consultation.dpi.patient and request.method == 'GET':
+        pass
+    else:
+        raise PermissionDenied("Vous n'avez pas la permission pour consulter cet examen.")
     if request.method == 'GET':
         serializer = ExamenBiologiqueSerializer(examen)
         return Response(serializer.data)
@@ -225,9 +269,16 @@ def ordonnance_list(request):
 def ordonnance_detail(request , ordonnance_id):
     try:
         ordonnance = get_object_or_404(Ordonnance, id=ordonnance_id)
-        print(ordonnance.consultation)
     except Http404:
         return Response({"error": "L'ordonnance n'existe pas."}, status=404)
+    
+    user = request.user
+    if hasattr(user , 'medecin') and user.medecin == ordonnance.consultation.dpi.medecin_traitant:
+        pass
+    elif hasattr(user ,'patient') and user.patient == ordonnance.consultation.dpi.patient and request.method == 'GET':
+        pass
+    else:
+        raise PermissionDenied("Vous n'avez pas la permission pour consulter cette ordonnance.")
     
     if request.method == 'PUT':
         request.data['valid'] = True
