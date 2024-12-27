@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,7 +43,18 @@ INSTALLED_APPS = [
     'corsheaders',  # Pour gérer les CORS
     'rest_framework',  # Pour l'API REST
     'api.apps.ApiConfig', # pour l'app api
+    'rest_framework_simplejwt', # pour l'authentification jwt
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',  # Default permission: authenticated users only
+    ),
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gdpi',
         'USER': 'root',
-        'PASSWORD': 'sarah&co2024',
+        'PASSWORD': 'followthewind00',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -139,3 +151,12 @@ CORS_ALLOWED_ORIGINS = [
 ]
 # Autoriser tous les domaines pour le développement (à restreindre en production)
 # CORS_ALLOW_ALL_ORIGINS = True
+
+# Configuration de REST Framework Simple JWT
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}

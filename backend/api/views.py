@@ -2,17 +2,107 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.permissions import AllowAny,IsAuthenticated # Permet l'accès à tous
 from .models import DPI, Medecin,ExamenBiologique
-from .serializers import DPISerializer
+from django.contrib.auth.models import User
+from .serializers import DPISerializer, RoleSignupSerializer
 from rest_framework.exceptions import NotFound
 from django.http import JsonResponse,HttpResponse
 from .qr_utils import generate_qr_code, scan_qr_code
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 import matplotlib.pyplot as plt
 from io import BytesIO
 from django.shortcuts import get_object_or_404
+from rest_framework.permissions import BasePermission
 
+
+
+
+
+
+#utilitaire pour les permissions
+class IsMedecin(BasePermission):
+    def has_permission(self, request, view):
+        return hasattr(request.user, 'medecin')
+
+
+# Authentication methods
+
+#Signup view
+class RoleSignupView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = RoleSignupSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+#Login View
+class RoleBasedLoginView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                # Get the user's role
+                role = None
+                if hasattr(user, 'medecin'):
+                    role = 'medecin'
+                elif hasattr(user, 'infirmier'):
+                    role = 'infirmier'
+                elif hasattr(user, 'laborantin'):
+                    role = 'laborantin'
+                elif hasattr(user, 'radiologue'):
+                    role = 'radiologue'
+                elif hasattr(user, 'administratif'):
+                    role = 'administratif'
+                elif hasattr(user, 'patient'):
+                    role = 'patient'
+
+                # Generate JWT tokens
+                refresh = RefreshToken.for_user(user)
+                return Response({
+                    'refresh': str(refresh),
+                    'access': str(refresh.access_token),
+                    'role': role  
+                })
+            else:
+                return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+#DPI views
+
+#creer un DPI
+class CreateDPIView(APIView):
+    permission_classes = [IsAuthenticated,IsMedecin]
+
+    def post(self, request):
+        serializer = DPISerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#recuperer un DPI
+class RetrieveDPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, dpi_id):
+        try:
+            dpi = DPI.objects.get(id=dpi_id)
+            serializer = DPISerializer(dpi)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except DPI.DoesNotExist:
+            return Response({"error": "DPI not found"}, status=status.HTTP_404_NOT_FOUND)
 
 def generate_trend_graph(request, dpi_id, examen_type):
     # Récupérer le DPI par ID
