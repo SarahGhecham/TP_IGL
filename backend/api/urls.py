@@ -7,7 +7,7 @@ from .views import *
 urlpatterns = [
     path('search-dpi-by-nss/<str:nss>/', SearchDPIByNSSView.as_view(), name='search-dpi-by-nss'),
     path('search-dpi-by-qr/', SearchDPIByQRView.as_view(), name='search-dpi-by-qr'),
-    path('dpi/<int:dpi_id>/trend/<str:examen_type>/',generate_trend_graph, name='generate_trend_graph'),
+    path('dpi/<int:dpi_id>/<str:examen_type>/',generate_trend_graph, name='generate_trend_graph'),
     path('dpi/',DPI_list, name='DPI_list'),
     path('dpi/<int:nss>/', DPI_detail, name='DPI_detail'),
     path('dpi/<int:nss>/consultation/', consultation_list, name='consultation_list'),

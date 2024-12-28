@@ -52,6 +52,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+ ]
 
 TEMPLATES = [
     {

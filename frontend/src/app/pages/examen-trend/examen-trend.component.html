@@ -1,0 +1,9 @@
+<script src="/public/node_modules/chart.js/dist/Chart.js"></script>
+<app-navbar></app-navbar>
+<h2>Graphiques de Tendance du Patient {{NomPatient}}</h2>
+<div *ngFor="let chart of charts">
+    <div class="chart-container" *ngIf="chart.available">
+      <h3>{{ chart.title }} ( {{ chart.unit }} )</h3>
+      <canvas [id]="chart.id"></canvas>
+    </div>
+  </div>
