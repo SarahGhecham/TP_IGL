@@ -12,6 +12,8 @@ from .views import (
     examen_detail ,
     ordonnance_list ,
     ordonnance_detail ,
+    bilan_Bilologique_list ,
+    bilan_Radiologique_list ,
 )
 
 
@@ -19,13 +21,18 @@ urlpatterns = [
     path('dpi/',DPI_list, name='DPI_list'),
     path('dpi/<int:nss>/', DPI_detail, name='DPI_detail'),
     path('dpi/<int:nss>/consultation/', consultation_list, name='consultation_list'),
-    path('dpi/consultation/ordonnance/', ordonnance_list, name='ordonnance_list'),
+    path('ordonnance/', ordonnance_list, name='ordonnance_list'),
     path('dpi/consultation/ordonnance/<int:ordonnance_id>/', ordonnance_detail, name='ordonnance_detail'),
     path('dpi/consultation/<int:consultation_id>/', consultation_detail, name='consultation_detail'),
     path('dpi/consultation/<int:consultation_id>/bilanBiologique/', bilan_Bilologique_detail, name='bilan_biologique_detail'),
     path('dpi/consultation/<int:consultation_id>/bilanRadiologique/', bilan_Radiologique_detail, name='bilan_radiologique_detail'), 
-    path('dpi/consultation/<int:consultation_id>/bilanBiologique/examen/', examen_list, name='examen_list'), 
+    path('dpi/consultation/bilanBiologique/<int:bilan_id>/examen/', examen_list, name='examen_list'),  
     path('dpi/consultation/bilanBiologique/examen/<int:examen_id>/', examen_detail, name='examen_detail'),
+
+    # for role laborontin and radiologue
+    path('bilanBiologique/', bilan_Bilologique_list, name='bilan_biologique_list'),
+    path('bilanRadiologique/', bilan_Radiologique_list, name='bilan_radiologique_list'),
+    
 
 ]
 

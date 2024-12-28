@@ -36,6 +36,12 @@ class Administratif(models.Model):
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  
 
+class Pharmacien(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
     @property
     def nom(self):
         return self.user.last_name
