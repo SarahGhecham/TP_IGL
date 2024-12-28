@@ -73,10 +73,28 @@ class RoleBasedLoginView(APIView):
                     'access': str(refresh.access_token),
                     'role': role  
                 })
+                print(f'${username} logged in , role: ${role}')
             else:
                 return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
         except User.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+#Logout View
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            refresh_token = request.data.get("refresh")
+            if not refresh_token:
+                return Response({"error": "Refresh token is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+
+            return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": "Invalid token or token already blacklisted"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 #DPI views
@@ -92,6 +110,7 @@ class CreateDPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 #recuperer un DPI
 class RetrieveDPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -104,6 +123,10 @@ class RetrieveDPIView(APIView):
         except DPI.DoesNotExist:
             return Response({"error": "DPI not found"}, status=status.HTTP_404_NOT_FOUND)
 
+#récuperer tout les dpis
+
+
+ 
 def generate_trend_graph(request, dpi_id, examen_type):
     # Récupérer le DPI par ID
     dpi = get_object_or_404(DPI, id=dpi_id)

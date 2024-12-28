@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',  # Pour l'API REST
     'api.apps.ApiConfig', # pour l'app api
     'rest_framework_simplejwt', # pour l'authentification jwt
+    'rest_framework_simplejwt.token_blacklist', #blacklister les tokens aprés la déconnexion
 ]
 
 REST_FRAMEWORK = {
@@ -147,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configuration des CORS
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',  # URL de votre frontend Vue.js
+    'http://localhost:4200',  # URL de votre frontend Vue.js
 ]
 # Autoriser tous les domaines pour le développement (à restreindre en production)
 # CORS_ALLOW_ALL_ORIGINS = True
