@@ -7,42 +7,45 @@ class Medecin(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Ajoutez d'autres champs si nécessaire, comme spécialité, etc.
     def __str__(self):
-        return self.user.get_full_name()
+        return f"Dr. {self.user.username} "
 
 class Infirmier(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Ajoutez d'autres champs si nécessaire.
     def __str__(self):
-        return self.user.get_full_name()
+        return self.user.username
 
 class Laborantin(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Ajoutez d'autres champs si nécessaire.
     def __str__(self):
-        return self.user.get_full_name()
+        return self.user.username
 
 class Radiologue(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Ajoutez d'autres champs si nécessaire.
     def __str__(self):
-        return self.user.get_full_name()
+        return self.user.username
 
 class Administratif(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Ajoutez d'autres champs si nécessaire.
     def __str__(self):
-        return self.user.get_full_name()
+        return self.user.username
 
 class Patient(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Relation avec la classe User
-    # Vous pouvez ajouter des méthodes ou des propriétés spécifiques à Patient ici
-    @property
-    def nom(self):
-        return self.user.last_name
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  
 
-    @property
-    def prenom(self):
-        return self.user.first_name
+    def __str__(self):
+        return self.user.username
+
+
+class Pharmacien(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
 
 class DPI(models.Model):
     patient = models.OneToOneField(Patient, on_delete=models.CASCADE)  # Relation OneToOne avec Patient
@@ -55,30 +58,55 @@ class DPI(models.Model):
     personne_a_contacter = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"DPI de {self.patient.user.get_full_name()}"
+        return f"DPI de nss {self.nss}"
 
-# Le modèle Consultation, chaque consultation est liée à un seul DPI
+
 class Consultation(models.Model):
     dpi = models.ForeignKey(DPI, on_delete=models.CASCADE, related_name='consultations')
-    date_consultation = models.DateTimeField()
+    date_consultation = models.DateTimeField(auto_now_add=True)
     motif = models.CharField(max_length=255)
+    resume = models.TextField(blank=True , null=True)
 
     def __str__(self):
-        return f"Consultation du {self.date_consultation} pour {self.dpi}"
+        return f"Consultation du id {self.id}"
+    
+class Ordonnance(models.Model):
+    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='ordonnance')
+    date_ordonnance = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(blank=True , null=True)
+    valid = models.BooleanField(default=False)
 
-# Le modèle BilanBiologique, chaque bilan est lié à une seule consultation
+    def __str__(self):
+        return f"Ordonnance pour {self.consultation}"
+    
+
 class BilanBiologique(models.Model):
-    consultation = models.OneToOneField(Consultation, on_delete=models.CASCADE, related_name='bilan')
-    # autres champs relatifs au bilan 
+    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='bilanBiologique')
+    date_bilan = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Bilan pour {self.consultation}"
+
+class BilanRadiologique(models.Model):
+    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='bilanRadiologique')
+    date_bilan = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='images/radiology/' , null=True , blank=True)
+    comment = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Bilan du {self.date_bilan} pour {self.consultation}"
 
 
-# Le modèle ExamenBiologique, chaque examen est lié à un seul bilan
+
 class ExamenBiologique(models.Model):
     bilan = models.ForeignKey(BilanBiologique, on_delete=models.CASCADE, related_name='examens')
     type_examen = models.CharField(max_length=255)
-    resultat = models.FloatField()  # Valeur du résultat (par exemple, glycémie, cholestérol, etc.)
-    unite = models.CharField(max_length=50)  # Unité de mesure du résultat (mg/dl, mmHg, etc.)
-    date_examen = models.DateTimeField()
+    resultat = models.FloatField(blank=True , null=True)  
+    unite = models.CharField(max_length=50 , blank=True , null=True)  
+    date_examen = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Examen {self.type_examen} du {self.date_examen} - Résultat: {self.resultat} {self.unite}"
+        return f"Examen {self.type_examen} pour {self.bilan.consultation}"
+    
+
