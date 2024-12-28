@@ -360,7 +360,7 @@ def ordonnance_list(request):
     if not is_Pharmacien(request):
         raise PermissionDenied("Vous n'avez pas la permission pour consulter les ordonnances.")
     if request.method == 'GET':
-        serializers = OrdonnanceSerializer(Ordonnance.objects.all(), many=True)
+        serializers = OrdonnanceSerializer(Ordonnance.objects.filter(valid=False), many=True)
         return Response(serializers.data)
     
 @api_view(['put' , 'GET'])
