@@ -9,7 +9,6 @@ from .qr_utils import generate_qr_code, scan_qr_code
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-import matplotlib.pyplot as plt
 from io import BytesIO
 from django.shortcuts import get_object_or_404
 
