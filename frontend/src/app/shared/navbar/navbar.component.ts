@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn: boolean = false; // Track login status
+  isLoggedIn: boolean = false; 
 
   constructor(private authService: AuthService) {}
 

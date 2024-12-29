@@ -244,6 +244,14 @@
         "documentation": {}
     },
     {
+        "label": "TokenObtainPairSerializer",
+        "importPath": "rest_framework_simplejwt.serializers",
+        "description": "rest_framework_simplejwt.serializers",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.serializers",
+        "documentation": {}
+    },
+    {
         "label": "TestCase",
         "importPath": "django.test",
         "description": "django.test",
@@ -293,6 +301,14 @@
     },
     {
         "label": "TokenRefreshView",
+        "importPath": "rest_framework_simplejwt.views",
+        "description": "rest_framework_simplejwt.views",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.views",
+        "documentation": {}
+    },
+    {
+        "label": "TokenObtainPairView",
         "importPath": "rest_framework_simplejwt.views",
         "description": "rest_framework_simplejwt.views",
         "isExtraImport": true,
@@ -434,6 +450,14 @@
         "description": "io",
         "isExtraImport": true,
         "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
         "documentation": {}
     },
     {
@@ -2172,7 +2196,16 @@
         "kind": 6,
         "importPath": "backend.api.views",
         "description": "backend.api.views",
-        "peekOfCode": "class RoleBasedLoginView(APIView):\n    permission_classes = [AllowAny]\n    def post(self, request):\n        username = request.data.get('username')\n        password = request.data.get('password')\n        try:\n            user = User.objects.get(username=username)\n            if user.check_password(password):\n                # Get the user's role\n                role = None",
+        "peekOfCode": "class RoleBasedLoginView(APIView):\n    permission_classes = [AllowAny]\n    def post(self, request):\n        username = request.data.get('username')\n        password = request.data.get('password')\n        if not username or not password:\n            return Response(\n                {\"error\": \"Username and password are required\"},\n                status=status.HTTP_400_BAD_REQUEST\n            )",
+        "detail": "backend.api.views",
+        "documentation": {}
+    },
+    {
+        "label": "CustomTokenObtainPairView",
+        "kind": 6,
+        "importPath": "backend.api.views",
+        "description": "backend.api.views",
+        "peekOfCode": "class CustomTokenObtainPairView(TokenObtainPairView):\n    serializer_class = CustomTokenObtainPairSerializer            \n#Logout View\nclass LogoutView(APIView):\n    permission_classes = [IsAuthenticated]\n    def post(self, request):\n        refresh_token = request.data.get(\"refresh\")\n        if not refresh_token:\n            return Response(\n                {\"error\": \"Refresh token is required\"},",
         "detail": "backend.api.views",
         "documentation": {}
     },
@@ -2181,7 +2214,7 @@
         "kind": 6,
         "importPath": "backend.api.views",
         "description": "backend.api.views",
-        "peekOfCode": "class LogoutView(APIView):\n    permission_classes = [IsAuthenticated]\n    def post(self, request):\n        try:\n            refresh_token = request.data.get(\"refresh\")\n            if not refresh_token:\n                return Response({\"error\": \"Refresh token is required\"}, status=status.HTTP_400_BAD_REQUEST)\n            token = RefreshToken(refresh_token)\n            token.blacklist()\n            return Response({\"message\": \"Logout successful\"}, status=status.HTTP_200_OK)",
+        "peekOfCode": "class LogoutView(APIView):\n    permission_classes = [IsAuthenticated]\n    def post(self, request):\n        refresh_token = request.data.get(\"refresh\")\n        if not refresh_token:\n            return Response(\n                {\"error\": \"Refresh token is required\"},\n                status=status.HTTP_400_BAD_REQUEST\n            )\n        try:",
         "detail": "backend.api.views",
         "documentation": {}
     },
@@ -2281,6 +2314,24 @@
         "importPath": "backend.config.settings",
         "description": "backend.config.settings",
         "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    # Ajout des bibliothèques nécessaires\n    'corsheaders',  # Pour gérer les CORS\n    'rest_framework',  # Pour l'API REST",
+        "detail": "backend.config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTHENTICATION_CLASSES",
+        "kind": 5,
+        "importPath": "backend.config.settings",
+        "description": "backend.config.settings",
+        "peekOfCode": "AUTHENTICATION_CLASSES = [\n    'rest_framework_simplejwt.authentication.JWTAuthentication',\n]\nAUTHENTICATION_BACKENDS = [\n    'django.contrib.auth.backends.ModelBackend',\n]\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),",
+        "detail": "backend.config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTHENTICATION_BACKENDS",
+        "kind": 5,
+        "importPath": "backend.config.settings",
+        "description": "backend.config.settings",
+        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    'django.contrib.auth.backends.ModelBackend',\n]\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.IsAuthenticated',  # Default permission: authenticated users only\n    ),",
         "detail": "backend.config.settings",
         "documentation": {}
     },
