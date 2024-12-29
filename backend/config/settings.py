@@ -47,6 +47,16 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist', #blacklister les tokens aprés la déconnexion
 ]
 
+AUTHENTICATION_CLASSES = [
+    'rest_framework_simplejwt.authentication.JWTAuthentication',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',

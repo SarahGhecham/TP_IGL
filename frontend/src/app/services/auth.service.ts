@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, throwError, tap } from 'rxjs';
-
-declare const window: any;
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl =  'http://localhost:8000/api';
+  private apiUrl = 'http://localhost:8000/api';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    console.log('AuthService instantiated');
+  }
 
   /**
    * Login the user and store tokens on success.
@@ -83,12 +84,47 @@ export class AuthService {
   }
 
   /**
+   * Decode JWT and extract payload.
+   */
+  private decodeToken(token: string): any {
+    try {
+      return jwtDecode(token);
+    } catch (error) {
+      console.error('Invalid token:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Get the payload of the access token.
+   */
+  getTokenPayload(): any {
+    const token = this.getAccessToken();
+    if (!token) {
+      console.error('No access token found.');
+      return null;
+    }
+
+    const decoded = this.decodeToken(token);
+    console.log('Decoded Payload:', decoded); // Log for debugging
+    return decoded;
+  }
+
+  /**
+   * Get the username from the access token.
+   */
+  getUsername(): string | null {
+    const payload = this.getTokenPayload();
+    return payload ? payload.username : null; // Adjust the key based on your JWT structure
+  }
+
+  /**
    * Clear tokens from localStorage.
    */
   clearTokens() {
     localStorage.removeItem('access');
     localStorage.removeItem('refresh');
-    localStorage.removeItem('role')
+    localStorage.removeItem('role');
   }
 
   /**

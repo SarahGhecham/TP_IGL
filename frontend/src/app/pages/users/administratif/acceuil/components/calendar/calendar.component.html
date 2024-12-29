@@ -1,1 +1,22 @@
-<p>calendar works!</p>
+<div class="calendar-container">
+    <div class="calendar">
+      <div class="calendar-header">
+        <button (click)="previousMonth()">&#8592;</button>
+        <span>{{ monthNames[currentMonth] }} {{ currentYear }}</span>
+        <button (click)="nextMonth()">&#8594;</button>
+      </div>
+      <div class="calendar-grid">
+        <!-- Affichage des jours de la semaine -->
+        <div *ngFor="let dayName of weekDays" class="calendar-day-name">
+          <span>{{ dayName }}</span>
+        </div>
+        
+        <!-- Affichage des cases du calendrier -->
+        <div *ngFor="let day of emptyDays" class="calendar-day empty"></div> <!-- Jours vides avant le début du mois -->
+        <div *ngFor="let day of daysInMonth" 
+           [ngClass]="{'today': isToday(day)}" class="calendar-day">
+        <span>{{ day }}</span>
+      </div>
+    </div>
+  </div>  
+  

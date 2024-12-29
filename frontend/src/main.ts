@@ -12,4 +12,4 @@ bootstrapApplication(AppComponent, {
       withInterceptors([AuthInterceptor]) // Register functional interceptor
     ),
   ],
-}).catch((err) => console.error(err));
+}).catch((err) => console.error(err)); 

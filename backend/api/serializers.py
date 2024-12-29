@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import DPI,Medecin, Infirmier, Laborantin, Radiologue, Administratif, Patient
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from django.contrib.auth.models import User
 
@@ -42,3 +43,9 @@ class RoleSignupSerializer(serializers.ModelSerializer):
             Patient.objects.create(user=user)
 
         return user
+    
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):       
+     def validate(self, attrs):
+        data = super().validate(attrs)
+        data['username'] = self.user.username  
+        return data
