@@ -1,15 +1,21 @@
-<!-- src/app/shared/navbar/navbar.component.html -->
-<div class="flex flex-row justify-between items-center p-2 bg-white shadow-md mb-10">
-  <a class="ml-5 pb-2">
-    <img class="logo" src="assets/images/logo_navbar.svg" alt="logo" />
+<div *ngIf="isLoggedIn" class="navbar flex flex-row justify-between items-center p-5 bg-white shadow-md mb-10">
+  <a class="logo-container ml-8 pb-2" href="">
+    <img class="logo" src="assets/images/logo_navbar.svg" alt="logo" height="auto" width="auto"/>
   </a>
   <div class="flex flex-row items-center mr-8">
-    <a class=" pl-2 md:pl-4" href=""><img src="assets/images/logout.svg" alt="" /></a>
-    <a class="pl-2 md:pl-4" href=""
-      ><img src="assets/images/notification.svg" alt=""/>
+    <!-- Logout Button -->
+    <a class="pl-2 md:pl-4" href="" (click)="onLogout()">
+      <img src="assets/images/logout.svg" alt="Logout"/>
     </a>
-    <a class="pl-2 md:pl-4" href=""
-      ><img src="assets/images/profile-circle.svg" alt=""
-    /></a>
+
+    <!-- Notification Button -->
+    <a class="pl-2 md:pl-4" href="">
+      <img src="assets/images/notification.svg" alt="Notifications"/>
+    </a>
+
+    <!-- Profile Button -->
+    <a class="pl-2 md:pl-4" href="">
+      <img src="assets/images/profile-circle.svg" alt="Profile"/>
+    </a>
   </div>
 </div>

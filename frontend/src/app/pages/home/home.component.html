@@ -1,0 +1,45 @@
+<div class="home-container">
+    <header class="branding">
+      <img src="../../../assets/images/logo_navbar.svg" alt="" class="logo"  width="200px" height="auto"/>
+    </header>
+  
+    <main class="main-content">
+      <div class="welcome-message">
+        <h2>Welcome back to DocOrganizer!</h2>
+        <p>Please choose your role to proceed</p>
+      </div>
+  
+      <div class="role-selection">
+        <button 
+          class="role-button staff-button"
+          (click)="navigateToLogin('staff')"
+        >
+          <div class="button-content">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 7h-7m0 0v7m0-7h7m-7 0V0M3 21h18M5 21V11m14 10V11m-7 10V11m0-4c-1.5-2-4.5-2-6 0m6 0c1.5-2 4.5-2 6 0"/>
+            </svg>
+            <span>Acteurs Hospitaliers</span>
+            <small>Doctors, Radiologists, Lab Technicians, Admin Staff</small>
+          </div>
+        </button>
+  
+        <button 
+          class="role-button patient-button"
+          (click)="navigateToLogin('patient')"
+        >
+          <div class="button-content">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a5 5 0 015 5v2a5 5 0 01-10 0V7a5 5 0 015-5zM3 20a9 9 0 0118 0v2H3v-2z"/>
+            </svg>
+            <span>Patient</span>
+            <small>Access your medical records and appointments</small>
+          </div>
+        </button>
+      </div>
+    </main>
+  
+    <footer class="footer">
+     
+      <p class="copyright">© 2024 DocOrganizer. All rights reserved.</p>
+    </footer>
+  </div>

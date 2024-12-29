@@ -56,7 +56,6 @@ class DPI(models.Model):
     telephone = models.CharField(max_length=15)
     mutuelle = models.CharField(max_length=100)
     personne_a_contacter = models.CharField(max_length=100)
-
     def __str__(self):
         return f"DPI de nss {self.nss}"
 

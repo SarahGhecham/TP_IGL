@@ -11,6 +11,6 @@ import { CalendarComponent } from '../../../../shared/calendar/calendar.componen
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeMedComponent {
 
 }

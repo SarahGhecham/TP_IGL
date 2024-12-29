@@ -14,3 +14,5 @@ nss2=scan_qr_code(image_path)
 
 print(f"QR Code decode pour NSS: {nss2}")
 
+
+
