@@ -5,6 +5,7 @@ import { ExamenTrendsComponent } from './pages/examen-trend/examen-trend.compone
 import { HomeComponent } from './pages/home/home.component';
 import { AcceuilAdComponent } from './pages/users/administratif/acceuil/acceuilAd.component';
 import { CreateDPIComponent } from './pages/users/administratif/create-dpi/create-dpi.component';
+import { OrdonnanceComponent } from './pages/users/medecin/ordonnance/ordonnance.component';
 import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -28,7 +29,8 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: HomeMedComponent }, // Default medecin page
-      { path: 'examen-trends', component: ExamenTrendsComponent } // Examen trends page
+      { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
+      {path: 'ordonnance', component: OrdonnanceComponent}
     ]
   },
 
