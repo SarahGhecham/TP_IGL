@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Ajout des bibliothèques nécessaires
+    'dpi',
     'corsheaders',  # Pour gérer les CORS
     'rest_framework',  # Pour l'API REST
     'api.apps.ApiConfig', # pour l'app api
@@ -82,11 +81,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gdpi',
-        'USER': 'root',
-        'PASSWORD': 'sarah&co2024',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION',
+        },
     }
 }
 

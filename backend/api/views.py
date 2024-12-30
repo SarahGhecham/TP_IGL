@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from rest_framework import generics
-from rest_framework.permissions import AllowAny,IsAuthenticated # Permet l'accès à tous
-from .models import DPI, Medecin,ExamenBiologique
+from rest_framework.permissions import AllowAny # Permet l'accès à tous
+from .models import DPI,ExamenBiologique
 from .serializers import DPISerializer
 from rest_framework.exceptions import NotFound
-from django.http import JsonResponse,HttpResponse
-from .qr_utils import generate_qr_code, scan_qr_code
+from django.http import JsonResponse
+from .qr_utils import scan_qr_code
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -84,7 +84,7 @@ class SearchDPIByNSSView(generics.RetrieveAPIView):
 
         """
         # Vérifier si l'utilisateur est un médecin
-        if not hasattr(self.request.user, 'medecin'):
+        if not hasattr(self.request.user,'):
             raise NotFound("Accès non autorisé. Seul un médecin peut accéder à ce DPI.")
         """
         
