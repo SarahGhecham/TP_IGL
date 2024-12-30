@@ -293,35 +293,78 @@ class SearchDPIByQRView(APIView):
         except DPI.DoesNotExist:
             return Response({"detail": "DPI non trouvé pour ce NSS."}, status=status.HTTP_404_NOT_FOUND)
 
-        # Sérialiser les données du DPI
-        serializer = DPISerializer(dpi)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-
-class SearchDPIByNSSView(generics.RetrieveAPIView):
-    queryset = DPI.objects.all()
-    serializer_class = DPISerializer
-    permission_classes = [AllowAny]  # permission_classes = [IsAuthenticated]
-
-    def get_object(self):
-        # Récupérer le NSS depuis les paramètres de l'URL
-        nss = self.kwargs['nss']
-
-        """
-        # Vérifier si l'utilisateur est un médecin
-        if not hasattr(self.request.user, 'medecin'):
-            raise NotFound("Accès non autorisé. Seul un médecin peut accéder à ce DPI.")
-        """
-        
-        # Chercher le DPI par NSS
         try:
+            user = dpi.patient.user  # Assurez-vous que DPI a une relation avec Patient et User
+            response_data = {
+                "id": dpi.id,
+                "patient": {
+                    "first_name": user.first_name,
+                    "last_name": user.last_name
+                }
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
+        except ObjectDoesNotExist:
+            return Response({"detail": "Patient ou utilisateur associé non trouvé."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class FirstThreePatientsView(APIView):
+    permission_classes = [AllowAny]  # Permet l'accès sans authentification
+
+    def get(self, request):
+        try:
+            # Récupérer les 3 premiers DPI
+            dpis = DPI.objects.all()[:3]  # Limiter la requête aux 3 premiers DPI
+            response_data = []
+
+            # Structurer les données pour chaque DPI
+            for dpi in dpis:
+                patient = dpi.patient  # Accéder à l'objet Patient lié au DPI
+                user = patient.user  # Accéder à l'objet User lié au patient
+                
+                # Ajouter les informations nécessaires dans la réponse
+                response_data.append({
+                    "id": dpi.id,
+                    "patient": {
+                        "first_name": user.first_name,
+                        "last_name": user.last_name
+                    }
+                })
+
+            # Retourner la réponse avec un code HTTP 200 (OK)
+            return Response(response_data, status=200)
+        
+        except DPI.DoesNotExist:
+            raise NotFound("Aucun DPI trouvé.")
+        except Patient.DoesNotExist:
+            raise NotFound("Aucun patient associé trouvé.")
+
+class SearchDPIByNSSView(APIView):
+    permission_classes = [AllowAny]  # Permet l'accès sans authentification
+
+    def get(self, request, nss):
+        try:
+            # Chercher le DPI par NSS
             dpi = DPI.objects.get(nss=nss)
+            
+            # Récupérer les informations du patient liées à ce DPI
+            patient = dpi.patient  # Assurez-vous que `patient` est une relation sur le modèle DPI
+            user = dpi.patient.user
+            
+            # Structurer les données à renvoyer : l'id du DPI et les champs du patient
+            response_data = {
+                "id": dpi.id,
+                "patient": {
+                    "first_name": user.first_name,
+                    "last_name": user.last_name
+                }
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        
         except DPI.DoesNotExist:
             raise NotFound("DPI non trouvé avec ce NSS.")
-        
-        return dpi
+        except Patient.DoesNotExist:
+            raise NotFound("Patient associé non trouvé.")
 
 
 
