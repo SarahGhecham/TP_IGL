@@ -4,6 +4,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     # DPI-related paths
+    path('patients/', FirstThreePatientsView.as_view(), name='first-three-patients'),
     path('search-dpi-by-nss/<str:nss>/', SearchDPIByNSSView.as_view(), name='search-dpi-by-nss'),
     path('search-dpi-by-qr/', SearchDPIByQRView.as_view(), name='search-dpi-by-qr'),
     path('dpi/', DPI_list, name='DPI_list'),

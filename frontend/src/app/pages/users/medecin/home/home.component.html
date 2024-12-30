@@ -33,10 +33,17 @@
 
       <div class="patients-section">
         <div class="patients-header">
-          <input type="text" placeholder="Search" />
-          <button class="scan-btn">
+          <input type="text" [(ngModel)]="nss" placeholder="Search" (keyup)="searchPatient()" />
+          <button class="scan-btn" (click)="triggerFileInput()">
               Scan to Search
           </button>
+          <input 
+            type="file" 
+            id="fileInput" 
+            accept="image/*" 
+            (change)="onFileSelected($event)" 
+            style="display: none;"
+          />
           <button class="add-btn">Add Patient</button>
           <div class="search-icon">
             <mat-icon>search</mat-icon>
@@ -46,42 +53,30 @@
           </div>
         </div>
         <div class="patients-list">
-            <div class="patient-frame">
-              <div class="patient-image">
-                <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />
-                    <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />
-                </svg>                  
-              </div>
-              <div class="patient-name">
-                <p>John Doe</p> <!-- Nom du patient -->
-              </div>
-              <button class="see-details">See Details</button>
+          <div *ngFor="let patient of patients" class="patient-frame">
+            <div class="patient-image">
+              <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />
+                <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />
+              </svg> 
             </div>
-            <div class="patient-frame">
-                <div class="patient-image">
-                    <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />
-                        <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />
-                    </svg> 
-                </div>
-                <div class="patient-name">
-                  <p>John Doe</p> <!-- Nom du patient -->
-                </div>
-                <button class="see-details">See Details</button>
-              </div>
-              <div class="patient-frame">
-                <div class="patient-image">
-                    <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />
-                        <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />
-                    </svg> 
-                </div>
-                <div class="patient-name">
-                  <p>John Doe</p> <!-- Nom du patient -->
-                </div>
-                <button class="see-details">See Details</button>
-              </div>
+            <div class="patient-name">
+              <p>{{ patient.patient.first_name }} {{ patient.patient.last_name }}</p> <!-- Nom du patient -->
+            </div>
+            <button class="see-details">See Details</button>
+          </div>
+          <div *ngIf="patient" class="patient-frame">
+          <div class="patient-image">
+              <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />
+                  <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />
+              </svg> 
+          </div>
+          <div class="patient-name">
+              <p>{{ patient.patient.first_name }} {{ patient.patient.last_name }}</p> <!-- Nom du patient -->
+        </div>
+          <button class="see-details">See Details</button>
+        </div>
           </div>          
       </div>
     </div>
