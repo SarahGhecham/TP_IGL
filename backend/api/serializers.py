@@ -3,8 +3,19 @@ from .models import *
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.models import User
 
+class UserSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    first_name = serializers.CharField(source='user.first_name', read_only=True)
+    last_name = serializers.CharField(source='user.last_name', read_only=True)
+    email = serializers.CharField(source='user.email', read_only=True)
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']
+        
 class DPISerializer(serializers.ModelSerializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
+    patient = UserSerializer(read_only=True)
+    medecin_traitant = UserSerializer(read_only=True)
     class Meta:
         model = DPI
         fields = ['id', 'patient', 'medecin_traitant', 'nss', 'date_naissance', 'adresse', 'telephone', 'mutuelle', 'personne_a_contacter']
