@@ -25,7 +25,7 @@ class ConsultationSerializer(serializers.ModelSerializer):
     dpi = DPISerializer(read_only=True)
     class Meta:
         model = Consultation
-        fields = ['id','dpi', 'date_consultation', 'motif']
+        fields = ['id','dpi', 'date_consultation', 'motif' , "resume"]
 class BilanBiologiqueSerializer(serializers.ModelSerializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
     consultation = ConsultationSerializer(read_only=True)
