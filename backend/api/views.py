@@ -138,6 +138,7 @@ def DPI_detail(request , nss) :
     if not permission.has_object_permission(request, dpi) :
         raise PermissionDenied("Vous n'avez pas la permission pour consulter cette DPI.") 
     serializer = DPISerializer(dpi)
+    print(serializer.data)
     return Response(serializer.data)
 
 
@@ -176,7 +177,7 @@ def consultation_detail(request , consultation_id):
         raise PermissionDenied("Vous n'avez pas la permission pour consulter cette consultation.")
 
     if request.method == 'GET':
-        serializer = ConsultationSerializer(consultation)
+        serializer = ConsultationSerializer(consultation)   
         return Response(serializer.data)
     if request.method == 'PUT':
         serializer = ConsultationSerializer(consultation, data=request.data, partial=True)
