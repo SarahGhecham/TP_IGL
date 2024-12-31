@@ -10,33 +10,39 @@ class DPISerializer(serializers.ModelSerializer):
         fields = ['id', 'patient', 'medecin_traitant', 'nss', 'date_naissance', 'adresse', 'telephone', 'mutuelle', 'personne_a_contacter']
 
 
+
+class ConsultationSerializer(serializers.ModelSerializer):
+    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
+    dpi = DPISerializer(read_only=True)
+    class Meta:
+        model = Consultation
+        fields = ['id','dpi', 'date_consultation', 'motif', 'resume']
+
 class BilanBiologiqueSerializer(serializers.ModelSerializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
+    consultation = ConsultationSerializer(read_only=True)
     class Meta:
         model = BilanBiologique
         fields = ['id', 'consultation', 'date_bilan', 'comment']
 
-class ConsultationSerializer(serializers.ModelSerializer):
-    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
-    dpi_id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
-    class Meta:
-        model = Consultation
-        fields = ['id','dpi_id', 'date_consultation', 'motif', 'resume']
 
 class BilanRadiologiqueSerializer(serializers.ModelSerializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
+    consultation = ConsultationSerializer(read_only=True)
     class Meta:
         model = BilanRadiologique
         fields = ['id', 'consultation', 'date_bilan', 'image', 'comment']
 
 class ExamenBiologiqueSerializer(serializers.ModelSerializer):
-    bilan = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
     id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
+    bilan = BilanBiologiqueSerializer(read_only=True)
     class Meta:
         model = ExamenBiologique
         fields = ['id','bilan' ,'type_examen', 'resultat', 'unite', 'date_examen']
 
 class OrdonnanceSerializer(serializers.ModelSerializer):
+    id = serializers.PrimaryKeyRelatedField(read_only=True)  
+    consultation = ConsultationSerializer(read_only=True)
     class Meta:
         model = Ordonnance
         fields = ['id', 'consultation', 'date_ordonnance', 'text' , 'valid']
