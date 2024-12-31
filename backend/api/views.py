@@ -25,8 +25,8 @@ from .models import DPI, Medecin, ExamenBiologique, Patient
 from django.contrib.auth.models import User
 from .serializers import DPISerializer, RoleSignupSerializer
 from rest_framework.exceptions import NotFound
-from django.http import JsonResponse,HttpResponse
-from .qr_utils import generate_qr_code, scan_qr_code
+from django.http import JsonResponse
+from .qr_utils import scan_qr_code
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
