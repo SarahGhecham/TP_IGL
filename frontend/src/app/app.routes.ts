@@ -8,6 +8,11 @@ import { CreateDPIComponent } from './pages/users/administratif/create-dpi/creat
 import { OrdonnanceComponent } from './pages/users/medecin/ordonnance/ordonnance.component';
 import { AuthGuard } from './guards/auth.guard';
 
+import { InfirmierComponent } from './pages/users/infirmier/infirmier.component';
+import { LaborantinComponent } from './pages/users/laborantin/laborantin.component';
+import { RadiologueComponent } from './pages/users/radiologue/radiologue.component';
+
+
 export const routes: Routes = [
   // Public Routes
   { path: 'login', component: LoginComponent }, // Route for the login page
@@ -32,6 +37,35 @@ export const routes: Routes = [
       { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
       {path: 'ordonnance', component: OrdonnanceComponent}
     ]
+
+  },  {
+    path: 'users/infirmier',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: InfirmierComponent }, // Default medecin page
+      { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
+      {path: 'ordonnance', component: OrdonnanceComponent}
+    ]
+  },
+  {
+    path: 'users/laborantin',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: LaborantinComponent }, // Default medecin page
+      { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
+      {path: 'ordonnance', component: OrdonnanceComponent}
+    ]
+  },
+  {
+    path: 'users/radiologue',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: RadiologueComponent }, // Default medecin page
+      { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
+      {path: 'ordonnance', component: OrdonnanceComponent}
+    ]
+  },
+
   },
 
   // Wildcard Route (Redirect to Login)
