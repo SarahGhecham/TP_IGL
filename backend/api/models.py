@@ -100,14 +100,6 @@ class BilanBiologique(models.Model):
     def __str__(self):
         return f"Bilan pour {self.consultation}"
 
-class BilanRadiologique(models.Model):
-    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='bilanRadiologique')
-    date_bilan = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='images/radiology/' , null=True , blank=True)
-    comment = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        return f"Bilan du {self.date_bilan} pour {self.consultation}"
     
 class ExamenBiologique(models.Model):
     bilan = models.ForeignKey(BilanBiologique, on_delete=models.CASCADE, related_name='examens')
@@ -131,26 +123,46 @@ class Soin(models.Model):
         return f"Soin par {self.infirmier} le {self.date_soin}"
 
 
+class BilanRadiologique(models.Model):
+    consultation = models.OneToOneField(
+        Consultation,
+        on_delete=models.CASCADE,
+        related_name='bilanRadiologique'
+    )
+    date_bilan = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField(null=True, blank=True)
+    resultats = models.ManyToManyField(
+        'ResultatExamenImagerie',
+        related_name='bilans',
+        blank=True
+    )
+
+    def __str__(self):
+        return f"Bilan du {self.date_bilan} pour {self.consultation}"
+
 class ResultatExamenImagerie(models.Model):
-    dpi = models.ForeignKey(DPI, on_delete=models.CASCADE, related_name='resultats_imagerie')
-    radiologue = models.ForeignKey(Radiologue, on_delete=models.SET_NULL, null=True, related_name='resultats_imagerie')
+    radiologue = models.ForeignKey(
+        Radiologue,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='resultats_imagerie'
+    )
     image = models.ImageField(upload_to='imagerie/%Y/%m/%d/', blank=True, null=True)
     commentaire = models.TextField(blank=True, null=True)
     date_examen = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Examen d'imagerie pour {self.dpi.patient.user.get_full_name()}"
+        return f"Examen d'imagerie pour {self.radiologue}"
 
     def has_compte_rendu(self):
         return hasattr(self, 'compte_rendu')
-
 
 class CompteRendu(models.Model):
     resultat_examen = models.OneToOneField(
         ResultatExamenImagerie,
         on_delete=models.CASCADE,
         related_name='compte_rendu',
-    ) 
+    )
     texte = models.TextField()
     date_creation = models.DateTimeField(auto_now_add=True)
 
@@ -163,8 +175,7 @@ class CompteRendu(models.Model):
         ]
 
     def __str__(self):
-        return f"Compte Rendu pour {self.resultat_examen.dpi.patient.user.get_full_name()}"
-
+        return f"Compte Rendu pour {self.resultat_examen.radiologue}"
 
 # Résultat d'analyse biologique
 class ResultatAnalyseBiologique(models.Model):
