@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import SoinListView, CreateConsultationView,ConsultationListView,DeleteConsultationView,ResultatExamenImagerieListView,ResultatExamenImagerieDetailView,SoinCreateView, SoinDetailView, ConsultationResumeView,ResultatExamenImagerieCreateView,CompteRenduCreateView,ResultatExamenImagerieUpdateView,ResultatExamenImagerieDeleteView,CompteRenduUpdateView
-
+from .views import *
 urlpatterns = [
     path('consultation/create/', CreateConsultationView.as_view(), name='create-consultation'),
     path('consultations/', ConsultationListView.as_view(), name='consultation-list'),
@@ -17,4 +16,7 @@ urlpatterns = [
     path('compte-rendu/<int:pk>/update/', CompteRenduUpdateView.as_view(), name='compte-rendu-update'),
     path('resultats/<int:pk>/delete/', ResultatExamenImagerieDeleteView.as_view(), name='resultat-delete'),
     path('resultats/<int:id>/', ResultatExamenImagerieDetailView.as_view(), name='resultat-examen-imagerie-detail'),
+    path('consultation/<int:consultation_id>/bilanRadiologique/', bilan_Radiologique_detail, name='bilan_radiologique_detail'),
+    path('bilanRadiologique/', bilan_Radiologique_list, name='bilan_radiologique_list'),
+    path('consultation/bilanBiologique/<int:bilan_id>/examen/', examen_list, name='examen_list'),
 ]
