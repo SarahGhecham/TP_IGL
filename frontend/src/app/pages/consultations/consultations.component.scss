@@ -16,22 +16,23 @@
     align-items: flex-end;
     padding-left: 30px;
     padding-right: 50px;
-}
-.add h1{
-    font-family: 'Gilroy-Medium';
-    color: #5089d3;
-    font-size: 2.2rem;
-}
-.add button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 5px 10px;
-    font-family: 'Gilroy-Medium';
-    color: white;
-    background-color: rgba(71, 171, 93,0.7);
-    border-radius: 5px;
-    gap:2px;
+
+    h1{
+        font-family: 'Gilroy-Medium';
+        color: #5089d3;
+        font-size: 2.2rem;
+    }
+    button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 5px 10px;
+        font-family: 'Gilroy-Medium';
+        color: white;
+        background-color: rgba(71, 171, 93,0.7);
+        border-radius: 5px;
+        gap:2px;
+    }
 }
 .clist{
     grid-area: clist;
@@ -44,45 +45,89 @@
 .listc{
     grid-column: 2/10;
     height: calc((100dvh - 57px - 60px)*0.9);
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+.item{
+    display: flex;
+    flex-direction: column;
 }
 .citem{
     display: grid;
-    grid-template-columns: 400px 150px 200px 1fr;
+    grid-template-columns: 350px 170px 200px 170px 1fr;
     grid-template-rows: auto;
     gap: 4px;
     padding: 2px 4px 2px 4px;
+
+    .consultation{
+        grid-column: 1;
+        padding: 8px 0 8px 15px;
+        background-color: rgb(223, 237, 255);
+        display: flex;
+        flex-direction: row;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .bilanB{
+        grid-column: 2;
+        padding: 8px 0 8px 15px;
+        background-color: rgb(255, 228, 228);
+        display: flex;
+        flex-direction: row;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .bilanR{
+        grid-column: 3;
+        padding: 8px 0 8px 15px;
+        background-color: rgb(255, 228, 228);
+        display: flex;
+        flex-direction: row;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .ordonance{
+        grid-column: 4;
+        padding: 8px 0 8px 15px;
+        background-color: rgb(214, 255, 210);
+        display: flex;
+        flex-direction: row;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .params{
+        grid-column: 5;
+        padding: 8px 15px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        border-radius: 5px;
+    }
 }
-.consultation{
-    grid-column: 1;
-    padding: 8px 15px;
-    background-color: rgb(223, 237, 255);
-    display: flex;
-    flex-direction: row;
-    border-radius: 5px;
+.motif{
+    transition: max-height 0.3s ease-in-out;
+    padding: 2px 25px 2px 19px;
+    span{
+        font-family: 'Gilroy-Medium';
+        color: #5089d3;
+        font-size: 1.05rem;
+    }
+    p{
+        font-family: 'Gilroy-Medium';
+        color: #000000;
+        font-size: 0.95rem;
+        max-height: 70px;
+        overflow-y: scroll;
+    }
 }
-.bilan{
-    grid-column: 2;
-    padding: 8px 15px;
-    background-color: rgb(255, 228, 228);
+.popup{
+    width: 100dvw;
+    height: 100dvh;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
-    flex-direction: row;
-    border-radius: 5px;
-}
-.ordonance{
-    grid-column: 3;
-    padding: 8px 15px;
-    background-color: rgb(214, 255, 210);
-    display: flex;
-    flex-direction: row;
-    border-radius: 5px;
-}
-.params{
-    grid-column: 4;
-    padding: 8px 15px;
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }

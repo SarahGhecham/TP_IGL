@@ -1,205 +1,43 @@
 <div class="main">
     <div class="add">
         <h1>Consultations</h1>
-        <button routerLink="/consultations/add">
+        <button (click)="showPopUp()">
             <span>Add Consultation</span>
             <img src="../../../assets/images/addconsultation.svg" alt="addconsultation" />
         </button>
     </div>
     <div class="clist">
         <div class="listc">
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
+            <div class="item">
+                <div class="citem">
+                    <div class="consultation" (click)="toggleMotif()">
+                        <span>consultation du 12/12/2020</span>
+                    </div>
+                    <div class="bilanB" [routerLink]="['/consultations', 'bilan-biologique', 1]">
+                        <span>Bilan Biologique</span>
+                    </div>
+                    <div class="bilanR" [routerLink]="['/consultations', 'bilan-radiologique', 1]">
+                        <span>Bilan Radiologique</span>
+                    </div>
+                    <div class="ordonance">
+                        <span>Ordonance</span>
+                    </div>
+                    <div class="params">
+                        <button>
+                            <img src="../../../assets/images/params.svg" alt="view" />
+                        </button>
+                    </div>
                 </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
-                </div>
-            </div>
-            <div class="citem">
-                <div class="consultation">
-                    <span>consultation du 12/12/2020</span>
-                </div>
-                <div class="bilan">
-                    <span>Bilan</span>
-                </div>
-                <div class="ordonance">
-                    <span>Ordonance</span>
-                </div>
-                <div class="params">
-                    <button>
-                        <img src="../../../assets/images/params.svg" alt="view" />
-                    </button>
+                <div class="motif" *ngIf="showMotif"> 
+                    <span>Motif de consultation</span>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda alias et explicabo, quidem ad magni architecto blanditiis unde voluptatem adipisci expedita nostrum quod quibusdam. Ab cupiditate ut vitae molestiae eligendi quos, necessitatibus sunt molestias consequuntur libero quibusdam iste rerum voluptas recusandae aut eum. Ipsa explicabo quod numquam? Itaque, ullam facere? Fuga atque consequatur, eos repellendus explicabo cupiditate eligendi, nisi recusandae, quasi numquam blanditiis nihil! Obcaecati amet voluptates iure tempore molestias quae suscipit quibusdam temporibus aspernatur error? Corporis, nostrum! Minus assumenda quasi animi excepturi ducimus! Ratione ipsum amet quaerat repellat quam aliquid ut odio vel delectus velit magnam sed, itaque maiores reiciendis possimus, ducimus est esse maxime. Aliquam consequatur atque eligendi mollitia porro architecto inventore minima, cupiditate nisi maxime rem officiis accusamus impedit illo, nam voluptatibus, sapiente ad facere exercitationem neque. Nobis excepturi officia officiis dignissimos laboriosam temporibus omnis quia, corrupti quae, accusantium ipsa. Error animi dolorum perspiciatis consectetur, ipsa, voluptatem fugit quidem atque in molestiae, laborum cupiditate vitae laudantium explicabo sapiente enim consequuntur odio a. Soluta nobis, similique aspernatur quis ipsum esse dolorem quibusdam iste minima nemo voluptatibus unde quas voluptate magnam ut expedita vitae et alias quaerat, assumenda possimus tenetur natus ex qui? Pariatur nesciunt reprehenderit maiores minus nulla? Deleniti a officia dolore quaerat nostrum commodi voluptas vitae praesentium voluptates quo, voluptatibus inventore at maiores minus quod minima dolorem obcaecati ut aut quam provident. Fuga dicta harum natus adipisci esse quos modi placeat, dolorem facere debitis officia minus delectus ipsam quaerat velit ullam inventore consectetur aut voluptatibus voluptates laborum eligendi beatae molestias enim! Explicabo similique tempora, aut hic laborum sapiente rerum, accusamus ab porro nobis deleniti inventore dolore repudiandae quisquam deserunt? Natus enim reiciendis, fugiat laudantium vero assumenda temporibus provident ipsum cupiditate dignissimos nostrum nisi, quaerat excepturi adipisci, qui totam. Similique fugit aut repellat quas impedit eum dolore dolores inventore labore eaque dolorem commodi excepturi accusantium molestiae nulla, ducimus omnis tenetur architecto. Rem soluta cum quaerat veritatis ad ab, debitis fugiat temporibus deserunt est minus corrupti non, ea error, assumenda fugit delectus tenetur eius? Corporis quis suscipit harum nam itaque illo qui cumque vero in praesentium. Nulla sit quasi et voluptate expedita molestias nisi deserunt non vitae veritatis ab ipsa incidunt ipsam quis quod esse laborum repellat error, corrupti voluptatem quaerat dolorum labore? Deleniti veritatis commodi voluptatum dolore voluptatibus consequuntur impedit ipsum nesciunt eum aspernatur, laboriosam debitis! Distinctio facilis vel sint libero. Itaque, culpa nulla ratione eos praesentium nesciunt animi optio accusamus, a sequi, quasi totam? Quas voluptates, asperiores culpa quod nostrum voluptas consectetur dolor, rerum enim reiciendis libero sunt pariatur est qui, dolorem debitis aliquam impedit facilis! Expedita aspernatur.</p>
+                    <span>Résume</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse praesentium explicabo debitis nulla quibusdam fuga alias, ratione, veritatis voluptate saepe voluptatibus consequuntur odio, nesciunt vero! Nobis, quidem iusto, distinctio dolor numquam, a totam aperiam cum id velit voluptatibus. Ullam qui veritatis asperiores minus eos, suscipit officia dignissimos, quia deserunt voluptas at libero, quaerat quod laborum reprehenderit alias distinctio vitae deleniti. Vitae odit non perferendis delectus repellat quisquam. Impedit inventore, sed odit accusantium obcaecati odio quasi reiciendis voluptates explicabo atque amet aliquid eveniet eos, neque magnam at magni eius molestiae, cum tenetur fugiat. Vel ut, asperiores eius ad voluptate omnis fuga eveniet nesciunt excepturi quia inventore animi fugit deserunt! Dignissimos soluta velit laudantium, recusandae quis rem odio accusantium dolor maiores, quaerat dolorem veritatis ratione odit possimus magnam doloribus assumenda consectetur, optio ipsa harum rerum facilis. Quam neque veritatis placeat quia tempora labore maxime perspiciatis aspernatur qui eum hic, odio quo praesentium blanditiis sed nostrum quidem iste ad illo. Cum officiis deserunt magni. Repellat ut consequuntur adipisci maiores aut, similique nulla a odit in esse velit earum sed accusantium aspernatur minima accusamus ratione voluptates. Sint nemo consectetur incidunt similique ipsum veritatis eius ullam ea. Hic eum autem similique nostrum. Distinctio, numquam deleniti!</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="popup" *ngIf="showAddConsultation" (click)="closePopup($event)">
+    <app-add-consultation (click)="preventClose($event)"></app-add-consultation>
 </div>

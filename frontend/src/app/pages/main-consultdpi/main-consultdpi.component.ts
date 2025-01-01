@@ -8,5 +8,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './main-consultdpi.component.scss'
 })
 export class MainConsultdpiComponent {
-
+  
 }

@@ -1,0 +1,45 @@
+<div class="main">
+    <div class="header">
+        <h1>Bilan Biologique</h1>
+        <button *ngIf="!existBilan" (click)="showPopUpBilan()">Ajouter bilan</button>
+        <button *ngIf="existBilan" (click)="showPopUpExamen()">Ajouter Examen</button>
+    </div>
+    <div class="content">
+        <div class="auj" *ngIf="isSameDay">
+            <p>Veuillez Creer un Bilan Biologique</p>
+        </div>
+        <div class="bilanO" *ngIf="!isSameDay && existBilan">
+            <div class="dt-input">
+                <label for="date">Date du bilan</label>
+                <input type="date" name="date" [value]="bilanDate" placeholder="Date du bilan" readonly/>
+            </div>
+            <div class="comp">
+                <div class="titre">
+                    <span>Examen</span>
+                    <span>Resultat</span>
+                    <span>Unité</span>
+                </div>
+                <div class="cases" *ngFor="let examen of examens">
+                    <div class="examen">
+                        <input name="examen" [value]="examen.nom" type="text" placeholder="Examen" readonly>
+                    </div>
+                    <div class="resul">
+                        <input name="resultat" [value]="examen.resultat" type="text" placeholder="Resultat" readonly>
+                    </div>
+                    <div class="uni">
+                        <input name="unite" [value]="examen.unite" type="text" placeholder="Unité" readonly>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <div class="bilanN" *ngIf="!isSameDay && !existBilan">
+            <p>Vous n'avez pas de bilan radiologique</p>
+        </div>
+    </div>
+</div>
+<div class="popup" *ngIf="showBilan" (click)="closePopupBilan($event)">
+    <app-add-bilanbiologique (click)="preventClose($event)"></app-add-bilanbiologique>
+</div>
+<div class="popup" *ngIf="showExamen" (click)="closePopupExamen($event)">
+    <app-add-examenbiologique (click)="preventClose($event)"></app-add-examenbiologique>
+</div>

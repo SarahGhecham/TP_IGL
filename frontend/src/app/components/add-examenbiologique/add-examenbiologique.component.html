@@ -1,0 +1,14 @@
+<div class="main">
+    <div class="title" routerLink="/consultations">
+        <h1>Ajouter un Examen Biologique</h1>
+    </div>
+    <div class="content">
+        <div class="dt-input">
+            <label for="date">Nom examen</label>
+            <input type="text" [(ngModel)]="nomexamen" name="date" placeholder="Nom de l'examen biologique" />
+        </div>
+    </div>
+    <div class="footer">
+        <button (click)="onAddExamen()">Ajouter</button>
+    </div>
+</div>

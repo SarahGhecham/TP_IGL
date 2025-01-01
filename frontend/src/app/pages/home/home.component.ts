@@ -7,7 +7,7 @@ import { CalendarComponent } from '../../calendar/calendar.component';
 
 @Component({
   selector: 'app-home',
-  imports: [MatCardModule,NavbarComponent,MatIconModule,CalendarComponent],
+  imports: [MatCardModule,MatIconModule,CalendarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
