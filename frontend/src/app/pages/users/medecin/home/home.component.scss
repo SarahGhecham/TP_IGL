@@ -1,0 +1,315 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/assets/fonts/Gilroy-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/assets/fonts/Gilroy-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Gilroy';
+    src: url('/assets/fonts/Gilroy-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Gilroy';
+    src: url('/assets/fonts/gilroy-semibold.ttf') format('truetype');
+    font-weight: 600; /* Utilisez une valeur numérique pour le poids semibold */
+    font-style: normal;
+}
+
+  
+  
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Deux colonnes */
+        gap: 20px;
+    }
+  
+    .left-section, .right-section {
+        margin-left: 80px;
+        display: grid;
+        gap: 10px; /* Espacement entre les éléments */
+    }
+  
+    .left-section {
+      .welcome-card {
+        background: #ffff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #E5E5E5;
+        text-align: center;
+        display: flex;
+        width: 626.67px; 
+        height: 169.33px; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .welcome-card-left {
+        display: flex;
+        flex-direction: column; /* Aligner les lignes de texte en colonne */
+        width: 377px; 
+        height: 91px;
+        margin-top: 23px;
+        margin-left: 35px;
+        text-align: left; /* Aligner le texte à gauche */
+        justify-content: center; /* Centrer verticalement */
+      }
+      
+      .welcome-text {
+        color: #38CFBB; /* Couleur pour "Welcome" */
+        margin-bottom: 7px;
+        font-family: 'Gilroy';
+        font-weight: normal,
+      }
+      
+      .doctor-name {
+        color: #023E8A; /* Couleur pour le nom du médecin */
+        margin-bottom: 7px;
+        font-family: 'Gilroy';
+        font-weight: 900;
+        font-size: 30px;
+      }
+      
+      .speciality {
+        color: #023E8A; /* Couleur pour la spécialité */
+        margin-bottom: 10px;
+        font-family: 'Gilroy';
+        font-weight: normal;
+        font-size: 14px;
+      }
+      .welcome-card-right{
+        display: flex;
+        flex-direction: column;
+      }
+      .welcome-card-right img {
+        justify-content: center;
+        margin-left: 50px;
+        transform: translateY(-8%);
+      }
+      
+  
+      .report-section {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #E5E5E5;
+        width: 626.67px; 
+        height: 169.33px; 
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .report-title {
+            font-size: 16.67px; /* Taille du texte du titre */
+            font-family: 'Gilroy';
+            font-weight: 600; /* Police en gras */
+            margin-top: 10px;
+            margin-left: 25px;
+            color: #023E8A; /* Couleur du texte */
+          }
+          
+        .report-item {
+          margin-top: 50px;
+          background-color: rgba(0, 119, 182, 0.07);
+          border-radius: 10px;
+          flex: 1 1 114px;
+          width: 114px; 
+          height: 102.67px;
+          transform: translateX(-20%);
+          margin-right: 10px;
+          display: flex; /* Active Flexbox */
+          flex-direction: column; /* Aligne les enfants verticalement */
+          justify-content: center; /* Centre verticalement */
+          align-items: center; /* Centre horizontalement */
+        }
+        .report-item h3 {
+            font-size: 15px; /* Taille de police pour "Total Patients" */
+            color: #023E8A; /* Couleur, à adapter si nécessaire */
+            font-family: 'Gilroy';
+          }
+        .report-item p {
+            font-size: 35px; /* Taille de police pour "240" */
+            font-family: 'Gilroy';
+            font-weight: normal; /* Police en gras pour "240", si nécessaire */
+            color: #38CFBB; /* Couleur, à adapter si nécessaire */
+          }
+      }
+  
+      .patients-section {
+        .patients-header {
+          justify-content: space-between;
+          margin-top:50px;
+          margin-bottom: 10px;
+          position: relative; /* Pour positionner l'icône à l'intérieur du parent */
+          input {
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 4.58px;
+            border: 1px solid #0077B6;
+            width: 223px; 
+            height: 34px;   
+            font-family: 'Gilroy';
+            font-size: 7.68;
+            padding-left: 40px; /* Pour laisser de l'espace pour l'icône */
+          }
+          .search-icon {
+            position: absolute;
+            color:#726E75;
+            left: 10px;
+            top: 60%;
+            transform: translateY(-50%); /* Centrer l'icône verticalement */
+          }
+          .scan-icon{
+            position: absolute;
+            color: #0C0C0C;
+            left: 245px;
+            top: 60%;
+            transform: translateY(-50%);
+          }
+  
+          button {
+            border-radius: 5px;
+            background-color: rgba(0, 119, 182, 0.07);
+            color: #0C0C0C;
+            width: 160px; 
+            height: 34px;
+            border: none;
+            font-family: 'Gilroy';
+            font-weight: 600;
+            font-size: 5;
+            cursor: pointer;
+            }
+          .scan-btn{
+            padding-left: 28px;
+            width: 170px; 
+          }
+          .add-btn {
+            margin-left: 70px;
+            background-color: #023E8A;
+            color:#E5E5E5;
+            width: 150px; 
+            height: 34px;
+          }
+        }
+  
+        .patients-list {
+            margin-top:40px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Permet de répartir les frames */
+            gap: 20px; /* Espacement entre les frames */
+          }
+          
+          .patient-frame {
+            width: 181.33px;
+            height: 244.67px;
+            background-color: #fff;
+            border-radius: 10px;
+            border: 1px solid #E5E5E5;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .patient-image svg {
+            width: 120px;
+            height: 120px;
+          }
+          
+          .patient-name p {
+            margin: 10px 0;
+            font-family: 'Gilroy';
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+          }
+          
+          .see-details {
+            margin-top: 10px;
+            background-color: #ffffff;
+            color: #436178;
+            border-radius: 4.58px;
+            border: 1px solid #436178;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 133.33px;
+            height: 24.67px;
+            font-family: 'Gilroy';
+            font-weight: normal;
+            font-size:9px;
+          }
+          
+          .see-details:hover {
+            background-color: white; /* Changement de couleur au survol */
+          }
+          
+      }
+    }
+  
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      .Test-section {
+        display: grid;
+        background: #ffffff;
+        margin-right: 80px;
+        border-radius: 10px;
+        font-family: 'Gilroy';
+        font-weight: bold;
+        font-size: 19.46px;
+        color:#023E8A;
+        margin-top:0px;
+      }
+      .Test{
+        padding: 40px 40px 20px 40px;
+      }
+      .test-list {
+        display: grid; /* Utilise une grille pour afficher les éléments */
+        grid-template-columns: 1fr;
+        gap: 10px; /* Espacement entre les rectangles */
+        margin-left:25px;
+        overflow-y: auto; /* Permet le défilement vertical */
+        max-height: 334.58px;
+      }
+      .test-list::-webkit-scrollbar {
+        display: none;  /* Cache la barre de défilement */
+      }
+      
+      .test-item {
+        background-color: rgba(0, 119, 182, 0.07); /* Couleur de fond pour les rectangles */
+        border-radius: 8px; /* Coins arrondis */
+        padding: center;
+        width:290.59px;
+        height: 47.43px; /* Hauteur des rectangles */
+        display: flex;
+        align-items: center; /* Centrer verticalement le texte */
+        justify-content: center; /* Centrer horizontalement le texte */
+        font-size: 13.12px;
+        font-family: 'Gilroy';
+        font-weight: normal;
+        color: #023E8A; /* Couleur du texte */
+      }
+      .mat-icon{
+        margin-right: 8px;
+        color: #023E8A;
+      }
+    }
+  
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      grid-template-columns: 1fr;
+    }
+  
+    .left-section, .right-section {
+      flex: 1 1 100%;
+    }
+  }
+  

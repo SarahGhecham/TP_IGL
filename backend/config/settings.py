@@ -1,8 +1,6 @@
-import os 
+import os
 from pathlib import Path
-
-
-
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,7 +8,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Path where files will be uploaded
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -23,7 +20,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -33,12 +29,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Ajout des bibliothèques nécessaires
+    'dpi',
     'corsheaders',  # Pour gérer les CORS
     'rest_framework',  # Pour l'API REST
     'api.apps.ApiConfig', # pour l'app api
+    'rest_framework_simplejwt', # pour l'authentification jwt
+    'rest_framework_simplejwt.token_blacklist', #blacklister les tokens aprés la déconnexion
 ]
+
+AUTHENTICATION_CLASSES = [
+    'rest_framework_simplejwt.authentication.JWTAuthentication',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',  # Default permission: authenticated users only
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +66,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',  # URL de votre frontend Vue.js
+]
 
 TEMPLATES = [
     {
@@ -71,7 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -81,8 +97,8 @@ DATABASES = {
         'NAME': 'DPI',
         'USER': 'snowy',
         'PASSWORD': 'csee',
-        'HOST': 'localhost',  # Or the database server's address
-        'PORT': '3306',       # Default MySQL port
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -104,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -116,7 +131,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
@@ -127,9 +141,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configuration des CORS
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',  # URL de votre frontend Vue.js
-]
-# Autoriser tous les domaines pour le développement (à restreindre en production)
-# CORS_ALLOW_ALL_ORIGINS = True
+# Configuration de REST Framework Simple JWT
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}

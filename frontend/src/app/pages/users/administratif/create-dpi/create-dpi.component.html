@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<div class="dpi-form-container">
+<button class="back-button" (click)="onBack()">
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+    </svg>
+  </button>
+  
+  <div *ngIf="successMessage" class="notification success">
+    {{ successMessage }}
+  </div>
+  
+<form [formGroup]="dpiForm" (ngSubmit)="onSubmit()" class="dpi-form">
+    <div class="form-group">
+      <label for="patient">Patient</label>
+      <input id="patient" type="text" formControlName="patient">
+      <div *ngIf="dpiForm.get('patient')?.invalid && dpiForm.get('patient')?.touched" class="error-message">
+        Patient name is required.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="medecin_traitant">Médecin Traitant</label>
+      <input id="medecin_traitant" type="text" formControlName="medecin_traitant">
+      <div *ngIf="dpiForm.get('medecin_traitant')?.invalid && dpiForm.get('medecin_traitant')?.touched" class="error-message">
+        Médecin traitant is required.
+      </div>
+    </div>
+
+  
+    <div class="form-group">
+      <label for="nss">Numéro de Sécurité Sociale</label>
+      <input id="nss" type="text" formControlName="nss">
+      <div *ngIf="dpiForm.get('nss')?.invalid && dpiForm.get('nss')?.touched" class="error-message">
+        <span *ngIf="dpiForm.get('nss')?.errors?.['required']">NSS is required.</span>
+        <span *ngIf="dpiForm.get('nss')?.errors?.['pattern']">NSS must be 15 digits.</span>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="date_naissance">Date de Naissance</label>
+      <input id="date_naissance" type="date" formControlName="date_naissance">
+      <div *ngIf="dpiForm.get('date_naissance')?.invalid && dpiForm.get('date_naissance')?.touched" class="error-message">
+        Date de naissance is required.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="adresse">Adresse</label>
+      <input id="adresse" type="text" formControlName="adresse">
+      <div *ngIf="dpiForm.get('adresse')?.invalid && dpiForm.get('adresse')?.touched" class="error-message">
+        Adresse is required.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="telephone">Téléphone</label>
+      <input id="telephone" type="tel" formControlName="telephone">
+      <div *ngIf="dpiForm.get('telephone')?.invalid && dpiForm.get('telephone')?.touched" class="error-message">
+        <span *ngIf="dpiForm.get('telephone')?.errors?.['required']">Téléphone is required.</span>
+        <span *ngIf="dpiForm.get('telephone')?.errors?.['pattern']">Téléphone must be 10 digits.</span>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="mutuelle">Mutuelle</label>
+      <input id="mutuelle" type="text" formControlName="mutuelle">
+    </div>
+  
+    <div class="form-group">
+      <label for="personne_a_contacter">Personne à Contacter</label>
+      <input id="personne_a_contacter" type="text" formControlName="personne_a_contacter">
+      <div *ngIf="dpiForm.get('personne_a_contacter')?.invalid && dpiForm.get('personne_a_contacter')?.touched" class="error-message">
+        Personne à contacter is required.
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="dpiForm.invalid">Submit</button>
+  </form>
+</div>
