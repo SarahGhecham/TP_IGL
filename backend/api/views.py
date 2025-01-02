@@ -247,14 +247,15 @@ def generate_trend_graph(request, dpi_id, examen_type):
 
     # Filtrer les examens biologiques pour le DPI et le type d'examen (glycémie, cholestérol, etc.)
     examens = ExamenBiologique.objects.filter(bilan__consultation__dpi=dpi, type_examen=examen_type).order_by('date_examen')
+    patient=dpi.patient.user.get_full_name()
 
     if not examens:
-        return JsonResponse({"message": "Aucun examen trouvé pour ce DPI et ce type d'examen."}, status=404)
+        return JsonResponse({"message": "Aucun examen trouvé pour ce DPI et ce type d'examen.","patient": patient}, status=404)
 
     # Extraire les dates et les résultats
     dates = [examen.date_examen.strftime('%Y-%m-%d') for examen in examens]
     resultats = [examen.resultat for examen in examens]
-    patient=dpi.patient.user.get_full_name()
+    
 
     # Retourner les données sous forme de JSON
     return JsonResponse({
