@@ -7,9 +7,11 @@ import { AcceuilAdComponent } from './pages/users/administratif/acceuil/acceuilA
 import { CreateDPIComponent } from './pages/users/administratif/create-dpi/create-dpi.component';
 import { OrdonnanceComponent } from './pages/users/medecin/ordonnance/ordonnance.component';
 import { AuthGuard } from './guards/auth.guard';
+
 import { InfirmierComponent } from './pages/users/infirmier/infirmier.component';
 import { LaborantinComponent } from './pages/users/laborantin/laborantin.component';
 import { RadiologueComponent } from './pages/users/radiologue/radiologue.component';
+
 
 export const routes: Routes = [
   // Public Routes
@@ -35,6 +37,7 @@ export const routes: Routes = [
       { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
       {path: 'ordonnance', component: OrdonnanceComponent}
     ]
+
   },  {
     path: 'users/infirmier',
     canActivate: [AuthGuard],
@@ -62,6 +65,9 @@ export const routes: Routes = [
       {path: 'ordonnance', component: OrdonnanceComponent}
     ]
   },
+
+  },
+
   // Wildcard Route (Redirect to Login)
   { path: '**', redirectTo: 'login' }
 ];
