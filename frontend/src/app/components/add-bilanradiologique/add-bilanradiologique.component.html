@@ -1,0 +1,28 @@
+<div class="main">
+    <div class="title" routerLink="/consultations">
+      <h1>Ajouter un bilan radiologique</h1>
+    </div>
+    <div class="content">
+      <div class="dt-input">
+        <label for="nom">Nom du bilan</label>
+        <input
+          type="text"
+          name="nom"
+          [(ngModel)]="nomBilan"
+          placeholder="Nom du bilan"
+        />
+      </div>
+      <div class="dt-input">
+        <label for="date">Date du bilan</label>
+        <input
+          type="date"
+          name="date"
+          [(ngModel)]="dateBilan"
+          placeholder="Date du bilan"
+        />
+      </div>
+    </div>
+    <div class="footer">
+      <button (click)="onAddBilan()">Ajouter</button>
+    </div>
+  </div>

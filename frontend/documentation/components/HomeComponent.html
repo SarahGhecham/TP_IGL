@@ -1,0 +1,446 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/home/home.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>MatCardModule</code>
+                            <code>MatIconModule</code>
+                                <code><a href="../components/CalendarComponent.html" target="_self" >CalendarComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./home.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./home.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { MatCardModule } from &#x27;@angular/material/card&#x27;
+import { NavbarComponent } from &#x27;../../shared/navbar/navbar.component&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { CalendarComponent } from &#x27;../../calendar/calendar.component&#x27;;
+
+
+@Component({
+  selector: &#x27;app-home&#x27;,
+  imports: [MatCardModule,MatIconModule,CalendarComponent],
+  templateUrl: &#x27;./home.component.html&#x27;,
+  styleUrl: &#x27;./home.component.scss&#x27;
+})
+export class HomeComponent {
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https://fonts.googleapis.com/icon?family&#x3D;Material+Icons&quot;&gt;
+  &lt;div class&#x3D;&quot;content&quot;&gt;
+    &lt;!-- Section Left (Informations générales) --&gt;
+    &lt;div class&#x3D;&quot;left-section&quot;&gt;
+        &lt;div class&#x3D;&quot;welcome-card&quot;&gt;
+            &lt;div class&#x3D;&quot;welcome-card-left&quot;&gt;
+              &lt;h2 class&#x3D;&quot;welcome-text&quot;&gt;Welcome&lt;/h2&gt;
+              &lt;h3 class&#x3D;&quot;doctor-name&quot;&gt;Dr. Souha Linda&lt;/h3&gt;
+              &lt;p class&#x3D;&quot;speciality&quot;&gt;(Cardiology)&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;welcome-card-right&quot;&gt;
+              &lt;img src&#x3D;&quot;assets/images/Doctor.svg&quot; alt&#x3D;&quot;Doctor Photo&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+          
+
+      &lt;div class&#x3D;&quot;report-section&quot;&gt;
+        &lt;h2 class&#x3D;&quot;report-title&quot;&gt;Report&lt;/h2&gt;
+        &lt;div class&#x3D;&quot;report-item&quot;&gt;
+          &lt;h3&gt;Total Patients&lt;/h3&gt;
+          &lt;p&gt;240&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;report-item&quot;&gt;
+          &lt;h3&gt;Total Consultations&lt;/h3&gt;
+          &lt;p&gt;450&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;report-item&quot;&gt;
+            &lt;h3&gt;Total Bilans&lt;/h3&gt;
+            &lt;p&gt;120&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;patients-section&quot;&gt;
+        &lt;div class&#x3D;&quot;patients-header&quot;&gt;
+          &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Search&quot; /&gt;
+          &lt;button class&#x3D;&quot;scan-btn&quot;&gt;
+              Scan to Search
+          &lt;/button&gt;
+          &lt;button class&#x3D;&quot;add-btn&quot;&gt;Add Patient&lt;/button&gt;
+          &lt;div class&#x3D;&quot;search-icon&quot;&gt;
+            &lt;mat-icon&gt;search&lt;/mat-icon&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;scan-icon&quot;&gt;
+            &lt;mat-icon&gt;qr_code_scanner&lt;/mat-icon&gt; 
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;patients-list&quot;&gt;
+            &lt;div class&#x3D;&quot;patient-frame&quot;&gt;
+              &lt;div class&#x3D;&quot;patient-image&quot;&gt;
+                &lt;svg width&#x3D;&quot;121&quot; height&#x3D;&quot;120&quot; viewBox&#x3D;&quot;0 0 121 120&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                    &lt;rect x&#x3D;&quot;0.666992&quot; width&#x3D;&quot;120&quot; height&#x3D;&quot;120&quot; rx&#x3D;&quot;60&quot; fill&#x3D;&quot;#0077B6&quot; fill-opacity&#x3D;&quot;0.1&quot; /&gt;
+                    &lt;image href&#x3D;&quot;assets/images/patient.svg&quot; width&#x3D;&quot;70&quot; height&#x3D;&quot;70&quot; x&#x3D;&quot;25&quot; y&#x3D;&quot;25&quot; /&gt;
+                &lt;/svg&gt;                  
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;patient-name&quot;&gt;
+                &lt;p&gt;John Doe&lt;/p&gt; &lt;!-- Nom du patient --&gt;
+              &lt;/div&gt;
+              &lt;button class&#x3D;&quot;see-details&quot;&gt;See Details&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;patient-frame&quot;&gt;
+                &lt;div class&#x3D;&quot;patient-image&quot;&gt;
+                    &lt;svg width&#x3D;&quot;121&quot; height&#x3D;&quot;120&quot; viewBox&#x3D;&quot;0 0 121 120&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                        &lt;rect x&#x3D;&quot;0.666992&quot; width&#x3D;&quot;120&quot; height&#x3D;&quot;120&quot; rx&#x3D;&quot;60&quot; fill&#x3D;&quot;#0077B6&quot; fill-opacity&#x3D;&quot;0.1&quot; /&gt;
+                        &lt;image href&#x3D;&quot;assets/images/patient.svg&quot; width&#x3D;&quot;70&quot; height&#x3D;&quot;70&quot; x&#x3D;&quot;25&quot; y&#x3D;&quot;25&quot; /&gt;
+                    &lt;/svg&gt; 
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;patient-name&quot;&gt;
+                  &lt;p&gt;John Doe&lt;/p&gt; &lt;!-- Nom du patient --&gt;
+                &lt;/div&gt;
+                &lt;button class&#x3D;&quot;see-details&quot;&gt;See Details&lt;/button&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;patient-frame&quot;&gt;
+                &lt;div class&#x3D;&quot;patient-image&quot;&gt;
+                    &lt;svg width&#x3D;&quot;121&quot; height&#x3D;&quot;120&quot; viewBox&#x3D;&quot;0 0 121 120&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                        &lt;rect x&#x3D;&quot;0.666992&quot; width&#x3D;&quot;120&quot; height&#x3D;&quot;120&quot; rx&#x3D;&quot;60&quot; fill&#x3D;&quot;#0077B6&quot; fill-opacity&#x3D;&quot;0.1&quot; /&gt;
+                        &lt;image href&#x3D;&quot;assets/images/patient.svg&quot; width&#x3D;&quot;70&quot; height&#x3D;&quot;70&quot; x&#x3D;&quot;25&quot; y&#x3D;&quot;25&quot; /&gt;
+                    &lt;/svg&gt; 
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;patient-name&quot;&gt;
+                  &lt;p&gt;John Doe&lt;/p&gt; &lt;!-- Nom du patient --&gt;
+                &lt;/div&gt;
+                &lt;button class&#x3D;&quot;see-details&quot;&gt;See Details&lt;/button&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;          
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Section Right (Calendrier et Historique) --&gt;
+    &lt;div class&#x3D;&quot;right-section&quot;&gt;
+      &lt;div&gt;
+        &lt;app-calendar&gt;&lt;/app-calendar&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;Test-section&quot;&gt;
+        &lt;div class&#x3D;&quot;Test&quot;&gt;&lt;h3&gt;Ready Medical Test Results&lt;/h3&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;test-list&quot;&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+          &lt;div class&#x3D;&quot;test-item&quot;&gt;&lt;mat-icon&gt;check_circle_outline&lt;/mat-icon&gt;Test Glycemie du Pt John Doe&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+
+  </code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  <div class="content">    <!-- Section Left (Informations générales) -->    <div class="left-section">        <div class="welcome-card">            <div class="welcome-card-left">              <h2 class="welcome-text">Welcome</h2>              <h3 class="doctor-name">Dr. Souha Linda</h3>              <p class="speciality">(Cardiology)</p>            </div>            <div class="welcome-card-right">              <img src="assets/images/Doctor.svg" alt="Doctor Photo">            </div>        </div>                <div class="report-section">        <h2 class="report-title">Report</h2>        <div class="report-item">          <h3>Total Patients</h3>          <p>240</p>        </div>        <div class="report-item">          <h3>Total Consultations</h3>          <p>450</p>        </div>        <div class="report-item">            <h3>Total Bilans</h3>            <p>120</p>        </div>      </div>      <div class="patients-section">        <div class="patients-header">          <input type="text" placeholder="Search" />          <button class="scan-btn">              Scan to Search          </button>          <button class="add-btn">Add Patient</button>          <div class="search-icon">            <mat-icon>search</mat-icon>          </div>          <div class="scan-icon">            <mat-icon>qr_code_scanner</mat-icon>           </div>        </div>        <div class="patients-list">            <div class="patient-frame">              <div class="patient-image">                <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">                    <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />                    <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />                </svg>                                </div>              <div class="patient-name">                <p>John Doe</p> <!-- Nom du patient -->              </div>              <button class="see-details">See Details</button>            </div>            <div class="patient-frame">                <div class="patient-image">                    <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">                        <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />                        <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />                    </svg>                 </div>                <div class="patient-name">                  <p>John Doe</p> <!-- Nom du patient -->                </div>                <button class="see-details">See Details</button>              </div>              <div class="patient-frame">                <div class="patient-image">                    <svg width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">                        <rect x="0.666992" width="120" height="120" rx="60" fill="#0077B6" fill-opacity="0.1" />                        <image href="assets/images/patient.svg" width="70" height="70" x="25" y="25" />                    </svg>                 </div>                <div class="patient-name">                  <p>John Doe</p> <!-- Nom du patient -->                </div>                <button class="see-details">See Details</button>              </div>          </div>                </div>    </div>    <!-- Section Right (Calendrier et Historique) -->    <div class="right-section">      <div>        <app-calendar></app-calendar>      </div>      <div class="Test-section">        <div class="Test"><h3>Ready Medical Test Results</h3></div>        <div class="test-list">          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>          <div class="test-item"><mat-icon>check_circle_outline</mat-icon>Test Glycemie du Pt John Doe</div>        </div>      </div>    </div>  </div>  </div>'
+    var COMPONENTS = [{'name': 'AddConsultationComponent', 'selector': 'app-add-consultation'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BilanBiologiqueComponent', 'selector': 'app-bilan-biologique'},{'name': 'BilanRadiologiqueComponent', 'selector': 'app-bilan-radiologique'},{'name': 'CalendarComponent', 'selector': 'app-calendar'},{'name': 'ConsultationComponent', 'selector': 'app-consultation'},{'name': 'ConsultationsComponent', 'selector': 'app-consultations'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LayoutComponent', 'selector': 'app-layout'},{'name': 'MainConsultdpiComponent', 'selector': 'app-main-consultdpi'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrdonanceComponent', 'selector': 'app-ordonance'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

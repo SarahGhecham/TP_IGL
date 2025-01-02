@@ -12,6 +12,11 @@ import { InfirmierComponent } from './pages/users/infirmier/infirmier.component'
 import { LaborantinComponent } from './pages/users/laborantin/laborantin.component';
 import { RadiologueComponent } from './pages/users/radiologue/radiologue.component';
 
+import { LayoutComponent } from './pages/layout/layout.component';
+import { MainConsultdpiComponent } from './pages/main-consultdpi/main-consultdpi.component';
+import { ConsultationsComponent } from './pages/consultations/consultations.component';
+import { BilanBiologiqueComponent } from './pages/bilan-biologique/bilan-biologique.component';
+import { BilanRadiologiqueComponent } from './pages/bilan-radiologique/bilan-radiologique.component';
 
 export const routes: Routes = [
   // Public Routes
@@ -37,6 +42,23 @@ export const routes: Routes = [
       { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
       {path: 'ordonnance', component: OrdonnanceComponent},
       { path: 'create-dpi', component: CreateDPIComponent },
+      {
+        path: 'consultation-dpi', component: MainConsultdpiComponent ,
+      },
+      {
+        path: 'consultations',
+        children: [
+          {
+            path: '', component: ConsultationsComponent,
+          },
+          {
+            path: 'bilan-biologique/:id', component: BilanBiologiqueComponent,
+          },
+          {
+            path: 'bilan-radiologique/:id', component: BilanRadiologiqueComponent,
+          },
+        ]
+      }
     ]
 
   },  {
