@@ -13,7 +13,7 @@ import { RadiologueComponent } from './pages/users/radiologue/radiologue.compone
 
 export const routes: Routes = [
   // Public Routes
-  { path: '/', component: LoginComponent }, // Route for the login page
+  { path: 'login', component: LoginComponent }, // Route for the login page
   { path: '', component: HomeComponent }, // Route for the home page
 
   // Administratif Routes (Role: administratif)

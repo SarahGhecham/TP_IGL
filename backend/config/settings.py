@@ -130,7 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configuration des CORS
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',  # URL de votre frontend Vue.js
+    'http://localhost:4200',  # URL de votre frontend Vue.js
 ]
 # Autoriser tous les domaines pour le développement (à restreindre en production)
 # CORS_ALLOW_ALL_ORIGINS = True
