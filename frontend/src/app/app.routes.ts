@@ -36,7 +36,7 @@ export const routes: Routes = [
   // Medecin Routes (Role: medecin)
   {
     path: 'users/medecin',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: HomeMedComponent }, // Default medecin page
       { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
@@ -89,6 +89,6 @@ export const routes: Routes = [
   },
 
 
-  // // Wildcard Route (Redirect to Login)
-  // { path: '**', redirectTo: 'login' }
+  // Wildcard Route (Redirect to Login)
+  { path: '**', redirectTo: 'login' }
 ];
