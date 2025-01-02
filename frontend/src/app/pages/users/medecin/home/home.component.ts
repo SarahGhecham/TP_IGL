@@ -6,6 +6,7 @@ import { CalendarComponent } from '../../../../shared/calendar/calendar.componen
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,16 @@ export class HomeMedComponent implements OnInit {
   patient: any; // Variable pour stocker les résultats du patient
   private apiUrl = 'http://127.0.0.1:8000/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router:Router) {}
+
+  goToConsultations(dpiId: any) {
+    console.log(dpiId);
+    //this.router.navigate(['/users/medecin/examen-trends', dpiId]);
+  }
+
+  navigateToCreateDPI() {
+    this.router.navigate(['/users/medecin/create-dpi']);
+  }
 
   ngOnInit(): void {
     this.loadPatients();  // Charger plusieurs patients initialement

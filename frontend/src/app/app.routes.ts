@@ -34,8 +34,9 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: HomeMedComponent }, // Default medecin page
-      { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
-      {path: 'ordonnance', component: OrdonnanceComponent}
+      { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
+      {path: 'ordonnance', component: OrdonnanceComponent},
+      { path: 'create-dpi', component: CreateDPIComponent },
     ]
 
   },  {
@@ -43,7 +44,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: InfirmierComponent }, // Default medecin page
-      { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
+      { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
       {path: 'ordonnance', component: OrdonnanceComponent}
     ]
   },
@@ -52,7 +53,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: LaborantinComponent }, // Default medecin page
-      { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
+      { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
       {path: 'ordonnance', component: OrdonnanceComponent}
     ]
   },
@@ -61,12 +62,10 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: RadiologueComponent }, // Default medecin page
-      { path: 'examen-trends', component: ExamenTrendsComponent }, // Examen trends page
       {path: 'ordonnance', component: OrdonnanceComponent}
     ]
   },
 
-  },
 
   // Wildcard Route (Redirect to Login)
   { path: '**', redirectTo: 'login' }
