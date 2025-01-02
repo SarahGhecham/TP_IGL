@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card'
-import { NavbarComponent } from '../../shared/navbar/navbar.component';
-import { MatIconModule } from '@angular/material/icon';
-import { CalendarComponent } from '../../calendar/calendar.component';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [MatCardModule,MatIconModule,CalendarComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  constructor(private router: Router) {}
 
+  navigateToLogin(role: 'staff' | 'patient'): void {
+    this.router.navigate(['/login', role]);
+  }
 }

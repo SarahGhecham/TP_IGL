@@ -1,0 +1,133 @@
+<app-navbar></app-navbar>
+<!-- Main container -->
+<div class="container mx-auto p-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Left section (1/3 width) -->
+    <div class="md:col-span-1">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Demandes Bilan Radiologiques</h2>
+        <div class="mb-4">
+          <input type="text" placeholder="Search..." class="w-full p-2 border rounded">
+        </div>
+        <!-- Bilan Radiologique List -->
+        <div class="space-y-2">
+          <div *ngIf="bilans.length === 0" class="text-center text-gray-500">
+            There is no bilan radiologique.
+          </div>
+          <div *ngFor="let bilan of bilans" 
+     class="flex items-center justify-between p-2 border rounded"
+     (click)="onBilanSelect(bilan)"  
+     [ngClass]="{'bg-blue-100': selectedBilan?.id === bilan.id}">  <!-- Optional: Highlight selected bilan -->
+  <div class="flex items-center gap-2">
+    <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+    <div>
+      <div>{{ bilan.patient_name }}</div>
+      <div class="text-xs text-red-500">{{ bilan.status }}</div>
+    </div>
+  </div>
+  <div class="text-right">
+    <div class="text-sm text-gray-500">{{ bilan.date }}</div>
+    <div>{{ bilan.type }}</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right section (2/3 width) -->
+    <div class="md:col-span-2 space-y-4">
+      <!-- Patient Info Card -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Patient's Info</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="space-y-1">
+            <div class="text-gray-500">Name</div>
+            <div class="font-medium">{{ selectedBilan?.patient_name}}</div>
+            <div class="text-gray-500 mt-4">NSS</div>
+            <div class="font-medium">{{ selectedBilan?.nss }}</div>
+          </div>
+          <div class="space-y-1">
+            <div class="text-gray-500">Gender</div>
+            <div class="font-medium">{{ selectedBilan?.gender }}</div>
+            <div class="text-gray-500 mt-4">Age</div>
+            <div class="font-medium">{{ selectedBilan?.age }}</div>
+          </div>
+          <div class="space-y-1">
+            <div class="text-gray-500">Address</div>
+            <div class="font-medium">{{ selectedBilan?.address }}</div>
+            <div class="text-gray-500 mt-4">Phone Number</div>
+            <div class="font-medium">{{ selectedBilan?.phone }}</div>
+          </div>
+          <div class="space-y-1">
+            <div class="text-gray-500">Email</div>
+            <div class="font-medium">{{ selectedBilan?.email }}</div>
+            <div class="text-gray-500 mt-4">Emergency Contact</div>
+            <div class="font-medium">{{ selectedBilan?.emergencyContact }}</div>
+            <div className="font-medium">
+              <img [src]="'assets/images' + selectedBilan?.image" alt="no-radio" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compte Rendu Form -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Saisir Compte Rendu</h2>
+        <form [formGroup]="compteRenduForm" (ngSubmit)="onSubmitCompteRendu()" class="space-y-6">
+          <!-- Compte Rendu Field -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Compte Rendu
+            </label>
+            <textarea
+              formControlName="compte_rendu"
+              rows="3"
+              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              [disabled]="!compteRenduForm.valid"
+              class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400"
+            >
+              Save Compte Rendu
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Upload Radio Image Form -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Upload Radio Image</h2>
+        <form [formGroup]="radioImageForm" (ngSubmit)="onSubmitRadioImage()" class="space-y-6">
+          <!-- File Upload Field -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Radio Image
+            </label>
+            <input
+              type="file"
+              formControlName="radio_image"
+              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+              (change)="onFileChange($event)"
+            >
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              [disabled]="!radioImageForm.valid"
+              class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400"
+            >
+              Upload Image
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

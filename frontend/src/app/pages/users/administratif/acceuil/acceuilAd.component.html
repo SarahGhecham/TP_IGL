@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="dashboard-container">
+  <div class="main-content">
+    <div class="left-section">
+      <!-- Welcome Card -->
+      <div class="welcome-card">
+        <div class="welcome-info">
+          <span class="welcome-label">Re-Bonjour</span>
+          <h1 class="doctor-name">{{administratifName}} </h1>
+          <span class="specialty">Administratif</span>
+        </div>
+        <div class="doctor-image">
+          <img src="assets/images/Doctor.svg" alt="Doctor illustration">
+        </div>
+      </div>
+
+      <div class="add-dpi">
+        <button class="add-btn" (click)="onClick()">Ajouter DPI</button>
+      </div>
+
+
+
+    </div>
+
+    <!-- Calendar Section -->
+  <app-calendar></app-calendar>
+  </div>
+ 
+</div>

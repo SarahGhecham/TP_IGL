@@ -1,0 +1,283 @@
+.dashboard-container {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 2rem;
+    }
+  
+    // Welcome Card
+    .welcome-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+      .welcome-info {
+        .welcome-label {
+          color: #00b4d8;
+          font-size: 0.875rem;
+        }
+  
+        .doctor-name {
+          color: #003049;
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin: 0.5rem 0;
+        }
+  
+        .specialty {
+          color: #0077b6;
+        }
+      }
+  
+      .doctor-image img {
+        height: 100px;
+        width: auto;
+      }
+    }
+  
+    // Search Section
+    .search-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      gap: 1rem;
+  
+      .search-container {
+        position: relative;
+        flex: 1;
+  
+        .search-input {
+          width: 100%;
+          padding: 0.75rem 1rem 0.75rem 2.5rem;
+          border: 1px solid #e2e8f0;
+          border-radius: 6px;
+          font-size: 0.875rem;
+  
+          &:focus {
+            outline: none;
+            border-color: #0077b6;
+          }
+        }
+  
+        .search-icon {
+          position: absolute;
+          left: 0.75rem;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #94a3b8;
+        }
+      }
+  
+      .add-patient-btn {
+        background-color: #0077b6;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+  
+        &:hover {
+          background-color: #023e8a;
+        }
+      }
+    }
+  
+    // Patients Grid
+    .patients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+  
+      .patient-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+        .delete-btn {
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          background: none;
+          border: none;
+          color: #94a3b8;
+          cursor: pointer;
+  
+          &:hover {
+            color: #ef4444;
+          }
+        }
+  
+        .patient-icon {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+          background-color: rgba(0, 119, 182, 0.1);
+  
+          .material-icons {
+            font-size: 2rem;
+            color: #0077b6;
+          }
+        }
+  
+        .patient-info {
+          text-align: center;
+  
+          .patient-name {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+          }
+  
+          .details-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            color: #0077b6;
+            cursor: pointer;
+            transition: all 0.2s;
+  
+            &:hover {
+              background-color: #0077b6;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  
+    // Calendar Section
+    .calendar-section {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+      .calendar-header {
+        margin-bottom: 1.5rem;
+        
+        h2 {
+          color: #0077b6;
+          font-size: 1.25rem;
+          font-weight: 600;
+        }
+      }
+  
+      .calendar-body {
+        .weekdays {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          margin-bottom: 0.5rem;
+  
+          .weekday {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #64748b;
+            padding: 0.5rem;
+            font-weight: 500;
+          }
+        }
+  
+        .days-grid {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 2px;
+  
+          .day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            border-radius: 50%;
+            margin: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+  
+            &.current-month {
+              color: #1e293b;
+            }
+  
+            &.other-month {
+              color: #cbd5e1;
+            }
+  
+            &.today {
+              background-color: #0077b6;
+              color: white;
+            }
+  
+            &:hover:not(.today) {
+              background-color: #f1f5f9;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .add-btn {
+    background-color: #023E8A;
+    color:#E5E5E5;
+    width: 250px; 
+    height: 43px;
+    border-radius: 10px;
+  }
+  
+  .add-dpi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+  }
+
+  // Responsive Design
+  @media (max-width: 1024px) {
+    .dashboard-container .main-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .calendar-section {
+      margin-top: 2rem;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .search-section {
+      flex-direction: column;
+      
+      .search-container {
+        width: 100%;
+      }
+  
+      .add-patient-btn {
+        width: 100%;
+      }
+    }
+  
+    .patients-grid {
+      grid-template-columns: 1fr;
+    }
+  }
