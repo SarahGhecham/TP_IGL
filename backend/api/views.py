@@ -3,12 +3,9 @@ from django.http import JsonResponse, HttpResponse, Http404
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import generics, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.exceptions import NotFound, PermissionDenied
-# import matplotlib.pyplot as plt
-from io import BytesIO
+from django.shortcuts import render
+from rest_framework import generics
+from rest_framework.permissions import AllowAny,IsAuthenticated # Permet l'accès à tous
 
 # Local imports
 from .serializers import  *  # Specify individual serializers if possible
@@ -24,8 +21,224 @@ from .permission import (
     is_Pharmacien,
 )
 
+from .models import DPI, Medecin, ExamenBiologique, Patient
+from django.contrib.auth.models import User
+from .serializers import DPISerializer, RoleSignupSerializer
+from rest_framework.exceptions import NotFound
+from django.http import JsonResponse
+from .qr_utils import scan_qr_code
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
+#import matplotlib.pyplot as plt
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.exceptions import NotFound, PermissionDenied
+from io import BytesIO
+from django.shortcuts import get_object_or_404
+from rest_framework.permissions import BasePermission
+from django.contrib.auth import authenticate
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import CustomTokenObtainPairSerializer
 
 
+
+
+
+#utilitaire pour les permissions
+class IsMedecin(BasePermission):
+    def has_permission(self, request, view):
+        return hasattr(request.user, 'medecin')
+    
+class isAdministratif(BasePermission):
+    def has_permission(self, request, view):
+        return hasattr(request.user, 'administratif')
+
+
+# Authentication methods
+
+#Signup view
+class RoleSignupView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = RoleSignupSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+#Login View
+class RoleBasedLoginView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        if not username or not password:
+            return Response(
+                {"error": "Username and password are required"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            # Generate JWT tokens using the custom serializer
+            refresh = RefreshToken.for_user(user)
+            access = refresh.access_token
+            access['username'] = user.username  
+            role = None
+            if hasattr(user, 'medecin'):
+                role = 'medecin'
+            elif hasattr(user, 'infirmier'):
+                role = 'infirmier'
+            elif hasattr(user, 'laborantin'):
+                role = 'laborantin'
+            elif hasattr(user, 'radiologue'):
+                role = 'radiologue'
+            elif hasattr(user, 'administratif'):
+                role = 'administratif'
+            elif hasattr(user, 'patient'):
+                role = 'patient'
+
+            return Response({
+                'refresh': str(refresh),
+                'access': str(access),
+                'role': role
+            }, status=status.HTTP_200_OK)
+        else:
+            return Response(
+                {"error": "Invalid username or password"},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer            
+    
+
+
+#Logout View
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        refresh_token = request.data.get("refresh")
+        if not refresh_token:
+            return Response(
+                {"error": "Refresh token is required"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            token = RefreshToken(refresh_token)
+            user_id = token.payload.get('user_id')
+
+            # Check if user exists
+            user = User.objects.filter(id=user_id).first()
+            if not user:
+                return Response(
+                    {"error": "User associated with this token does not exist"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            # Blacklist token
+            token.blacklist()
+
+            return Response(
+                {"message": "Logout successful"},
+                status=status.HTTP_200_OK
+            )
+        except Exception as e:
+            return Response(
+                {"error": str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+#DPI views
+
+#creer un DPI
+class CreateDPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        # Get the username for medecin and patient
+        medecin_username = request.data.get('medecin_traitant')
+        patient_username = request.data.get('patient')
+
+        # Validate if both usernames are provided
+        if not medecin_username or not patient_username:
+            return Response(
+                {"error": "Both 'medecin_traitant' and 'patient' usernames are required."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            # Find the medecin and patient users by username
+            medecin_user = User.objects.get(username=medecin_username)
+            patient_user = User.objects.get(username=patient_username)
+
+
+            medecin = Medecin.objects.get(user=medecin_user)  
+            patient = Patient.objects.get(user=patient_user) 
+            data = request.data
+            data['medecin_traitant'] = medecin.id  
+            data['patient'] = patient.id 
+            
+            
+            serializer = DPISerializer(data=data)
+            
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        except User.DoesNotExist:
+            return Response({"error": "Medecin or Patient with the provided username does not exist."}, status=status.HTTP_400_BAD_REQUEST)
+        except Medecin.DoesNotExist:
+            return Response({"error": "Medecin profile not found for the provided username."}, status=status.HTTP_400_BAD_REQUEST)
+        except Patient.DoesNotExist:
+            return Response({"error": "Patient profile not found for the provided username."}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class DeleteDPIByUsernameView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def delete(self, request, username):
+        # Step 1: Retrieve the user by their username
+        user = get_object_or_404(User, username=username)
+        
+        # Step 2: Retrieve the patient associated with the user
+        patient = get_object_or_404(Patient, user=user)
+        
+        # Step 3: Retrieve the associated DPI using the patient's ID
+        dpi = get_object_or_404(DPI, patient=patient)
+        
+        # Step 4: Delete the DPI
+        dpi.delete()
+        
+        # Step 5: Return success message
+        return Response({"message": "DPI deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+        
+#recuperer un DPI
+class RetrieveDPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, dpi_id):
+        try:
+            dpi = DPI.objects.get(id=dpi_id)
+            serializer = DPISerializer(dpi)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except DPI.DoesNotExist:
+            return Response({"error": "DPI not found"}, status=status.HTTP_404_NOT_FOUND)
+
+#récuperer tout les dpis
+
+
+
+ 
 def generate_trend_graph(request, dpi_id, examen_type):
     # Récupérer le DPI par ID
     dpi = get_object_or_404(DPI, id=dpi_id)
@@ -78,35 +291,78 @@ class SearchDPIByQRView(APIView):
         except DPI.DoesNotExist:
             return Response({"detail": "DPI non trouvé pour ce NSS."}, status=status.HTTP_404_NOT_FOUND)
 
-        # Sérialiser les données du DPI
-        serializer = DPISerializer(dpi)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-
-class SearchDPIByNSSView(generics.RetrieveAPIView):
-    queryset = DPI.objects.all()
-    serializer_class = DPISerializer
-    permission_classes = [AllowAny]  # permission_classes = [IsAuthenticated]
-
-    def get_object(self):
-        # Récupérer le NSS depuis les paramètres de l'URL
-        nss = self.kwargs['nss']
-
-        """
-        # Vérifier si l'utilisateur est un médecin
-        if not hasattr(self.request.user, 'medecin'):
-            raise NotFound("Accès non autorisé. Seul un médecin peut accéder à ce DPI.")
-        """
-        
-        # Chercher le DPI par NSS
         try:
+            user = dpi.patient.user  # Assurez-vous que DPI a une relation avec Patient et User
+            response_data = {
+                "id": dpi.id,
+                "patient": {
+                    "first_name": user.first_name,
+                    "last_name": user.last_name
+                }
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
+        except ObjectDoesNotExist:
+            return Response({"detail": "Patient ou utilisateur associé non trouvé."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class FirstThreePatientsView(APIView):
+    permission_classes = [AllowAny]  # Permet l'accès sans authentification
+
+    def get(self, request):
+        try:
+            # Récupérer les 3 premiers DPI
+            dpis = DPI.objects.all()[:3]  # Limiter la requête aux 3 premiers DPI
+            response_data = []
+
+            # Structurer les données pour chaque DPI
+            for dpi in dpis:
+                patient = dpi.patient  # Accéder à l'objet Patient lié au DPI
+                user = patient.user  # Accéder à l'objet User lié au patient
+                
+                # Ajouter les informations nécessaires dans la réponse
+                response_data.append({
+                    "id": dpi.id,
+                    "patient": {
+                        "first_name": user.first_name,
+                        "last_name": user.last_name
+                    }
+                })
+
+            # Retourner la réponse avec un code HTTP 200 (OK)
+            return Response(response_data, status=200)
+        
+        except DPI.DoesNotExist:
+            raise NotFound("Aucun DPI trouvé.")
+        except Patient.DoesNotExist:
+            raise NotFound("Aucun patient associé trouvé.")
+
+class SearchDPIByNSSView(APIView):
+    permission_classes = [AllowAny]  # Permet l'accès sans authentification
+
+    def get(self, request, nss):
+        try:
+            # Chercher le DPI par NSS
             dpi = DPI.objects.get(nss=nss)
+            
+            # Récupérer les informations du patient liées à ce DPI
+            patient = dpi.patient  # Assurez-vous que `patient` est une relation sur le modèle DPI
+            user = dpi.patient.user
+            
+            # Structurer les données à renvoyer : l'id du DPI et les champs du patient
+            response_data = {
+                "id": dpi.id,
+                "patient": {
+                    "first_name": user.first_name,
+                    "last_name": user.last_name
+                }
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        
         except DPI.DoesNotExist:
             raise NotFound("DPI non trouvé avec ce NSS.")
-        
-        return dpi
+        except Patient.DoesNotExist:
+            raise NotFound("Patient associé non trouvé.")
 
 
 
@@ -167,27 +423,50 @@ def consultation_list(request , nss):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def consultation_detail(request , consultation_id):
-    try:
-        consultation = get_object_or_404(Consultation, id=consultation_id)
-    except Http404:
-        return Response({"error": "La consultation n'existe pas."}, status=404)
+def consultation_detail(request, consultation_id):
+    consultation = get_object_or_404(Consultation, id=consultation_id)
     
     if not has_permission(request, consultation=consultation):
         raise PermissionDenied("Vous n'avez pas la permission pour consulter cette consultation.")
-
+    
     if request.method == 'GET':
         serializer = ConsultationSerializer(consultation)   
         return Response(serializer.data)
-    if request.method == 'PUT':
-        serializer = ConsultationSerializer(consultation, data=request.data, partial=True)
+    
+    elif request.method == 'PUT':
+        serializer = ConsultationSerializer(consultation, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    if request.method == 'DELETE':
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'DELETE':
         consultation.delete()
-        return Response(status=204) 
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+def create_consultation(request):
+    if request.method == 'POST':
+        # Retrieve the DPI object based on the provided DPI ID in the request
+        dpi_id = request.data.get('dpi_id')
+        try:
+            dpi = DPI.objects.get(id=dpi_id)
+        except DPI.DoesNotExist:
+            return Response({'detail': 'DPI not found.'}, status=status.HTTP_404_NOT_FOUND)
+        
+        # Add the consultation data to the request
+        request.data['dpi_id'] = dpi.id
+        request.data['resume'] = ''
+        
+        # Create the consultation instance through the serializer
+        serializer = ConsultationSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            # Save the consultation instance
+            serializer.save(dpi_id=dpi.id)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 #handle bilan biologique
@@ -354,6 +633,7 @@ def examen_detail(request , examen_id):
         examen.delete()
         return Response(status=204)
     
+#ordonnance views
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -386,6 +666,26 @@ def ordonnance_detail(request , ordonnance_id):
     
     if request.method == 'GET':
         serializer = OrdonnanceSerializer(ordonnance)
-        return Response(serializer.data)    
-        
+        return Response(serializer.data)
     
+@api_view(['POST'])
+def create_ordonnance(request):
+    if request.method == 'POST':
+        
+        consultation_id = request.data.get('consultation')
+        try:
+            consultation = Consultation.objects.get(id=consultation_id)
+        except Consultation.DoesNotExist:
+            return Response({'detail': 'Consultation not found.'}, status=status.HTTP_404_NOT_FOUND)
+        
+        # Add 'valid' field to request data and set it to False
+        request.data['valid'] = False
+        
+        # Create an ordonnance instance
+        serializer = OrdonnanceSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            # Save the ordonnance instance
+            serializer.save(consultation=consultation)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
