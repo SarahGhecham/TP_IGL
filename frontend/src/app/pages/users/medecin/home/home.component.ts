@@ -27,7 +27,7 @@ export class HomeMedComponent implements OnInit {
 
   goToConsultations(dpiId: any) {
     console.log(dpiId);
-    //this.router.navigate(['/users/medecin/examen-trends', dpiId]);
+    this.router.navigate(['/users/medecin/consultation-dpi', dpiId]);
   }
 
   navigateToCreateDPI() {

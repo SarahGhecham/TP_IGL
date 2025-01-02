@@ -43,7 +43,7 @@ export const routes: Routes = [
       {path: 'ordonnance', component: OrdonnanceComponent},
       { path: 'create-dpi', component: CreateDPIComponent },
       {
-        path: 'consultation-dpi', component: MainConsultdpiComponent ,
+        path: 'consultation-dpi/:id', component: MainConsultdpiComponent ,
       },
       {
         path: 'consultations',
