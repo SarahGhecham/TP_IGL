@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+<<<<<<< HEAD
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
+=======
+import { ActivatedRoute } from '@angular/router';
+>>>>>>> origin/main
 
 @Component({
   selector: 'app-main-consultdpi',
@@ -8,6 +12,12 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
   templateUrl: './main-consultdpi.component.html',
   styleUrl: './main-consultdpi.component.scss'
 })
-export class MainConsultdpiComponent {
-  
+export class MainConsultdpiComponent implements OnInit{
+  dpiId: any;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.dpiId = this.route.snapshot.paramMap.get('id');
+    console.log('ID du DPI:', this.dpiId);}
 }

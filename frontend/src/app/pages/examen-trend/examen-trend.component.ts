@@ -5,6 +5,7 @@ import { ChartConfiguration, ChartType } from 'chart.js';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { Chart ,registerables} from 'chart.js';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 
 Chart.register(...registerables);
@@ -17,7 +18,8 @@ Chart.register(...registerables);
   styleUrls: ['./examen-trend.component.scss']
 })
 export class ExamenTrendsComponent implements OnInit{
-  public NomPatient : String = "NomPatient";
+  dpiId: any;
+  public NomPatient : String = "Nom";
   charts: { id: string; title: string; unit: string; available: boolean }[] = [
     { id: 'glycemieChart', title: 'Glycemie', unit: 'mg/dl', available: false },
     { id: 'cholesterolChart', title: 'Cholesterol', unit: 'mg/dl', available: false },
@@ -39,14 +41,17 @@ export class ExamenTrendsComponent implements OnInit{
       }
     },
   };
-  constructor(private examenService: ExamenService) {}
+  constructor(private examenService: ExamenService,private route: ActivatedRoute) {}
   @ViewChild('chart') chart: any;
   ngOnInit(): void {
+    this.dpiId = this.route.snapshot.paramMap.get('id');
+    console.log('ID du DPI:', this.dpiId);
     this.charts.forEach((chart) => {
-      this.examenService.getExamenTrends('1', chart.title).subscribe((data) => {
+      this.examenService.getExamenTrends(this.dpiId, chart.title).subscribe((data) => {
+        this.NomPatient=data.patient;
         if (data.dates.length > 0 && data.resultats.length > 0) {
           chart.available = true;
-          this.loadChart('1',chart.title,chart.id);
+          this.loadChart(this.dpiId,chart.title,chart.id);
         }
       });
     });
@@ -66,13 +71,13 @@ export class ExamenTrendsComponent implements OnInit{
     }
     return 'rgba(128, 128, 128, 0.5)'; // Couleur par défaut
   }
-  loadChart(patientId: string, examType: string, canvasId: string): void {
-    this.examenService.getExamenTrends(patientId, examType).subscribe(
+  loadChart(dpiId: string, examType: string, canvasId: string): void {
+    this.examenService.getExamenTrends(dpiId, examType).subscribe(
       (data) => {
         // Traitement des données reçues
+        this.NomPatient=data.patient;
         const labels = data.dates; // Utilisation des dates comme labels
         const results = data.resultats; // Utilisation des résultats pour l'axe des ordonnées
-        this.NomPatient=data.patient;
         
         // Configuration du graphique
         this.config = {
