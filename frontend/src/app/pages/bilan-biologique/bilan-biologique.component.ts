@@ -4,10 +4,11 @@ import { AddBilanbiologiqueComponent } from '../../components/add-bilanbiologiqu
 import { AddExamenbiologiqueComponent } from '../../components/add-examenbiologique/add-examenbiologique.component';
 import { Examen } from '../../models/examen';
 import { ExamenService } from '../../services/examen.service';
+import { NavbarComponent } from '../../shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-bilan-biologique',
-  imports: [CommonModule,AddBilanbiologiqueComponent,AddExamenbiologiqueComponent],
+  imports: [CommonModule,AddBilanbiologiqueComponent,AddExamenbiologiqueComponent, NavbarComponent],
   templateUrl: './bilan-biologique.component.html',
   styleUrl: './bilan-biologique.component.scss'
 })

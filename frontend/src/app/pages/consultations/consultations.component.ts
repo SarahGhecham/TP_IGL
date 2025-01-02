@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AddConsultationComponent } from '../add-consultation/add-consultation.component';
+import { NavbarComponent } from '../../shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-consultations',
-  imports: [RouterLink, CommonModule, FormsModule, AddConsultationComponent],
+  imports: [RouterLink, CommonModule, FormsModule, AddConsultationComponent,NavbarComponent],
   templateUrl: './consultations.component.html',
   styleUrl: './consultations.component.scss'
 })

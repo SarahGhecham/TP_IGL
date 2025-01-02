@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AddBilanradiologiqueComponent } from '../../components/add-bilanradiologique/add-bilanradiologique.component';
 import { BilanRadiologiqueService } from '../../services/bilan-radiologique.service';
+import { NavbarComponent } from '../../shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-bilan-radiologique',
-  imports: [AddBilanradiologiqueComponent, CommonModule],
+  imports: [AddBilanradiologiqueComponent, CommonModule, NavbarComponent],
   templateUrl: './bilan-radiologique.component.html',
   styleUrl: './bilan-radiologique.component.scss'
 })
