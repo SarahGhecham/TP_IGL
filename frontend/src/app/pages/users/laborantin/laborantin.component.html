@@ -5,23 +5,26 @@
     <!-- Left section (1/3 width) -->
     <div class="md:col-span-1">
       <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-4">Bilan Biologiques</h2>
+        <h2 class="text-xl font-semibold mb-4">Demandes Bilan Biologiques</h2>
         <div class="mb-4">
           <input type="text" placeholder="Search..." class="w-full p-2 border rounded">
         </div>
-        
+        <!-- Bilan Biologique List -->
         <div class="space-y-2">
-          <div *ngFor="let report of biologicalReports" class="flex items-center justify-between p-2 border rounded">
+          <div *ngIf="bilans.length === 0" class="text-center text-gray-500">
+            There is no bilan biologique.
+          </div>
+          <div *ngFor="let bilan of bilans" class="flex items-center justify-between p-2 border rounded">
             <div class="flex items-center gap-2">
               <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
               <div>
-                <div>{{ report.consultation }}</div>
-                <div class="text-xs text-red-500">Danger</div>
+                <div>{{ bilan.patient_name }}</div>
+                <div class="text-xs text-red-500">{{ bilan.status }}</div>
               </div>
             </div>
             <div class="text-right">
-              <div class="text-sm text-gray-500">{{ report.id }}</div>
-              <div>{{ report.details }}</div>
+              <div class="text-xs  text-gray-500">{{ bilan.date }}</div>
+              <div class="text-sm" >{{ bilan.comment }}</div>
             </div>
           </div>
         </div>
@@ -30,132 +33,97 @@
 
     <!-- Right section (2/3 width) -->
     <div class="md:col-span-2 space-y-4">
-      <!-- Patient Info Card -->
+      <!-- Saisi Resultats Form -->
       <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-4">Patient's Info</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="space-y-1">
-            <div class="text-gray-500">Name</div>
-            <div class="font-medium">Harti Dhayaa</div>
-            <div class="text-gray-500 mt-4">NSS</div>
-            <div class="font-medium">0001823838</div>
-          </div>
-          <div class="space-y-1">
-            <div class="text-gray-500">Gender</div>
-            <div class="font-medium">Male</div>
-            <div class="text-gray-500 mt-4">Age</div>
-            <div class="font-medium">20</div>
-          </div>
-          <div class="space-y-1">
-            <div class="text-gray-500">Address</div>
-            <div class="font-medium">Azazga, Tizi Ouzou</div>
-            <div class="text-gray-500 mt-4">Phone Number</div>
-            <div class="font-medium">0558 28 88 12</div>
-          </div>
-          <div class="space-y-1">
-            <div class="text-gray-500">Email</div>
-            <div class="font-medium">tipaza.com</div>
-            <div class="text-gray-500 mt-4">Emergency Contact</div>
-            <div class="font-medium">0553 12 11 99</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Requested Test Section -->
-      <div class="bg-white rounded-lg shadow p-6">
-        <div class="flex items-center justify-around mb-6">
-          <h2 class="text-xl font-semibold mr-20">Requested Test : Head Radio</h2>
-          <div class="flex items-center gap-2">
-            <span class="text-red-500 font-medium"> Date </span>
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm"> Radiology</span>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <h3 class="font-medium text-gray-700 mb-2">Description</h3>
-          <ul class="list-disc ml-6 text-gray-700">
-            <li>Skull X-Rays: Lateral (Side) View And AP (Anteroposterior) View To Evaluate Fractures, Lesions, Or Bone Deformities.</li>
-            <li>If Necessary, Include Towne's View (To Assess Occipital Bone And Posterior Cranial Fossa).</li>
-          </ul>
-        </div>
-
-        <!-- Test Results & Resume Section -->
-        <div class="grid grid-cols-2 gap-4">
+        <h2 class="text-xl font-semibold mb-4">Saisi Resultats</h2>
+        <form [formGroup]="resultatForm" (ngSubmit)="onSubmitResultat()" class="space-y-6">
+          <!-- Type Examen Field -->
           <div>
-            <h3 class="font-semibold mb-3">Test's Results</h3>
-            <div class="space-y-2">
-              <div class="flex items-center gap-2 p-2 border rounded">
-                <div class="text-blue-500"><i class="fas fa-file"></i></div>
-                <div class="flex-grow">
-                  <div>Leg radio.jpg</div>
-                  <div class="text-sm text-gray-500">by Mr.bouboutarli at 2024-12-7 15:62</div>
-                </div>
-                <button class="text-gray-500"><i class="fas fa-trash"></i></button>
-              </div>
-            </div>
-            <button class="mt-4 border border-dashed rounded p-2 w-full text-gray-500">
-              Upload Files
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Type Examen
+            </label>
+            <input
+              type="text"
+              formControlName="type_examen"
+              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+
+          <!-- Resultat Field -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Resultat
+            </label>
+            <input
+              type="number"
+              formControlName="resultat"
+              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+
+          <!-- Date Examen Field -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Date Examen
+            </label>
+            <input
+              type="date"
+              formControlName="date_examen"
+              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              [disabled]="!resultatForm.valid"
+              class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400"
+            >
+              Save Resultat
             </button>
           </div>
+        </form>
+      </div>
 
-          <div class="w-full max-w-2xl mx-auto p-6">
-            <h2 class="text-2xl font-semibold mb-6">Add New Care Entry</h2>
-            <div class="create-report">
-              <div class="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
-                <h2 class="text-2xl font-bold mb-4">Create Biological Report</h2>
-                <form [formGroup]="createReportForm" (ngSubmit)="createReport()">
-                  <fieldset class="space-y-4">
-                    <legend class="text-lg font-semibold mb-2">Report Information</legend>
-              
-                    <!-- Consultation ID Field -->
-                    <div class="form-group">
-                      <label for="consultationId" class="block text-sm font-medium text-gray-700">Consultation ID:</label>
-                      <input
-                        type="number"
-                        id="consultationId"
-                        formControlName="consultationId"
-                        placeholder="Enter Consultation ID"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                        aria-describedby="consultationIdError"
-                      />
-                      <div *ngIf="createReportForm.get('consultationId')?.invalid && createReportForm.get('consultationId')?.touched">
-                        <p id="consultationIdError" class="mt-2 text-sm text-red-600">Consultation ID is required.</p>
-                      </div>
-                    </div>
-              
-                    <!-- Report Data Field -->
-                    <div class="form-group">
-                      <label for="reportData" class="block text-sm font-medium text-gray-700">Report Data:</label>
-                      <textarea
-                        id="reportData"
-                        formControlName="reportData"
-                        placeholder="Enter Report Details"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                        aria-describedby="reportDataError"
-                      ></textarea>
-                      <div *ngIf="createReportForm.get('reportData')?.invalid && createReportForm.get('reportData')?.touched">
-                        <p id="reportDataError" class="mt-2 text-sm text-red-600">Report details are required.</p>
-                      </div>
-                    </div>
-                  </fieldset>
-              
-                  <!-- Submit Button -->
-                  <button
-                    class="mt-4 w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-                    type="submit"
-                    [disabled]="createReportForm.invalid"
-                  >
-                    Create Report
-                  </button>
-                </form>
-              </div>
+      <!-- Generer Courbes Section -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Generer Courbes</h2>
+        <form [formGroup]="courbeForm" (ngSubmit)="onSubmitCourbe()" class="space-y-6">
+          <!-- Examen Type Field -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Examen Type
+            </label>
+            <select
+              formControlName="examen_type"
+              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="glycemie">Glycémie</option>
+              <option value="cholesterol">Cholestérol</option>
+              <option value="pression_arterielle">Pression Artérielle</option>
+            </select>
+          </div>
 
-            <div><button class="mt-4 w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"> genere courbes</button></div>
+          <!-- Submit Button -->
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              [disabled]="!courbeForm.valid"
+              class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400"
+            >
+              Generer Courbe
+            </button>
+          </div>
+        </form>
+
+        <!-- Graph Section -->
+        <div *ngIf="graphData" class="mt-6">
+          <h3 class="text-lg font-semibold mb-4">Graphique de Tendances</h3>
+          <div>
+            <canvas id="trendChart"></canvas>
           </div>
         </div>
-        <button class="mt-4 bg-sky-400 text-white px-6 py-2 rounded">
-          Submit
-        </button>
       </div>
     </div>
   </div>

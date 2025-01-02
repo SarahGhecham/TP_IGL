@@ -141,6 +141,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
+# Configuration des CORS
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',  # URL de votre frontend Vue.js
+]
+# Autoriser tous les domaines pour le développement (à restreindre en production)
+# CORS_ALLOW_ALL_ORIGINS = True
+=======
 # Configuration de REST Framework Simple JWT
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
@@ -149,3 +157,4 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+>>>>>>> 017002c5f39265c6aa5e0f3bf15c2637324504cf
