@@ -1,0 +1,18 @@
+.layout{
+    width: 100dvw;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: 57px calc(100dvh - 57px);
+    grid-template-columns: 100dvw;
+    grid-template-areas: 
+        "navbar"
+        "content";
+}
+.navbar{
+    grid-area: navbar;
+}
+.content{
+    width: 100dvw;
+    height: calc(100dvh - 57px);
+    grid-area: content;
+}
