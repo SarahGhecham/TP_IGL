@@ -389,14 +389,22 @@ def DPI_list(request):
 def DPI_detail(request , nss) :
     try:
         dpi = get_object_or_404(DPI , nss = nss)
+        patient = get_object_or_404(Patient, id = dpi.patient.id)
+        medecin = get_object_or_404(Medecin, id = dpi.medecin_traitant.id)
     except Http404:
         return Response({"error": "Ce DPI n'existe pas."}, status=404)
     permission = DPIAccessPermission()
     if not permission.has_object_permission(request, dpi) :
         raise PermissionDenied("Vous n'avez pas la permission pour consulter cette DPI.") 
-    serializer = DPISerializer(dpi)
-    print(serializer.data)
-    return Response(serializer.data)
+    serializerDPI = DPISerializer(dpi)
+    serializerPatient = UserSerializer(patient)
+    serializerMedecin = UserSerializer(medecin)
+    serializer = {
+        "DPI": serializerDPI.data,
+        "Patient": serializerPatient.data,
+        "Medecin": serializerMedecin.data
+        }
+    return Response(serializer)
 
 
 #handle consulation
