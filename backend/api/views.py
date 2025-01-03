@@ -25,8 +25,8 @@ from .models import DPI, Medecin, ExamenBiologique, Patient
 from django.contrib.auth.models import User
 from .serializers import DPISerializer, RoleSignupSerializer
 from rest_framework.exceptions import NotFound
-from django.http import JsonResponse,HttpResponse
-from .qr_utils import generate_qr_code, scan_qr_code
+from django.http import JsonResponse
+from .qr_utils import scan_qr_code
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -182,13 +182,11 @@ class CreateDPIView(APIView):
 
             medecin = Medecin.objects.get(user=medecin_user)  
             patient = Patient.objects.get(user=patient_user) 
-           
             data = request.data
             data['medecin_traitant'] = medecin.id  
             data['patient'] = patient.id 
             
             
-           
             serializer = DPISerializer(data=data)
             
             if serializer.is_valid():
@@ -240,21 +238,22 @@ class RetrieveDPIView(APIView):
 
 
 
- 
+
 def generate_trend_graph(request, dpi_id, examen_type):
     # Récupérer le DPI par ID
     dpi = get_object_or_404(DPI, id=dpi_id)
 
     # Filtrer les examens biologiques pour le DPI et le type d'examen (glycémie, cholestérol, etc.)
     examens = ExamenBiologique.objects.filter(bilan__consultation__dpi=dpi, type_examen=examen_type).order_by('date_examen')
+    patient=dpi.patient.user.get_full_name()
 
     if not examens:
-        return JsonResponse({"message": "Aucun examen trouvé pour ce DPI et ce type d'examen."}, status=404)
+        return JsonResponse({"message": "Aucun examen trouvé pour ce DPI et ce type d'examen.","patient": patient}, status=404)
 
     # Extraire les dates et les résultats
     dates = [examen.date_examen.strftime('%Y-%m-%d') for examen in examens]
     resultats = [examen.resultat for examen in examens]
-    patient=dpi.patient.user.get_full_name()
+    
 
     # Retourner les données sous forme de JSON
     return JsonResponse({
@@ -390,13 +389,22 @@ def DPI_list(request):
 def DPI_detail(request , nss) :
     try:
         dpi = get_object_or_404(DPI , nss = nss)
+        patient = get_object_or_404(Patient, id = dpi.patient.id)
+        medecin = get_object_or_404(Medecin, id = dpi.medecin_traitant.id)
     except Http404:
         return Response({"error": "Ce DPI n'existe pas."}, status=404)
     permission = DPIAccessPermission()
     if not permission.has_object_permission(request, dpi) :
         raise PermissionDenied("Vous n'avez pas la permission pour consulter cette DPI.") 
-    serializer = DPISerializer(dpi)
-    return Response(serializer.data)
+    serializerDPI = DPISerializer(dpi)
+    serializerPatient = UserSerializer(patient)
+    serializerMedecin = UserSerializer(medecin)
+    serializer = {
+        "DPI": serializerDPI.data,
+        "Patient": serializerPatient.data,
+        "Medecin": serializerMedecin.data
+        }
+    return Response(serializer)
 
 
 #handle consulation
@@ -431,7 +439,7 @@ def consultation_detail(request, consultation_id):
         raise PermissionDenied("Vous n'avez pas la permission pour consulter cette consultation.")
     
     if request.method == 'GET':
-        serializer = ConsultationSerializer(consultation)
+        serializer = ConsultationSerializer(consultation)   
         return Response(serializer.data)
     
     elif request.method == 'PUT':
@@ -642,7 +650,7 @@ def ordonnance_list(request):
     if not is_Pharmacien(request):
         raise PermissionDenied("Vous n'avez pas la permission pour consulter les ordonnances.")
     if request.method == 'GET':
-        serializers = OrdonnanceSerializer(Ordonnance.objects.all(), many=True)
+        serializers = OrdonnanceSerializer(Ordonnance.objects.filter(valid=False), many=True)
         return Response(serializers.data)
     
 @api_view(['put' , 'GET'])

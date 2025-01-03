@@ -1,5 +1,205 @@
 [
     {
+        "label": "BaseCommand",
+        "importPath": "django.core.management.base",
+        "description": "django.core.management.base",
+        "isExtraImport": true,
+        "detail": "django.core.management.base",
+        "documentation": {}
+    },
+    {
+        "label": "Patient",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "DPI",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Medecin",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Consultation",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "BilanBiologique",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "ExamenBiologique",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Consultation",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Soin",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerie",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "CompteRendu",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "DPI",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Infirmier",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "BilanRadiologique",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Consultation",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Soin",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerie",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "CompteRendu",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Infirmier",
+        "importPath": "api.models",
+        "description": "api.models",
+        "isExtraImport": true,
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "django.db.models.deletion",
         "kind": 6,
         "isExtraImport": true,
@@ -65,27 +265,11 @@
         "documentation": {}
     },
     {
-        "label": "User",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
         "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
+        "detail": "django.apps",
         "documentation": {}
     },
     {
@@ -137,6 +321,30 @@
         "documentation": {}
     },
     {
+        "label": "AllowAny",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "AllowAny",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
         "label": "PermissionDenied",
         "importPath": "rest_framework.exceptions",
         "description": "rest_framework.exceptions",
@@ -162,6 +370,14 @@
     },
     {
         "label": "PermissionDenied",
+        "importPath": "rest_framework.exceptions",
+        "description": "rest_framework.exceptions",
+        "isExtraImport": true,
+        "detail": "rest_framework.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "NotFound",
         "importPath": "rest_framework.exceptions",
         "description": "rest_framework.exceptions",
         "isExtraImport": true,
@@ -244,11 +460,51 @@
         "documentation": {}
     },
     {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "generics",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
         "label": "TokenObtainPairSerializer",
         "importPath": "rest_framework_simplejwt.serializers",
         "description": "rest_framework_simplejwt.serializers",
         "isExtraImport": true,
         "detail": "rest_framework_simplejwt.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -293,6 +549,14 @@
     },
     {
         "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
         "isExtraImport": true,
@@ -348,6 +612,22 @@
         "documentation": {}
     },
     {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "JsonResponse",
         "importPath": "django.http",
         "description": "django.http",
@@ -380,11 +660,19 @@
         "documentation": {}
     },
     {
-        "label": "HttpResponse",
+        "label": "Http404",
         "importPath": "django.http",
         "description": "django.http",
         "isExtraImport": true,
         "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectDoesNotExist",
+        "importPath": "django.core.exceptions",
+        "description": "django.core.exceptions",
+        "isExtraImport": true,
+        "detail": "django.core.exceptions",
         "documentation": {}
     },
     {
@@ -404,6 +692,22 @@
         "documentation": {}
     },
     {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
         "label": "Response",
         "importPath": "rest_framework.response",
         "description": "rest_framework.response",
@@ -420,12 +724,19 @@
         "documentation": {}
     },
     {
-        "label": "matplotlib.pyplot",
-        "kind": 6,
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
         "isExtraImport": true,
-        "importPath": "matplotlib.pyplot",
-        "description": "matplotlib.pyplot",
-        "detail": "matplotlib.pyplot",
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "permission_classes",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
         "documentation": {}
     },
     {
@@ -514,14 +825,6 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -2025,6 +2328,15 @@
         "documentation": {}
     },
     {
+        "label": "Command",
+        "kind": 6,
+        "importPath": "backend.api.management.commands.peupler_db",
+        "description": "backend.api.management.commands.peupler_db",
+        "peekOfCode": "class Command(BaseCommand):\n    help = 'Peupler la base de données avec un patient et un DPI'\n    def handle(self, *args, **kwargs):\n        try:\n            # Récupérer un médecin existant dans la base de données\n            user1 = User.objects.get(username=\"new_medecin\")\n            medecin = Medecin.objects.get(user=user1)\n            # Récupérer un patient existant\n            user = User.objects.get(username=\"john_doe\")\n            patient = Patient.objects.get(user=user)",
+        "detail": "backend.api.management.commands.peupler_db",
+        "documentation": {}
+    },
+    {
         "label": "Migration",
         "kind": 6,
         "importPath": "backend.api.migrations.0001_initial",
@@ -2047,7 +2359,7 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class Medecin(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire, comme spécialité, etc.\n    def __str__(self):\n        return f\"Dr. {self.user.username} \"\nclass Infirmier(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username",
+        "peekOfCode": "class Medecin(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    specialite = models.CharField(max_length=100, blank=True, null=True)\n    def __str__(self):\n        return f\"Dr. {self.user.username} \"\n# Infirmier\nclass Infirmier(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2056,16 +2368,7 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class Infirmier(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username\nclass Laborantin(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username",
-        "detail": "backend.api.models",
-        "documentation": {}
-    },
-    {
-        "label": "Laborantin",
-        "kind": 6,
-        "importPath": "backend.api.models",
-        "description": "backend.api.models",
-        "peekOfCode": "class Laborantin(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username\nclass Radiologue(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username",
+        "peekOfCode": "class Infirmier(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username\n# Radiologue\nclass Radiologue(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.username",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2074,7 +2377,16 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class Radiologue(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username\nclass Administratif(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username",
+        "peekOfCode": "class Radiologue(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.username\n# Laborantin\nclass Laborantin(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.username\nclass Administratif(models.Model):",
+        "detail": "backend.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Laborantin",
+        "kind": 6,
+        "importPath": "backend.api.models",
+        "description": "backend.api.models",
+        "peekOfCode": "class Laborantin(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.username\nclass Administratif(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username\nclass Pharmacien(models.Model):",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2083,16 +2395,7 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class Administratif(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username\nclass Patient(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)  \n    def __str__(self):\n        return self.user.username\nclass Pharmacien(models.Model):",
-        "detail": "backend.api.models",
-        "documentation": {}
-    },
-    {
-        "label": "Patient",
-        "kind": 6,
-        "importPath": "backend.api.models",
-        "description": "backend.api.models",
-        "peekOfCode": "class Patient(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)  \n    def __str__(self):\n        return self.user.username\nclass Pharmacien(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.username\nclass DPI(models.Model):\n    patient = models.OneToOneField(Patient, on_delete=models.CASCADE)  # Relation OneToOne avec Patient",
+        "peekOfCode": "class Administratif(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    # Ajoutez d'autres champs si nécessaire.\n    def __str__(self):\n        return self.user.username\nclass Pharmacien(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.username\nclass Patient(models.Model):",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2101,7 +2404,16 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class Pharmacien(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.username\nclass DPI(models.Model):\n    patient = models.OneToOneField(Patient, on_delete=models.CASCADE)  # Relation OneToOne avec Patient\n    medecin_traitant = models.ForeignKey(Medecin, on_delete=models.SET_NULL, null=True, related_name=\"patients\")\n    nss = models.CharField(max_length=20, unique=True)\n    date_naissance = models.DateField()\n    adresse = models.CharField(max_length=255)",
+        "peekOfCode": "class Pharmacien(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.username\nclass Patient(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    adresse = models.CharField(max_length=255, blank=True, null=True)\n    telephone = models.CharField(max_length=15, blank=True, null=True)\n    @property\n    def nom(self):",
+        "detail": "backend.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Patient",
+        "kind": 6,
+        "importPath": "backend.api.models",
+        "description": "backend.api.models",
+        "peekOfCode": "class Patient(models.Model):\n    user = models.OneToOneField(User, on_delete=models.CASCADE)\n    adresse = models.CharField(max_length=255, blank=True, null=True)\n    telephone = models.CharField(max_length=15, blank=True, null=True)\n    @property\n    def nom(self):\n        return self.user.last_name\n    @property\n    def prenom(self):\n        return self.user.first_name",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2110,7 +2422,7 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class DPI(models.Model):\n    patient = models.OneToOneField(Patient, on_delete=models.CASCADE)  # Relation OneToOne avec Patient\n    medecin_traitant = models.ForeignKey(Medecin, on_delete=models.SET_NULL, null=True, related_name=\"patients\")\n    nss = models.CharField(max_length=20, unique=True)\n    date_naissance = models.DateField()\n    adresse = models.CharField(max_length=255)\n    telephone = models.CharField(max_length=15)\n    mutuelle = models.CharField(max_length=100)\n    personne_a_contacter = models.CharField(max_length=100)\n    def __str__(self):",
+        "peekOfCode": "class DPI(models.Model):\n    patient = models.OneToOneField(Patient, on_delete=models.CASCADE)\n    medecin_traitant = models.ForeignKey(Medecin, on_delete=models.SET_NULL, null=True, related_name=\"patients\")\n    nss = models.CharField(max_length=20, unique=True)\n    date_naissance = models.DateField()\n    adresse = models.CharField(max_length=255)\n    telephone = models.CharField(max_length=15)\n    mutuelle = models.CharField(max_length=100, blank=True, null=True)\n    personne_a_contacter = models.CharField(max_length=100, blank=True, null=True)\n    def __str__(self):",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2119,7 +2431,7 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class Consultation(models.Model):\n    dpi = models.ForeignKey(DPI, on_delete=models.CASCADE, related_name='consultations')\n    date_consultation = models.DateTimeField(auto_now_add=True)\n    motif = models.CharField(max_length=255)\n    resume = models.TextField(blank=True , null=True)\n    def __str__(self):\n        return f\"Consultation du id {self.id}\"\nclass Ordonnance(models.Model):\n    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='ordonnance')\n    date_ordonnance = models.DateTimeField(auto_now_add=True)",
+        "peekOfCode": "class Consultation(models.Model):\n    dpi = models.ForeignKey(DPI, on_delete=models.CASCADE, related_name='consultations')\n    date_consultation = models.DateTimeField(auto_now_add=True)\n    motif = models.CharField(max_length=255)\n    resume = models.JSONField(blank=True, null=True)\n    def __str__(self):\n        return f\"Consultation du {self.date_consultation} pour {self.dpi}\"\nclass Ordonnance(models.Model):\n    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='ordonnance')\n    date_ordonnance = models.DateTimeField(auto_now_add=True)",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2137,16 +2449,7 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class BilanBiologique(models.Model):\n    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='bilanBiologique')\n    date_bilan = models.DateTimeField(auto_now_add=True)\n    comment = models.TextField(null=True, blank=True)\n    def __str__(self):\n        return f\"Bilan pour {self.consultation}\"\nclass BilanRadiologique(models.Model):\n    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='bilanRadiologique')\n    date_bilan = models.DateTimeField(auto_now_add=True)\n    image = models.ImageField(upload_to='images/radiology/' , null=True , blank=True)",
-        "detail": "backend.api.models",
-        "documentation": {}
-    },
-    {
-        "label": "BilanRadiologique",
-        "kind": 6,
-        "importPath": "backend.api.models",
-        "description": "backend.api.models",
-        "peekOfCode": "class BilanRadiologique(models.Model):\n    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='bilanRadiologique')\n    date_bilan = models.DateTimeField(auto_now_add=True)\n    image = models.ImageField(upload_to='images/radiology/' , null=True , blank=True)\n    comment = models.TextField(null=True, blank=True)\n    def __str__(self):\n        return f\"Bilan du {self.date_bilan} pour {self.consultation}\"\nclass ExamenBiologique(models.Model):\n    bilan = models.ForeignKey(BilanBiologique, on_delete=models.CASCADE, related_name='examens')\n    type_examen = models.CharField(max_length=255)",
+        "peekOfCode": "class BilanBiologique(models.Model):\n    consultation = models.OneToOneField(Consultation , on_delete=models.CASCADE,related_name='bilanBiologique')\n    date_bilan = models.DateTimeField(auto_now_add=True)\n    comment = models.TextField(null=True, blank=True)\n    def __str__(self):\n        return f\"Bilan pour {self.consultation}\"\nclass ExamenBiologique(models.Model):\n    bilan = models.ForeignKey(BilanBiologique, on_delete=models.CASCADE, related_name='examens')\n    type_examen = models.CharField(max_length=255)\n    resultat = models.FloatField(blank=True , null=True)  ",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2155,7 +2458,52 @@
         "kind": 6,
         "importPath": "backend.api.models",
         "description": "backend.api.models",
-        "peekOfCode": "class ExamenBiologique(models.Model):\n    bilan = models.ForeignKey(BilanBiologique, on_delete=models.CASCADE, related_name='examens')\n    type_examen = models.CharField(max_length=255)\n    resultat = models.FloatField(blank=True , null=True)  \n    unite = models.CharField(max_length=50 , blank=True , null=True)  \n    date_examen = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"Examen {self.type_examen} pour {self.bilan.consultation}\"",
+        "peekOfCode": "class ExamenBiologique(models.Model):\n    bilan = models.ForeignKey(BilanBiologique, on_delete=models.CASCADE, related_name='examens')\n    type_examen = models.CharField(max_length=255)\n    resultat = models.FloatField(blank=True , null=True)  \n    unite = models.CharField(max_length=50 , blank=True , null=True)  \n    date_examen = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"Examen {self.type_examen} pour {self.bilan.consultation}\"\n# Soin\nclass Soin(models.Model):",
+        "detail": "backend.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Soin",
+        "kind": 6,
+        "importPath": "backend.api.models",
+        "description": "backend.api.models",
+        "peekOfCode": "class Soin(models.Model):\n    dpi = models.ForeignKey(DPI, on_delete=models.CASCADE, related_name='soins')\n    infirmier = models.ForeignKey(Infirmier, on_delete=models.SET_NULL, null=True, related_name='soins')\n    description = models.TextField()\n    date_soin = models.DateTimeField(auto_now_add=True)\n    observations = models.TextField(blank=True, null=True)\n    def __str__(self):\n        return f\"Soin par {self.infirmier} le {self.date_soin}\"\nclass BilanRadiologique(models.Model):\n    consultation = models.OneToOneField(",
+        "detail": "backend.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "BilanRadiologique",
+        "kind": 6,
+        "importPath": "backend.api.models",
+        "description": "backend.api.models",
+        "peekOfCode": "class BilanRadiologique(models.Model):\n    consultation = models.OneToOneField(\n        Consultation,\n        on_delete=models.CASCADE,\n        related_name='bilanRadiologique'\n    )\n    date_bilan = models.DateTimeField(auto_now_add=True)\n    comment = models.TextField(null=True, blank=True)\n    resultats = models.ManyToManyField(\n        'ResultatExamenImagerie',",
+        "detail": "backend.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerie",
+        "kind": 6,
+        "importPath": "backend.api.models",
+        "description": "backend.api.models",
+        "peekOfCode": "class ResultatExamenImagerie(models.Model):\n    radiologue = models.ForeignKey(\n        Radiologue,\n        on_delete=models.SET_NULL,\n        null=True,\n        related_name='resultats_imagerie'\n    )\n    image = models.ImageField(upload_to='imagerie/%Y/%m/%d/', blank=True, null=True)\n    commentaire = models.TextField(blank=True, null=True)\n    date_examen = models.DateTimeField(auto_now_add=True)",
+        "detail": "backend.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "CompteRendu",
+        "kind": 6,
+        "importPath": "backend.api.models",
+        "description": "backend.api.models",
+        "peekOfCode": "class CompteRendu(models.Model):\n    resultat_examen = models.OneToOneField(\n        ResultatExamenImagerie,\n        on_delete=models.CASCADE,\n        related_name='compte_rendu',\n    )\n    texte = models.TextField()\n    date_creation = models.DateTimeField(auto_now_add=True)\n    class Meta:\n        constraints = [",
+        "detail": "backend.api.models",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatAnalyseBiologique",
+        "kind": 6,
+        "importPath": "backend.api.models",
+        "description": "backend.api.models",
+        "peekOfCode": "class ResultatAnalyseBiologique(models.Model):\n    dpi = models.ForeignKey(DPI, on_delete=models.CASCADE, related_name='resultats_biologiques')\n    laborantin = models.ForeignKey(Laborantin, on_delete=models.SET_NULL, null=True, related_name='analyses_biologiques')\n    type_analyse = models.CharField(max_length=255)\n    resultat = models.CharField(max_length=255)\n    unite = models.CharField(max_length=50, blank=True, null=True)\n    date_analyse = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"Analyse biologique ({self.type_analyse}) par {self.laborantin} pour {self.dpi.patient.user.get_full_name()}\"",
         "detail": "backend.api.models",
         "documentation": {}
     },
@@ -2241,20 +2589,20 @@
         "documentation": {}
     },
     {
-        "label": "DPISerializer",
+        "label": "UserSerializer",
         "kind": 6,
         "importPath": "backend.api.serializers",
         "description": "backend.api.serializers",
-        "peekOfCode": "class DPISerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = DPI\n        fields = ['id', 'patient', 'medecin_traitant', 'nss', 'date_naissance', 'adresse', 'telephone', 'mutuelle', 'personne_a_contacter']\nclass BilanBiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = BilanBiologique\n        fields = ['id', 'consultation', 'date_bilan', 'comment']",
+        "peekOfCode": "class UserSerializer(serializers.ModelSerializer):\n    username = serializers.CharField(source='user.username', read_only=True)\n    first_name = serializers.CharField(source='user.first_name', read_only=True)\n    last_name = serializers.CharField(source='user.last_name', read_only=True)\n    email = serializers.CharField(source='user.email', read_only=True)\n    class Meta:\n        model = User\n        fields = ['username', 'first_name', 'last_name', 'email']\nclass DPISerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only",
         "detail": "backend.api.serializers",
         "documentation": {}
     },
     {
-        "label": "BilanBiologiqueSerializer",
+        "label": "DPISerializer",
         "kind": 6,
         "importPath": "backend.api.serializers",
         "description": "backend.api.serializers",
-        "peekOfCode": "class BilanBiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = BilanBiologique\n        fields = ['id', 'consultation', 'date_bilan', 'comment']\nclass ConsultationSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    dpi_id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = Consultation",
+        "peekOfCode": "class DPISerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    patient = UserSerializer(read_only=True)\n    medecin_traitant = UserSerializer(read_only=True)\n    class Meta:\n        model = DPI\n        fields = ['id', 'patient', 'medecin_traitant', 'nss', 'date_naissance', 'adresse', 'telephone', 'mutuelle', 'personne_a_contacter']\nclass ConsultationSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    dpi = DPISerializer(read_only=True)",
         "detail": "backend.api.serializers",
         "documentation": {}
     },
@@ -2263,7 +2611,16 @@
         "kind": 6,
         "importPath": "backend.api.serializers",
         "description": "backend.api.serializers",
-        "peekOfCode": "class ConsultationSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    dpi_id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = Consultation\n        fields = ['id','dpi_id', 'date_consultation', 'motif', 'resume']\nclass BilanRadiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = BilanRadiologique",
+        "peekOfCode": "class ConsultationSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    dpi = DPISerializer(read_only=True)\n    class Meta:\n        model = Consultation\n        fields = ['id','dpi', 'date_consultation', 'motif', 'resume']\nclass BilanBiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    consultation = ConsultationSerializer(read_only=True)\n    class Meta:",
+        "detail": "backend.api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "BilanBiologiqueSerializer",
+        "kind": 6,
+        "importPath": "backend.api.serializers",
+        "description": "backend.api.serializers",
+        "peekOfCode": "class BilanBiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    consultation = ConsultationSerializer(read_only=True)\n    class Meta:\n        model = BilanBiologique\n        fields = ['id', 'consultation', 'date_bilan', 'comment']\nclass BilanRadiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    consultation = ConsultationSerializer(read_only=True)\n    class Meta:",
         "detail": "backend.api.serializers",
         "documentation": {}
     },
@@ -2272,7 +2629,7 @@
         "kind": 6,
         "importPath": "backend.api.serializers",
         "description": "backend.api.serializers",
-        "peekOfCode": "class BilanRadiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = BilanRadiologique\n        fields = ['id', 'consultation', 'date_bilan', 'image', 'comment']\nclass ExamenBiologiqueSerializer(serializers.ModelSerializer):\n    bilan = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = ExamenBiologique",
+        "peekOfCode": "class BilanRadiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    consultation = ConsultationSerializer(read_only=True)\n    class Meta:\n        model = BilanRadiologique\n        fields = ['id', 'consultation', 'date_bilan', 'image', 'comment']\nclass ExamenBiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    bilan = BilanBiologiqueSerializer(read_only=True)\n    class Meta:",
         "detail": "backend.api.serializers",
         "documentation": {}
     },
@@ -2281,7 +2638,7 @@
         "kind": 6,
         "importPath": "backend.api.serializers",
         "description": "backend.api.serializers",
-        "peekOfCode": "class ExamenBiologiqueSerializer(serializers.ModelSerializer):\n    bilan = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    class Meta:\n        model = ExamenBiologique\n        fields = ['id','bilan' ,'type_examen', 'resultat', 'unite', 'date_examen']\nclass OrdonnanceSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Ordonnance\n        fields = ['id', 'consultation', 'date_ordonnance', 'text' , 'valid']",
+        "peekOfCode": "class ExamenBiologiqueSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only\n    bilan = BilanBiologiqueSerializer(read_only=True)\n    class Meta:\n        model = ExamenBiologique\n        fields = ['id','bilan' ,'type_examen', 'resultat', 'unite', 'date_examen']\nclass OrdonnanceSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  \n    consultation = ConsultationSerializer(read_only=True)\n    class Meta:",
         "detail": "backend.api.serializers",
         "documentation": {}
     },
@@ -2290,7 +2647,7 @@
         "kind": 6,
         "importPath": "backend.api.serializers",
         "description": "backend.api.serializers",
-        "peekOfCode": "class OrdonnanceSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Ordonnance\n        fields = ['id', 'consultation', 'date_ordonnance', 'text' , 'valid']\nclass RoleSignupSerializer(serializers.ModelSerializer):\n    role = serializers.ChoiceField(choices=[\n        ('medecin', 'Médecin'),\n        ('infirmier', 'Infirmier'),\n        ('laborantin', 'Laborantin'),\n        ('radiologue', 'Radiologue'),",
+        "peekOfCode": "class OrdonnanceSerializer(serializers.ModelSerializer):\n    id = serializers.PrimaryKeyRelatedField(read_only=True)  \n    consultation = ConsultationSerializer(read_only=True)\n    class Meta:\n        model = Ordonnance\n        fields = ['id', 'consultation', 'date_ordonnance', 'text' , 'valid']\nclass RoleSignupSerializer(serializers.ModelSerializer):\n    role = serializers.ChoiceField(choices=[\n        ('medecin', 'Médecin'),\n        ('infirmier', 'Infirmier'),",
         "detail": "backend.api.serializers",
         "documentation": {}
     },
@@ -2335,7 +2692,7 @@
         "kind": 5,
         "importPath": "backend.api.urls",
         "description": "backend.api.urls",
-        "peekOfCode": "urlpatterns = [\n    # DPI-related paths\n    path('search-dpi-by-nss/<str:nss>/', SearchDPIByNSSView.as_view(), name='search-dpi-by-nss'),\n    path('search-dpi-by-qr/', SearchDPIByQRView.as_view(), name='search-dpi-by-qr'),\n    path('dpi/', DPI_list, name='DPI_list'),\n    path('dpi/<int:dpi_id>/', RetrieveDPIView.as_view(), name='retrieve_dpi'),\n    path('dpi/<int:nss>/', DPI_detail, name='DPI_detail'),\n    path('dpi/create/', CreateDPIView.as_view(), name='create_dpi'),\n    path('dpi/delete/username/<str:username>/', DeleteDPIByUsernameView.as_view(), name='delete_dpi_by_username'),\n    path('dpi/<int:dpi_id>/<str:examen_type>/', generate_trend_graph, name='generate_trend_graph'),",
+        "peekOfCode": "urlpatterns = [\n    # DPI-related paths\n    path('patients/', FirstThreePatientsView.as_view(), name='first-three-patients'),\n    path('search-dpi-by-nss/<str:nss>/', SearchDPIByNSSView.as_view(), name='search-dpi-by-nss'),\n    path('search-dpi-by-qr/', SearchDPIByQRView.as_view(), name='search-dpi-by-qr'),\n    path('dpi/', DPI_list, name='DPI_list'),\n    path('dpi/<int:dpi_id>/', RetrieveDPIView.as_view(), name='retrieve_dpi'),\n    path('dpi/<int:nss>/', DPI_detail, name='DPI_detail'),\n    path('dpi/create/', CreateDPIView.as_view(), name='create_dpi'),\n    path('dpi/delete/username/<str:username>/', DeleteDPIByUsernameView.as_view(), name='delete_dpi_by_username'),",
         "detail": "backend.api.urls",
         "documentation": {}
     },
@@ -2430,11 +2787,20 @@
         "documentation": {}
     },
     {
+        "label": "FirstThreePatientsView",
+        "kind": 6,
+        "importPath": "backend.api.views",
+        "description": "backend.api.views",
+        "peekOfCode": "class FirstThreePatientsView(APIView):\n    permission_classes = [AllowAny]  # Permet l'accès sans authentification\n    def get(self, request):\n        try:\n            # Récupérer les 3 premiers DPI\n            dpis = DPI.objects.all()[:3]  # Limiter la requête aux 3 premiers DPI\n            response_data = []\n            # Structurer les données pour chaque DPI\n            for dpi in dpis:\n                patient = dpi.patient  # Accéder à l'objet Patient lié au DPI",
+        "detail": "backend.api.views",
+        "documentation": {}
+    },
+    {
         "label": "SearchDPIByNSSView",
         "kind": 6,
         "importPath": "backend.api.views",
         "description": "backend.api.views",
-        "peekOfCode": "class SearchDPIByNSSView(generics.RetrieveAPIView):\n    queryset = DPI.objects.all()\n    serializer_class = DPISerializer\n    permission_classes = [AllowAny]  # permission_classes = [IsAuthenticated]\n    def get_object(self):\n        # Récupérer le NSS depuis les paramètres de l'URL\n        nss = self.kwargs['nss']\n        \"\"\"\n        # Vérifier si l'utilisateur est un médecin\n        if not hasattr(self.request.user, 'medecin'):",
+        "peekOfCode": "class SearchDPIByNSSView(APIView):\n    permission_classes = [AllowAny]  # Permet l'accès sans authentification\n    def get(self, request, nss):\n        try:\n            # Chercher le DPI par NSS\n            dpi = DPI.objects.get(nss=nss)\n            # Récupérer les informations du patient liées à ce DPI\n            patient = dpi.patient  # Assurez-vous que `patient` est une relation sur le modèle DPI\n            user = dpi.patient.user\n            # Structurer les données à renvoyer : l'id du DPI et les champs du patient",
         "detail": "backend.api.views",
         "documentation": {}
     },
@@ -2443,7 +2809,7 @@
         "kind": 2,
         "importPath": "backend.api.views",
         "description": "backend.api.views",
-        "peekOfCode": "def generate_trend_graph(request, dpi_id, examen_type):\n    # Récupérer le DPI par ID\n    dpi = get_object_or_404(DPI, id=dpi_id)\n    # Filtrer les examens biologiques pour le DPI et le type d'examen (glycémie, cholestérol, etc.)\n    examens = ExamenBiologique.objects.filter(bilan__consultation__dpi=dpi, type_examen=examen_type).order_by('date_examen')\n    if not examens:\n        return JsonResponse({\"message\": \"Aucun examen trouvé pour ce DPI et ce type d'examen.\"}, status=404)\n    # Extraire les dates et les résultats\n    dates = [examen.date_examen.strftime('%Y-%m-%d') for examen in examens]\n    resultats = [examen.resultat for examen in examens]",
+        "peekOfCode": "def generate_trend_graph(request, dpi_id, examen_type):\n    # Récupérer le DPI par ID\n    dpi = get_object_or_404(DPI, id=dpi_id)\n    # Filtrer les examens biologiques pour le DPI et le type d'examen (glycémie, cholestérol, etc.)\n    examens = ExamenBiologique.objects.filter(bilan__consultation__dpi=dpi, type_examen=examen_type).order_by('date_examen')\n    patient=dpi.patient.user.get_full_name()\n    if not examens:\n        return JsonResponse({\"message\": \"Aucun examen trouvé pour ce DPI et ce type d'examen.\",\"patient\": patient}, status=404)\n    # Extraire les dates et les résultats\n    dates = [examen.date_examen.strftime('%Y-%m-%d') for examen in examens]",
         "detail": "backend.api.views",
         "documentation": {}
     },
@@ -2632,7 +2998,7 @@
         "kind": 5,
         "importPath": "backend.config.settings",
         "description": "backend.config.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    # Ajout des bibliothèques nécessaires",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'dpi',",
         "detail": "backend.config.settings",
         "documentation": {}
     },
@@ -2641,7 +3007,7 @@
         "kind": 5,
         "importPath": "backend.config.settings",
         "description": "backend.config.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    # Ajout des bibliothèques nécessaires\n    'corsheaders',  # Pour gérer les CORS\n    'rest_framework',  # Pour l'API REST",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'dpi',\n    'corsheaders',  # Pour gérer les CORS\n    'rest_framework',  # Pour l'API REST",
         "detail": "backend.config.settings",
         "documentation": {}
     },
@@ -2749,7 +3115,7 @@
         "kind": 5,
         "importPath": "backend.config.settings",
         "description": "backend.config.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration de REST Framework Simple JWT",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration des CORS",
         "detail": "backend.config.settings",
         "documentation": {}
     },
@@ -2758,7 +3124,7 @@
         "kind": 5,
         "importPath": "backend.config.settings",
         "description": "backend.config.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration de REST Framework Simple JWT\nSIMPLE_JWT = {",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration des CORS\nCORS_ALLOWED_ORIGINS = [",
         "detail": "backend.config.settings",
         "documentation": {}
     },
@@ -2767,7 +3133,7 @@
         "kind": 5,
         "importPath": "backend.config.settings",
         "description": "backend.config.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration de REST Framework Simple JWT\nSIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration des CORS\nCORS_ALLOWED_ORIGINS = [\n    'http://localhost:4200',  # URL de votre frontend Vue.js",
         "detail": "backend.config.settings",
         "documentation": {}
     },
@@ -2776,7 +3142,7 @@
         "kind": 5,
         "importPath": "backend.config.settings",
         "description": "backend.config.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration de REST Framework Simple JWT\nSIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'ROTATE_REFRESH_TOKENS': True,\n    'BLACKLIST_AFTER_ROTATION': True,",
+        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration des CORS\nCORS_ALLOWED_ORIGINS = [\n    'http://localhost:4200',  # URL de votre frontend Vue.js\n]\n# Autoriser tous les domaines pour le développement (à restreindre en production)\n# CORS_ALLOW_ALL_ORIGINS = True",
         "detail": "backend.config.settings",
         "documentation": {}
     },
@@ -2785,7 +3151,16 @@
         "kind": 5,
         "importPath": "backend.config.settings",
         "description": "backend.config.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration de REST Framework Simple JWT\nSIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'ROTATE_REFRESH_TOKENS': True,\n    'BLACKLIST_AFTER_ROTATION': True,\n    'AUTH_HEADER_TYPES': ('Bearer',),\n}",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Configuration des CORS\nCORS_ALLOWED_ORIGINS = [\n    'http://localhost:4200',  # URL de votre frontend Vue.js\n]\n# Autoriser tous les domaines pour le développement (à restreindre en production)\n# CORS_ALLOW_ALL_ORIGINS = True\n# Configuration de REST Framework Simple JWT\nSIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),",
+        "detail": "backend.config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOWED_ORIGINS",
+        "kind": 5,
+        "importPath": "backend.config.settings",
+        "description": "backend.config.settings",
+        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    'http://localhost:4200',  # URL de votre frontend Vue.js\n]\n# Autoriser tous les domaines pour le développement (à restreindre en production)\n# CORS_ALLOW_ALL_ORIGINS = True\n# Configuration de REST Framework Simple JWT\nSIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'ROTATE_REFRESH_TOKENS': True,",
         "detail": "backend.config.settings",
         "documentation": {}
     },
@@ -2803,7 +3178,7 @@
         "kind": 5,
         "importPath": "backend.config.urls",
         "description": "backend.config.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('api.urls')),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('api.urls')),  # Inclure les URLs de votre app avec le préfixe api/\n    path('dpi/', include('dpi.urls')),  # Inclure les URLs de votre app avec le préfixe dpi/\n]",
         "detail": "backend.config.urls",
         "documentation": {}
     },
@@ -2814,6 +3189,249 @@
         "description": "backend.config.wsgi",
         "peekOfCode": "application = get_wsgi_application()",
         "detail": "backend.config.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "DpiConfig",
+        "kind": 6,
+        "importPath": "backend.dpi.apps",
+        "description": "backend.dpi.apps",
+        "peekOfCode": "class DpiConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'dpi'",
+        "detail": "backend.dpi.apps",
+        "documentation": {}
+    },
+    {
+        "label": "SoinSerializer",
+        "kind": 6,
+        "importPath": "backend.dpi.serializers",
+        "description": "backend.dpi.serializers",
+        "peekOfCode": "class SoinSerializer(serializers.ModelSerializer):\n    dpi = serializers.PrimaryKeyRelatedField(queryset=DPI.objects.all()) \n    infirmier = serializers.PrimaryKeyRelatedField(queryset=Infirmier.objects.all(), required=False, allow_null=True)\n    class Meta:\n        model = Soin\n        fields = ['id', 'dpi', 'infirmier', 'description', 'date_soin', 'observations']\nclass ResumeSerializer(serializers.Serializer):\n    antecedents_medicaux = serializers.ListField(\n        child=serializers.CharField(), required=False\n    )",
+        "detail": "backend.dpi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "ResumeSerializer",
+        "kind": 6,
+        "importPath": "backend.dpi.serializers",
+        "description": "backend.dpi.serializers",
+        "peekOfCode": "class ResumeSerializer(serializers.Serializer):\n    antecedents_medicaux = serializers.ListField(\n        child=serializers.CharField(), required=False\n    )\n    observations_cliniques = serializers.CharField(required=False)\n    diagnostic = serializers.CharField(required=False)\nclass ConsultationSerializer(serializers.ModelSerializer):\n    resume = ResumeSerializer(required=False) \n    class Meta:\n        model = Consultation",
+        "detail": "backend.dpi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "ConsultationSerializer",
+        "kind": 6,
+        "importPath": "backend.dpi.serializers",
+        "description": "backend.dpi.serializers",
+        "peekOfCode": "class ConsultationSerializer(serializers.ModelSerializer):\n    resume = ResumeSerializer(required=False) \n    class Meta:\n        model = Consultation\n        fields = ['id', 'dpi', 'date_consultation', 'motif', 'resume']\nfrom rest_framework import serializers\nclass CompteRenduSerializerForGet(serializers.ModelSerializer):\n    class Meta:\n        model = CompteRendu\n        fields = ['texte', 'date_creation']",
+        "detail": "backend.dpi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "CompteRenduSerializerForGet",
+        "kind": 6,
+        "importPath": "backend.dpi.serializers",
+        "description": "backend.dpi.serializers",
+        "peekOfCode": "class CompteRenduSerializerForGet(serializers.ModelSerializer):\n    class Meta:\n        model = CompteRendu\n        fields = ['texte', 'date_creation']\nclass ResultatExamenImagerieSerializerForGet(serializers.ModelSerializer):\n    compte_rendu = CompteRenduSerializerForGet(read_only=True)  # Compte-rendu is read-only\n    class Meta:\n        model = ResultatExamenImagerie\n        fields = ['id', 'radiologue', 'image', 'commentaire', 'date_examen', 'compte_rendu']\nclass ResultatExamenImagerieSerializer(serializers.ModelSerializer):",
+        "detail": "backend.dpi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerieSerializerForGet",
+        "kind": 6,
+        "importPath": "backend.dpi.serializers",
+        "description": "backend.dpi.serializers",
+        "peekOfCode": "class ResultatExamenImagerieSerializerForGet(serializers.ModelSerializer):\n    compte_rendu = CompteRenduSerializerForGet(read_only=True)  # Compte-rendu is read-only\n    class Meta:\n        model = ResultatExamenImagerie\n        fields = ['id', 'radiologue', 'image', 'commentaire', 'date_examen', 'compte_rendu']\nclass ResultatExamenImagerieSerializer(serializers.ModelSerializer):\n    radiologue = serializers.StringRelatedField() \n    compte_rendu = serializers.StringRelatedField() \n    class Meta:\n        model = ResultatExamenImagerie",
+        "detail": "backend.dpi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerieSerializer",
+        "kind": 6,
+        "importPath": "backend.dpi.serializers",
+        "description": "backend.dpi.serializers",
+        "peekOfCode": "class ResultatExamenImagerieSerializer(serializers.ModelSerializer):\n    radiologue = serializers.StringRelatedField() \n    compte_rendu = serializers.StringRelatedField() \n    class Meta:\n        model = ResultatExamenImagerie\n        fields = ['id', 'radiologue', 'image', 'commentaire', 'date_examen', 'compte_rendu']\nclass CompteRenduSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = CompteRendu\n        fields = ['id', 'texte', 'date_creation']",
+        "detail": "backend.dpi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "CompteRenduSerializer",
+        "kind": 6,
+        "importPath": "backend.dpi.serializers",
+        "description": "backend.dpi.serializers",
+        "peekOfCode": "class CompteRenduSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = CompteRendu\n        fields = ['id', 'texte', 'date_creation']\nclass BilanRadiologiqueSerializer(serializers.ModelSerializer):\n    resultats = ResultatExamenImagerieSerializer(many=True, read_only=False)  # Nested serializers to create resultats\n    class Meta:\n        model = BilanRadiologique\n        fields = ['id', 'consultation', 'date_bilan', 'comment', 'resultats']\n    def create(self, validated_data):",
+        "detail": "backend.dpi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "BilanRadiologiqueSerializer",
+        "kind": 6,
+        "importPath": "backend.dpi.serializers",
+        "description": "backend.dpi.serializers",
+        "peekOfCode": "class BilanRadiologiqueSerializer(serializers.ModelSerializer):\n    resultats = ResultatExamenImagerieSerializer(many=True, read_only=False)  # Nested serializers to create resultats\n    class Meta:\n        model = BilanRadiologique\n        fields = ['id', 'consultation', 'date_bilan', 'comment', 'resultats']\n    def create(self, validated_data):\n        resultats_data = validated_data.pop('resultats', [])\n        bilan_radiologique = BilanRadiologique.objects.create(**validated_data)\n        for resultat_data in resultats_data:\n            ResultatExamenImagerie.objects.create(bilan=bilan_radiologique, **resultat_data)",
+        "detail": "backend.dpi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.dpi.urls",
+        "description": "backend.dpi.urls",
+        "peekOfCode": "urlpatterns = [\n    path('consultation/create/', CreateConsultationView.as_view(), name='create-consultation'),\n    path('consultations/', ConsultationListView.as_view(), name='consultation-list'),\n    path('consultations/<int:id>/delete/', DeleteConsultationView.as_view(), name='delete-consultation'),\n    path('consultation/<int:pk>/resume/', ConsultationResumeView.as_view(), name='consultation-resume'),\n    path('soins/', SoinListView.as_view(), name='soin-list'),\n    path('soin/create/', SoinCreateView.as_view(), name='soin-create'),\n    path('soin/<int:id>/', SoinDetailView.as_view(), name='soin-detail'),\n    path('soins/delete/<int:id>/', SoinDetailView.as_view(), name='soin-delete'),\n    path('resultats/', ResultatExamenImagerieListView.as_view(), name='resultat-list'),",
+        "detail": "backend.dpi.urls",
+        "documentation": {}
+    },
+    {
+        "label": "SoinListView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class SoinListView(generics.ListCreateAPIView):\n    permission_classes = [AllowAny]\n    queryset = Soin.objects.all()\n    serializer_class = SoinSerializer\n    def get(self, request, *args, **kwargs):\n        return super().get(request, *args, **kwargs)\nclass SoinCreateView(generics.ListCreateAPIView):\n    queryset = Soin.objects.all()\n    serializer_class = SoinSerializer\n    def perform_create(self, serializer):",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "SoinCreateView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class SoinCreateView(generics.ListCreateAPIView):\n    queryset = Soin.objects.all()\n    serializer_class = SoinSerializer\n    def perform_create(self, serializer):\n        infirmier_default = Infirmier.objects.get(id=1)\n        serializer.save(infirmier=infirmier_default)\nclass SoinDetailView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Soin.objects.all()\n    serializer_class = SoinSerializer\n    lookup_field = 'id'",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "SoinDetailView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class SoinDetailView(generics.RetrieveUpdateDestroyAPIView):\n    queryset = Soin.objects.all()\n    serializer_class = SoinSerializer\n    lookup_field = 'id'\nclass DeleteConsultationView(generics.DestroyAPIView):\n    queryset = Consultation.objects.all()\n    lookup_field = 'id'\nclass ConsultationListView(generics.ListAPIView):\n    queryset = Consultation.objects.all()\n    serializer_class = ConsultationSerializer",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "DeleteConsultationView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class DeleteConsultationView(generics.DestroyAPIView):\n    queryset = Consultation.objects.all()\n    lookup_field = 'id'\nclass ConsultationListView(generics.ListAPIView):\n    queryset = Consultation.objects.all()\n    serializer_class = ConsultationSerializer\nclass CreateConsultationView(generics.CreateAPIView):\n    queryset = Consultation.objects.all()\n    serializer_class = ConsultationSerializer\nclass ConsultationResumeView(APIView):",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "ConsultationListView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class ConsultationListView(generics.ListAPIView):\n    queryset = Consultation.objects.all()\n    serializer_class = ConsultationSerializer\nclass CreateConsultationView(generics.CreateAPIView):\n    queryset = Consultation.objects.all()\n    serializer_class = ConsultationSerializer\nclass ConsultationResumeView(APIView):\n    permission_classes = [AllowAny]\n    def patch(self, request, pk):\n        try:",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "CreateConsultationView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class CreateConsultationView(generics.CreateAPIView):\n    queryset = Consultation.objects.all()\n    serializer_class = ConsultationSerializer\nclass ConsultationResumeView(APIView):\n    permission_classes = [AllowAny]\n    def patch(self, request, pk):\n        try:\n            consultation = Consultation.objects.get(pk=pk)\n        except Consultation.DoesNotExist:\n            return Response({\"error\": \"Consultation not found.\"}, status=status.HTTP_404_NOT_FOUND)",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "ConsultationResumeView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class ConsultationResumeView(APIView):\n    permission_classes = [AllowAny]\n    def patch(self, request, pk):\n        try:\n            consultation = Consultation.objects.get(pk=pk)\n        except Consultation.DoesNotExist:\n            return Response({\"error\": \"Consultation not found.\"}, status=status.HTTP_404_NOT_FOUND)\n        serializer = ConsultationSerializer(consultation, data=request.data, partial=True)\n        if serializer.is_valid():\n            serializer.save()",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerieListView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class ResultatExamenImagerieListView(APIView):\n    permission_classes = [AllowAny]\n    def get(self, request, *args, **kwargs):\n        resultats = ResultatExamenImagerie.objects.all()\n        serializer = ResultatExamenImagerieSerializerForGet(resultats, many=True)\n        return Response(serializer.data, status=status.HTTP_200_OK)\nclass ResultatExamenImagerieCreateView(generics.CreateAPIView):\n    permission_classes = [AllowAny]\n    queryset = ResultatExamenImagerie.objects.all()\n    serializer_class = ResultatExamenImagerieSerializer",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerieCreateView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class ResultatExamenImagerieCreateView(generics.CreateAPIView):\n    permission_classes = [AllowAny]\n    queryset = ResultatExamenImagerie.objects.all()\n    serializer_class = ResultatExamenImagerieSerializer\nclass CompteRenduCreateView(generics.CreateAPIView):\n    permission_classes = [AllowAny]\n    queryset = CompteRendu.objects.all()\n    serializer_class = CompteRenduSerializer\n    def perform_create(self, serializer):\n        resultat_examen_id = self.kwargs['resultat_examen_id']",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompteRenduCreateView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class CompteRenduCreateView(generics.CreateAPIView):\n    permission_classes = [AllowAny]\n    queryset = CompteRendu.objects.all()\n    serializer_class = CompteRenduSerializer\n    def perform_create(self, serializer):\n        resultat_examen_id = self.kwargs['resultat_examen_id']\n        resultat_examen = ResultatExamenImagerie.objects.get(id=resultat_examen_id)\n        serializer.save(resultat_examen=resultat_examen)\nclass ResultatExamenImagerieUpdateView(generics.UpdateAPIView):\n    queryset = ResultatExamenImagerie.objects.all()",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerieUpdateView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class ResultatExamenImagerieUpdateView(generics.UpdateAPIView):\n    queryset = ResultatExamenImagerie.objects.all()\n    serializer_class = ResultatExamenImagerieSerializer\nclass CompteRenduUpdateView(generics.UpdateAPIView):\n    queryset = CompteRendu.objects.all()\n    serializer_class = CompteRenduSerializer\nclass ResultatExamenImagerieDeleteView(generics.DestroyAPIView):\n    queryset = ResultatExamenImagerie.objects.all()\n    lookup_field = 'pk'\nclass ResultatExamenImagerieDetailView(generics.RetrieveAPIView):",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompteRenduUpdateView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class CompteRenduUpdateView(generics.UpdateAPIView):\n    queryset = CompteRendu.objects.all()\n    serializer_class = CompteRenduSerializer\nclass ResultatExamenImagerieDeleteView(generics.DestroyAPIView):\n    queryset = ResultatExamenImagerie.objects.all()\n    lookup_field = 'pk'\nclass ResultatExamenImagerieDetailView(generics.RetrieveAPIView):\n    queryset = ResultatExamenImagerie.objects.all()\n    serializer_class = ResultatExamenImagerieSerializerForGet\n    lookup_field = 'id'",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerieDeleteView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class ResultatExamenImagerieDeleteView(generics.DestroyAPIView):\n    queryset = ResultatExamenImagerie.objects.all()\n    lookup_field = 'pk'\nclass ResultatExamenImagerieDetailView(generics.RetrieveAPIView):\n    queryset = ResultatExamenImagerie.objects.all()\n    serializer_class = ResultatExamenImagerieSerializerForGet\n    lookup_field = 'id'\n    def get(self, request, *args, **kwargs):\n        try:\n            result = self.get_object()",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "ResultatExamenImagerieDetailView",
+        "kind": 6,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "class ResultatExamenImagerieDetailView(generics.RetrieveAPIView):\n    queryset = ResultatExamenImagerie.objects.all()\n    serializer_class = ResultatExamenImagerieSerializerForGet\n    lookup_field = 'id'\n    def get(self, request, *args, **kwargs):\n        try:\n            result = self.get_object()\n            serializer = self.get_serializer(result)\n            return Response(serializer.data, status=status.HTTP_200_OK)\n        except ResultatExamenImagerie.DoesNotExist:",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "bilan_Radiologique_detail",
+        "kind": 2,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "def bilan_Radiologique_detail(request , consultation_id):\n    try:\n        consultation = get_object_or_404(Consultation, id=consultation_id)\n    except Http404:\n        return Response({\"error\": \"La consultation n'existe pas.\"}, status=404)\n    if request.method == 'POST':\n        request.data['consultation'] = consultation.id\n        serializer = BilanRadiologiqueSerializer(data=request.data)\n        if serializer.is_valid():\n            bilan_radiologique = serializer.save(consultation=consultation)",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "bilan_Radiologique_list",
+        "kind": 2,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "def bilan_Radiologique_list(request ):\n    # if not is_Radiologist(request):\n    #     raise PermissionDenied(\"Vous n'avez pas la permission pour consulter les bilans radiologiques.\")\n    if request.method == 'GET':\n        serializers = BilanRadiologiqueSerializer(BilanRadiologique.objects.all(), many=True)\n        return Response(serializers.data)\n@api_view(['POST', 'GET'])\n@permission_classes([AllowAny])\ndef examen_list(request, bilan_id):\n    try:",
+        "detail": "backend.dpi.views",
+        "documentation": {}
+    },
+    {
+        "label": "examen_list",
+        "kind": 2,
+        "importPath": "backend.dpi.views",
+        "description": "backend.dpi.views",
+        "peekOfCode": "def examen_list(request, bilan_id):\n    try:\n        bilan = get_object_or_404(BilanRadiologique, id=bilan_id)\n    except Http404:\n        return Response({\"error\": \"Aucun bilan radiologique n'existe pour cette consultation.\"}, status=404)\n    if request.method == 'POST':\n        # Create new ResultatExamenImagerie linked to this BilanRadiologique\n        serializer = ResultatExamenImagerieSerializer(data=request.data)\n        if serializer.is_valid():\n            # Save the ResultatExamenImagerie instance",
+        "detail": "backend.dpi.views",
         "documentation": {}
     },
     {

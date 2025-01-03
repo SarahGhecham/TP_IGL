@@ -14,8 +14,8 @@ class UserSerializer(serializers.ModelSerializer):
         
 class DPISerializer(serializers.ModelSerializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)  # Set as read-only
-    patient = UserSerializer(read_only=True)
-    medecin_traitant = UserSerializer(read_only=True)
+    # patient = UserSerializer(read_only=True)
+    # medecin_traitant = UserSerializer(read_only=True)
     class Meta:
         model = DPI
         fields = ['id', 'patient', 'medecin_traitant', 'nss', 'date_naissance', 'adresse', 'telephone', 'mutuelle', 'personne_a_contacter']
@@ -95,7 +95,7 @@ class RoleSignupSerializer(serializers.ModelSerializer):
         return user
     
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):       
-     def validate(self, attrs):
+    def validate(self, attrs):
         data = super().validate(attrs)
         data['username'] = self.user.username  
         return data
