@@ -4,10 +4,10 @@ import { LaborantinService } from '../../../services/laborantin.service'; // Cre
 import { Chart, registerables } from 'chart.js';
 import { NavbarComponent } from '../../../shared/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-
+import { BilanBiologiqueComponent } from '../../bilan-biologique/bilan-biologique.component';
 @Component({
   selector: 'app-laborantin',
-  imports: [NavbarComponent, ReactiveFormsModule, CommonModule],
+  imports: [NavbarComponent, ReactiveFormsModule, CommonModule , BilanBiologiqueComponent],
   templateUrl: './laborantin.component.html',
   styleUrls: ['./laborantin.component.scss']
 })

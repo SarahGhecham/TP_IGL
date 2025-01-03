@@ -1,0 +1,70 @@
+.general{
+    height: calc(100dvh - 57px);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+}
+.title{
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+}
+.title h1{
+    font-family: 'Gilroy-Medium';
+    color: #5089d3;
+    font-size: 2.5rem;
+}
+.container{
+    height: calc(100dvh - 57px);
+    grid-column: 2/6;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+label{
+    font-family: 'Gilroy-Medium';
+    color: #356eb8;
+    // font-size: 16px;
+}
+#nss{
+    width: 500px; 
+}
+input{
+    height: 40px;
+    padding-left: 10px;
+    width: 300px;
+}
+.ligne{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10px;
+}
+.consult{
+    grid-column: 6/7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 30px;
+}
+.consult button{
+    padding: 10px;  
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: 0px 0px 8px 2px rgba(71, 171, 93, 0.55); 
+}

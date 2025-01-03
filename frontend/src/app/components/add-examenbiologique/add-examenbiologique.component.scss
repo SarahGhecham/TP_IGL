@@ -1,0 +1,123 @@
+.main{
+    margin: 0;
+    height: 400px;
+    width: 500px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 20px;
+    overflow-y: auto;
+    border: 1px solid #356eb8;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px #8dabd2;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    h1{
+        font-family: 'Gilroy-Medium';
+        color: #5089d3;
+        font-size: 2.2rem;
+    }
+    padding-left: 15px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+.dt-input,.mf-input{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: auto auto;
+    row-gap: 5px;
+    label{
+        font-family: 'Gilroy-Medium';
+        color: #356eb8;
+        grid-column: 2/7;
+        grid-row: 1;
+        font-size: 19px;
+    }
+}
+.dt-input{
+    
+    input{
+        grid-column: 2/7;
+        grid-row: 2;
+        outline: none;
+        box-shadow: 0px 0px 10px 1px #a3bbda;
+        padding-left: 5px;
+        border-radius: 3px;
+    }
+}
+.mf-input{
+    textarea{
+        grid-column: 2/8;
+        grid-row: 2;
+        height: 70px;
+        resize: none;
+        outline: none;
+        box-shadow: 0px 0px 10px 1px #a3bbda;
+        padding-left: 5px;
+        border-radius: 5px;
+    }
+}
+.reor{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+
+    .resume{
+        grid-column: 2/7;
+        display: grid;
+        grid-template-rows: auto auto;
+
+        label{
+            grid-row: 1;
+            font-family: 'Gilroy-Medium';
+            color: #356eb8;
+            font-size: 19px;
+        }
+        textarea{
+            grid-row: 2;
+            height: 70px;
+            resize: none;
+            outline: none;
+            box-shadow: 0px 0px 10px 1px #a3bbda;
+            padding-left: 5px;
+            border-radius: 5px;
+        }
+    }
+    .ordonnance{
+        grid-column: 8/10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        button{
+            padding: 5px 20px;
+            background-color: rgba(71, 171, 93,0.7);
+            border-radius: 5px;
+            color: white;
+            font-family: 'Gilroy-Medium';
+        }
+    }
+}
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+
+    button{
+        width: 300px;
+        padding: 5px 0;
+        background-color: #89b4ed;
+        border-radius: 5px;
+        color: white;
+        font-family: 'Gilroy-Medium';
+        font-size: 25px;
+    }
+}

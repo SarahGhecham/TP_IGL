@@ -11,24 +11,24 @@
     </div>
 
     <main class="login-form-container">
-      <h1>Se Connecter</h1>
+      <h1>Accès au Système DPI</h1>
       <p class="subtitle">
-        Manage your medical situation and appointments<br />with Calendly
+        Connectez-vous pour gérer les dossiers patients, consulter les informations médicales<br />
+        et assurer une meilleure continuité des soins.
       </p>
 
-   
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
         <div class="form-field">
-          <label for="username">Nom d'Utilisateur</label>
+          <label for="username">Identifiant</label>
           <input
             id="username"
             type="text"
             formControlName="username"
-            placeholder="Nom d'utilisateur"
+            placeholder="Identifiant"
           />
         </div>
 

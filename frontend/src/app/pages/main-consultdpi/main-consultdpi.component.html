@@ -1,0 +1,64 @@
+<app-navbar style="margin-bottom: 0;"></app-navbar>
+<div class="general">
+    <div class="title">
+        <h1>Patient:</h1>
+    </div>
+    <div class="container">
+        <div class="info">
+            <label for="nss">NSS</label>
+            <input id="nss" type="text" name="nss" value="1" disabled placeholder="NSS"/>
+        </div>
+        <div class="ligne">
+            <div class="info">
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" value="1" disabled placeholder="Nom"/>
+            </div>
+            <div class="info">
+                <label for="prenom">Prénom</label>
+                <input type="text" name="prenom" value="2" disabled placeholder="Prénom"/>
+            </div>
+        </div>
+        <div class="ligne">
+            <div class="info">
+                <label for="datedenaissance">Date de naissance</label>
+                <input type="text" name="datedenaissance" value="3" disabled placeholder="Date de naissance"/>
+            </div>
+            <div class="info">
+                <label for="adresse">Adresse</label>
+                <input type="text" name="adresse" value="4" disabled placeholder="Adresse"/>
+            </div>
+        </div>
+        <div class="ligne">
+            <div class="info">
+                <label for="telephone">Téléphone</label>
+                <input type="text" name="telephone" value="3" disabled placeholder="Date de naissance"/>
+            </div>
+            <div class="info">
+                <label for="mutuelle">Mutuelle</label>
+                <input type="text" name="mutuelle" value="4" disabled placeholder="Adresse"/>
+            </div>    
+        </div>
+        <div class="ligne">
+            <div class="info">
+                <label for="personne">Personne à contacter</label>
+                <input type="text" name="personne" value="3" disabled placeholder="Personne à contacter"/>
+            </div>
+            <div class="info">
+                <label for="medtrt">Médecin traitant</label>
+                <input type="text" name="medtrt" value="4" disabled placeholder="Médecin traitant"/>
+            </div>    
+        </div>
+    </div>
+    <div class="consult">
+        <button>
+            <span>Consultater les soins</span>
+        </button>
+        <button>
+            <span>Generer Graphique</span>
+        </button>
+        <button routerLink="/consultations">
+            <span>Consultations</span>
+            <img src="../../../assets/images/consultation.svg" alt="consultation"/>
+        </button>
+    </div>
+</div>

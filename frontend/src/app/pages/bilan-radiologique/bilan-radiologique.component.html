@@ -1,0 +1,43 @@
+<app-navbar style="margin-bottom: 0;"></app-navbar>
+<div class="main">
+    <div class="header">
+        <h1>Bilan Radiologique</h1>
+        <button *ngIf="!existBilan" (click)="showPopUp()">Ajouter un bilan</button>
+    </div>
+    <div class="content">
+        <div class="auj" *ngIf="isSameDay">
+            <p>Veuillez Creer un Bilan Radiologique</p>
+        </div>
+        <div class="bilanO" *ngIf="!isSameDay && existBilan">
+            <div class="dt-input">
+                <label for="date">Nom du bilan</label>
+                <input type="text" name="date" placeholder="Nom du bilan" readonly/>
+            </div>
+            <div class="dt-input">
+                <label for="date">Date du bilan</label>
+                <input type="date" name="date" placeholder="Date du bilan" readonly/>
+            </div>
+            <div class="mf-input">
+                <label for="interpretation">Interpretation</label>
+                <textarea name="interpretation" placeholder="Interpretation de la radio" readonly></textarea>
+            </div>
+            <div class="temp">
+                <div class="cadre">
+                    <img src="../../../assets/images/image.svg" alt="cadre" />
+                    <div class="text">
+                        <p>Image de la radio</p>
+                        <button>
+                            <img src="../../../assets/images/upload.svg" alt="camera" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bilanN" *ngIf="!isSameDay && !existBilan">
+            <p>Vous n'avez pas de bilan radiologique</p>
+        </div>
+    </div>
+</div>
+<div class="popup" *ngIf="showAddBilanRadiologique" (click)="closePopup($event)">
+    <app-add-bilanradiologique (click)="preventClose($event)"></app-add-bilanradiologique>
+</div>

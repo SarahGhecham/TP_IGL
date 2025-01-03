@@ -6,7 +6,7 @@ import { NavbarComponent } from '../../../shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-radiologue',
-  imports: [NavbarComponent, ReactiveFormsModule, CommonModule],
+  imports: [NavbarComponent, ReactiveFormsModule, CommonModule ],
   templateUrl: './radiologue.component.html',
   styleUrls: ['./radiologue.component.scss']
 })
@@ -103,7 +103,7 @@ export class RadiologueComponent implements OnInit {
     if (this.radioImageForm.valid && this.selectedFile) {
       const formData = new FormData();
       formData.append('radio_image', this.selectedFile);
-
+      
       this.radiologueService.uploadRadioImage(this.selectedBilan.id, formData).subscribe(
         (response) => {
           console.log('Radio image uploaded:', response);
