@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-<<<<<<< HEAD
+
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
-=======
+
 import { ActivatedRoute } from '@angular/router';
->>>>>>> origin/main
+
 
 @Component({
   selector: 'app-main-consultdpi',
