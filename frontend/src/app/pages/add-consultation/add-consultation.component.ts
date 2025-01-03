@@ -1,27 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { AddConsultationService } from '../../services/add-consultation.service';
 
 @Component({
   selector: 'app-add-consultation',
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-consultation.component.html',
   styleUrl: './add-consultation.component.scss'
 })
-export class AddConsultationComponent{
-  // Données pour la consultation
+export class AddConsultationComponent {
+  @Output() consultationAdded = new EventEmitter<void>();
+
   consultation = {
     date: '',
     motif: '',
   };
-  constructor() {}
 
+  constructor(private addConsultationService: AddConsultationService, private router: Router) {}
 
-  // Ajouter la consultation (enregistrer ou envoyer au backend)
   addConsultation() {
-    console.log('Consultation ajoutée :', this.consultation);
-    // Ajouter la logique pour enregistrer la consultation
+    this.addConsultationService.createConsultation(this.consultation).subscribe({
+      next: () => {
+        console.log('Consultation ajoutée avec succès');
+        this.consultationAdded.emit(); // Notifier le parent
+      },
+      error: (err) => console.error('Erreur lors de l’ajout de la consultation :', err),
+    });
   }
 }

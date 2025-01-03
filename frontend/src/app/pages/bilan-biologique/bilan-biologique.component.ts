@@ -5,6 +5,7 @@ import { AddExamenbiologiqueComponent } from '../../components/add-examenbiologi
 import { Examen } from '../../models/examen';
 import { ExamenService } from '../../services/examen.service';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bilan-biologique',
@@ -19,35 +20,41 @@ export class BilanBiologiqueComponent implements OnInit, OnChanges {
   existBilan: boolean = true;
   showBilan: boolean = false;
   showExamen: boolean = false;
+  consultationId: number = 0;
 
-  examens: Examen[] = [];
+  examens: any[] = [];
 
-  constructor(private examenService: ExamenService) {}
+  constructor(private examenService: ExamenService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // this.fetchBilanDate(); // Récupération de la date du bilan biologique au chargement
+    this.consultationId = Number(this.route.snapshot.paramMap.get('id'));
+    this.fetchBilan();
   }
 
-  // Récupérer la date du bilan biologique depuis le backend
-  fetchBilanDate(): void {
-    this.examenService.getBilanBiologique().subscribe({
-      next: (date: Date) => {
-        this.bilanDate = date; // Stocke la date reçue
-        this.existBilan = true; // Marque le bilan comme existant
-        this.compareDates(); // Vérifie si la date est aujourd'hui     
-        this.fetchExamens(); // Récupération des examens au chargement
+  fetchBilan(): void {
+    this.examenService.getBilanBiologique(this.consultationId).subscribe({
+      next: (bilan) => {
+        this.bilanDate = new Date(bilan.date_bilan);
+        this.existBilan = true;
+        this.compareDates();
+        this.fetchExamens(); // Charger les examens associés
       },
-      error: (err) => {
-        console.error('Erreur lors de la récupération du bilan biologique:', err);
+      error: () => {
         this.existBilan = false;
       },
     });
   }
 
   fetchExamens(): void {
-    this.examenService.getExamens().subscribe({
-      next: (data) => {
-        this.examens = data; // Stocker les examens reçus
+    this.examenService.getExamens(this.consultationId).subscribe({
+      next: (data: any[]) => {
+        // Mapper les données reçues pour s'assurer qu'elles sont compatibles avec l'affichage
+        this.examens = data.map((examen) => ({
+          type_examen: examen.type_examen,
+          resultat: examen.resultat || null, // Null par défaut si pas de résultat
+          unite: examen.unite || null,      // Null par défaut si pas d'unité
+          date_examen: examen.date_examen,  // Si besoin pour le suivi
+        }));
       },
       error: (error) => {
         console.error('Erreur lors de la récupération des examens :', error);
@@ -98,18 +105,34 @@ export class BilanBiologiqueComponent implements OnInit, OnChanges {
     }
   }
 
+  handleBilanAdded(): void {
+    this.createBilan();
+    this.showBilan = false; // Fermer la popup
+  }
+  
+  createBilan(): void {
+    this.examenService.createBilanBiologique(this.consultationId).subscribe({
+      next: (bilan) => {
+        this.bilanDate = new Date(bilan.date_bilan);
+        this.existBilan = true;
+        this.compareDates();
+      },
+      error: (err) => {
+        console.error('Erreur lors de la création du bilan biologique :', err);
+      }
+    });
+  }
+
   addExamen(): void {
-    const nouvelExamen = new Examen(this.nomexamen, '', '/');
-    this.examenService.addExamen(nouvelExamen).subscribe({
-      next: (result) => {
-        console.log('Examen ajouté avec succès :', result);
-        this.examens.push(result); // Ajouter l'examen à la liste locale
+    const nouvelExamen = { type_examen: this.nomexamen };
+    this.examenService.addExamen(this.consultationId, nouvelExamen).subscribe({
+      next: (examen) => {
+        this.examens.push(examen);
+        this.showExamen = false; // Fermer la popup
       },
       error: (err) => {
         console.error('Erreur lors de l\'ajout de l\'examen :', err);
-      }
+      },
     });
-
-    this.showExamen = false; // Fermer la popup
   }
 }

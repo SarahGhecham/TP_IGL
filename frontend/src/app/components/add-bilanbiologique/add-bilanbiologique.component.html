@@ -5,10 +5,10 @@
     <div class="content">
         <div class="dt-input">
             <label for="date">Date du bilan</label>
-            <input type="date" name="date" placeholder="Date du bilan" />
+            <input type="date" name="date" [(ngModel)]="bilanDate" placeholder="Date du bilan" />
         </div>
     </div>
     <div class="footer">
-        <button>Ajouter</button>
+        <button (click)="submitBilan()">Ajouter</button>
     </div>
 </div>
