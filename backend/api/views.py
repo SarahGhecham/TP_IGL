@@ -182,13 +182,11 @@ class CreateDPIView(APIView):
 
             medecin = Medecin.objects.get(user=medecin_user)  
             patient = Patient.objects.get(user=patient_user) 
-           
             data = request.data
             data['medecin_traitant'] = medecin.id  
             data['patient'] = patient.id 
             
             
-           
             serializer = DPISerializer(data=data)
             
             if serializer.is_valid():
@@ -240,7 +238,7 @@ class RetrieveDPIView(APIView):
 
 
 
- 
+
 def generate_trend_graph(request, dpi_id, examen_type):
     # Récupérer le DPI par ID
     dpi = get_object_or_404(DPI, id=dpi_id)
@@ -397,6 +395,7 @@ def DPI_detail(request , nss) :
     if not permission.has_object_permission(request, dpi) :
         raise PermissionDenied("Vous n'avez pas la permission pour consulter cette DPI.") 
     serializer = DPISerializer(dpi)
+    print(serializer.data)
     return Response(serializer.data)
 
 
@@ -432,7 +431,7 @@ def consultation_detail(request, consultation_id):
         raise PermissionDenied("Vous n'avez pas la permission pour consulter cette consultation.")
     
     if request.method == 'GET':
-        serializer = ConsultationSerializer(consultation)
+        serializer = ConsultationSerializer(consultation)   
         return Response(serializer.data)
     
     elif request.method == 'PUT':
@@ -643,7 +642,7 @@ def ordonnance_list(request):
     if not is_Pharmacien(request):
         raise PermissionDenied("Vous n'avez pas la permission pour consulter les ordonnances.")
     if request.method == 'GET':
-        serializers = OrdonnanceSerializer(Ordonnance.objects.all(), many=True)
+        serializers = OrdonnanceSerializer(Ordonnance.objects.filter(valid=False), many=True)
         return Response(serializers.data)
     
 @api_view(['put' , 'GET'])

@@ -15,7 +15,7 @@ urlpatterns = [
     path('dpi/<int:dpi_id>/<str:examen_type>/', generate_trend_graph, name='generate_trend_graph'),
 
     # Consultation-related paths
-    path('dpi/<int:nss>/consultation/', consultation_list, name='consultation_list'),
+    path('dpi/<int:nss>/consultation/all/', consultation_list, name='consultation_list'),
     path('dpi/consultation/<int:consultation_id>/', consultation_detail, name='consultation_detail'),
     path('dpi/consultation/<int:consultation_id>/bilanBiologique/', bilan_Bilologique_detail, name='bilan_biologique_detail'),
     path('dpi/consultation/<int:consultation_id>/bilanRadiologique/', bilan_Radiologique_detail, name='bilan_radiologique_detail'),
@@ -28,6 +28,7 @@ urlpatterns = [
 
     # Bilan and examen-related paths
     path('bilanBiologique/', bilan_Bilologique_list, name='bilan_biologique_list'),
+    path('dpi/consultation/bilanBiologique/<int:bilan_id>/examen/', examen_list, name='examen_list'),
     path('dpi/consultation/bilanBiologique/examen/<int:examen_id>/', examen_detail, name='examen_detail'),
 
     # Authentication and authorization paths

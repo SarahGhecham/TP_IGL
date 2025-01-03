@@ -143,7 +143,7 @@ def bilan_Radiologique_detail(request , consultation_id):
             raise NotFound("Aucun bilan radiologique n'existe pour cette consultation")
         serializer = BilanRadiologiqueSerializer(bilan_Radiologique)
         return Response(serializer.data)
-       
+
 # handle bilan radiologique
 @api_view(['GET' ])
 @permission_classes([AllowAny])

@@ -56,7 +56,7 @@ class Patient(models.Model):
         return self.user.first_name
 
     def __str__(self):
-        return self.user.get_full_name()
+        return self.user.username
     
 class DPI(models.Model):
     patient = models.OneToOneField(Patient, on_delete=models.CASCADE)
@@ -69,7 +69,7 @@ class DPI(models.Model):
     personne_a_contacter = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return f"DPI de {self.patient.user.get_full_name()}"
+        return f"DPI de {self.patient.user.username}"
     
 
 class Consultation(models.Model):
