@@ -58,7 +58,7 @@ class CompteRenduSerializer(serializers.ModelSerializer):
 
 
 class BilanRadiologiqueSerializer(serializers.ModelSerializer):
-    resultats = ResultatExamenImagerieSerializer(many=True, read_only=False)  # Nested serializers to create resultats
+    resultats = ResultatExamenImagerieSerializer(many=True, read_only=True)  # Nested serializers to create resultats
 
     class Meta:
         model = BilanRadiologique
