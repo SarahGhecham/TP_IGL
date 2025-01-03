@@ -6,22 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AddConsultationService {
-  private baseUrl = 'http://localhost:3000/api'; // Remplacez par l'URL de votre backend
-  consultationData: any = {}; // Objet pour stocker les données temporairement
+  private baseUrl = 'http://localhost:8000/dpi/consultation/'; // Modifiez selon votre backend
 
-  constructor(private http: HttpClient) {} // Obligatoire ici
+  constructor(private http: HttpClient) {}
 
-  // Méthode pour sauvegarder les données
-  saveConsultationData(data: any) {
-    this.consultationData = data;
-  }
-
-  // Méthode pour récupérer les données
-  getConsultationData() {
-    return this.consultationData;
-  }
-
-  PostAddConsultation(endpoint: string, data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/${endpoint}`, data);
+  createConsultation(consultation: { date: string; motif: string }): Observable<any> {
+    return this.http.post(this.baseUrl, consultation);
   }
 }

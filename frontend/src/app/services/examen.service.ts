@@ -7,25 +7,24 @@ import { Examen } from '../models/examen';
   providedIn: 'root',
 })
 export class ExamenService {
-  private readonly apiUrl = 'http://votre-api-url/examens'; // URL de l'API
+  private baseUrl = 'http://127.0.0.1:8000/api/dpi/consultation';
 
   constructor(private http: HttpClient) {}
 
-  // Méthode pour récupérer les bilans biologiques
-  getBilanBiologique(): Observable<Date> {
-    return this.http.get<{ date: string }>(`${this.apiUrl}/bilan-biologique`).pipe(
-      map((data) => new Date(data.date)) // Convertir la chaîne de caractères en `Date`
-    );
+  getBilanBiologique(consultationId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${consultationId}/bilanBiologique/`);
   }
 
-  // Endpoint pour ajouter un examen
-  addExamen(examen: Examen): Observable<Examen> {
-    return this.http.post<Examen>(`${this.apiUrl}/add`, examen);
+  createBilanBiologique(consultationId: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/${consultationId}/bilanBiologique/`, {});
   }
 
-  // Endpoint pour récupérer tous les examens
-  getExamens(): Observable<Examen[]> {
-    return this.http.get<Examen[]>(this.apiUrl); // Appel GET pour récupérer les examens
+  getExamens(consultationId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/bilanBiologique/${consultationId}/examen/`);
+  }
+
+  addExamen(consultationId: number, examen: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/bilanBiologique/${consultationId}/examen/`, examen);
   }
 }
 
