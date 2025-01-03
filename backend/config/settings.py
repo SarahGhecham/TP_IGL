@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig', # pour l'app api
     'rest_framework_simplejwt', # pour l'authentification jwt
     'rest_framework_simplejwt.token_blacklist', #blacklister les tokens aprés la déconnexion
+    'drf_yasg',
 ]
 
 AUTHENTICATION_CLASSES = [
@@ -155,3 +156,5 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+SELENIUM_HEADLESS = True  # Set to True for headless mode
