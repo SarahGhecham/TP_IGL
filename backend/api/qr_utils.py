@@ -43,3 +43,9 @@ def scan_qr_code(image_path):
     else:
         print("Aucun QR Code trouvé.")
         return None
+
+
+if __name__ == "__main__":
+    nss = "12345678901234567890"
+    generate_qr_code(nss)
+    print(f"QR Code généré pour le NSS: {nss}")
