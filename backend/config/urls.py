@@ -8,9 +8,9 @@ from rest_framework.permissions import AllowAny
 # Define the schema view
 schema_view = get_schema_view(
     openapi.Info(
-        title="Your API Title",
+        title="Gestion du DPI",
         default_version='v1',
-        description="Your API description",
+        description="API For handle hospitalization and DPIs create with django rest framework ",
         terms_of_service="https://www.google.com/policies/terms/",
         contact=openapi.Contact(email="contact@yourdomain.com"),
         license=openapi.License(name="MIT License"),
