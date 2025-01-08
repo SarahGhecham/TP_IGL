@@ -58,7 +58,7 @@ class isAdministratif(BasePermission):
 # Authentication methods
 
 #Signup view
-class RoleSignupView(APIView):
+class   RoleSignupView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
