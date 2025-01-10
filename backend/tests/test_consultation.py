@@ -43,6 +43,7 @@ def login_token():
     }
     response = requests.post(ENDPOINT + 'login/', json=payload)
     assert response.status_code == 200, f"Login failed: {response.text}"
+    print(f"\nlogin Dr {medecin_user_name}")
     return response.json()['access']
 
 def test_create_account_patient():
