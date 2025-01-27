@@ -48,6 +48,11 @@ export class MainConsultdpiComponent implements OnInit{
     });
   }
 
+  goToExamen() {
+    console.log(this.dpiId);
+    this.router.navigate(['/users/medecin/consultation-dpi/examen-trends', this.dpiId]);
+  }
+
   navigateTo(page: string): void {
     if (this.dpiData) {
       const nss = this.dpiData.nss;

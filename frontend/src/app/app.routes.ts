@@ -42,7 +42,11 @@ export const routes: Routes = [
       {path: 'ordonnance', component: OrdonnanceComponent},
       { path: 'create-dpi', component: CreateDPIComponent },
       {
-        path: 'consultation-dpi/:id', component: MainConsultdpiComponent ,
+        path: 'consultation-dpi',
+        children: [
+        { path:':id', component: MainConsultdpiComponent ,},
+        { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
+        ]
       },
       {
         path: 'consultations',
@@ -56,7 +60,6 @@ export const routes: Routes = [
           {
             path: 'bilan-radiologique/:id', component: BilanRadiologiqueComponent,
           },
-          { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
         ]
       }
     ]
