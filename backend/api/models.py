@@ -118,7 +118,6 @@ class Soin(models.Model):
     description = models.TextField()
     date_soin = models.DateTimeField(auto_now_add=True)
     observations = models.TextField(blank=True, null=True)
-
     def __str__(self):
         return f"Soin par {self.infirmier} le {self.date_soin}"
 

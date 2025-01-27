@@ -10,6 +10,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   navigateToLogin(role: 'staff' | 'patient'): void {
-    this.router.navigate(['/login', role]);
+    this.router.navigate(['/login']);
   }
 }
