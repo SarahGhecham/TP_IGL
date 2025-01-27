@@ -73,7 +73,7 @@
           <div class="patient-name">
             <p>{{ patient.patient.first_name }} {{ patient.patient.last_name }}</p>
           </div>
-          <button class="see-details">See Details</button>
+          <button class="see-details" (click)="goToConsultations(patient.id)">See Details</button>
         </div>
       </div>
     </div>
