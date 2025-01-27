@@ -27,7 +27,7 @@ export class MainConsultdpiComponent implements OnInit{
   }
 
   getDPI(id: number): void {
-    const apiUrl = `http://127.0.0.1:8000/dpi/${id}`;
+    const apiUrl = `http://127.0.0.1:8000/api/dpi/${id}`;
     this.http.get(apiUrl).subscribe({
       next: (data) => {
         this.dpiData = data;
@@ -40,7 +40,7 @@ export class MainConsultdpiComponent implements OnInit{
     this.http.get(`http://127.0.0.1:8000/api/dpi/get-dpi/${this.dpiData.nss}/`).subscribe({
         next: (data) => {
           this.patientData = data;
-          console.log('DPI Data:', this.patientData);
+          console.log('DPI Data:', data);
         },
         error: (err) => {
           console.error('Erreur lors de la récupération du DPI:', err);

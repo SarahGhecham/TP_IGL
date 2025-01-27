@@ -39,7 +39,6 @@ export const routes: Routes = [
     // canActivate: [AuthGuard],
     children: [
       { path: '', component: HomeMedComponent }, // Default medecin page
-      { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
       {path: 'ordonnance', component: OrdonnanceComponent},
       { path: 'create-dpi', component: CreateDPIComponent },
       {
@@ -57,6 +56,7 @@ export const routes: Routes = [
           {
             path: 'bilan-radiologique/:id', component: BilanRadiologiqueComponent,
           },
+          { path: 'examen-trends/:id', component: ExamenTrendsComponent }, // Examen trends page
         ]
       }
     ]
