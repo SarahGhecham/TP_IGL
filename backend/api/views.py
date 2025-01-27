@@ -58,7 +58,7 @@ class isAdministratif(BasePermission):
 # Authentication methods
 
 #Signup view
-class RoleSignupView(APIView):
+class   RoleSignupView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -265,7 +265,7 @@ def generate_trend_graph(request, dpi_id, examen_type):
 
 
 class SearchDPIByQRView(APIView):
-    permission_classes = [AllowAny]  # permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]  # L'accès nécessite une authentification
 
     def post(self, request, *args, **kwargs):
         # Vérification du fichier QR envoyé dans la requête
@@ -292,6 +292,20 @@ class SearchDPIByQRView(APIView):
         except DPI.DoesNotExist:
             return Response({"detail": "DPI non trouvé pour ce NSS."}, status=status.HTTP_404_NOT_FOUND)
 
+        # Récupérer le username du médecin connecté
+        username = request.user.username
+
+        # Rechercher le médecin correspondant à ce username
+        try:
+            medecin = Medecin.objects.get(user__username=username)
+        except Medecin.DoesNotExist:
+            raise NotFound("Médecin non trouvé.")
+
+        # Vérifier si le médecin connecté est bien le médecin traitant du patient
+        if dpi.medecin_traitant_id != medecin.id:
+            raise PermissionDenied("Vous n'êtes pas le médecin traitant de ce patient.")
+
+        # Si le médecin est bien le médecin traitant, retourner les informations du DPI
         try:
             user = dpi.patient.user  # Assurez-vous que DPI a une relation avec Patient et User
             response_data = {
@@ -307,10 +321,19 @@ class SearchDPIByQRView(APIView):
 
 
 class FirstThreePatientsView(APIView):
-    permission_classes = [AllowAny]  # Permet l'accès sans authentification
+    permission_classes = [AllowAny] # Exige une authentification
 
     def get(self, request):
         try:
+            # Récupérer le username du médecin connecté
+            username = request.user.username
+
+            # Rechercher le médecin correspondant à ce username
+            try:
+                medecin = Medecin.objects.get(user__username=username)
+            except Medecin.DoesNotExist:
+                raise NotFound("Médecin non trouvé.")
+
             # Récupérer les 3 premiers DPI
             dpis = DPI.objects.all()[:3]  # Limiter la requête aux 3 premiers DPI
             response_data = []
@@ -319,15 +342,20 @@ class FirstThreePatientsView(APIView):
             for dpi in dpis:
                 patient = dpi.patient  # Accéder à l'objet Patient lié au DPI
                 user = patient.user  # Accéder à l'objet User lié au patient
-                
-                # Ajouter les informations nécessaires dans la réponse
-                response_data.append({
-                    "id": dpi.id,
-                    "patient": {
-                        "first_name": user.first_name,
-                        "last_name": user.last_name
-                    }
-                })
+
+                # Vérifier si le médecin connecté est bien le médecin traitant du patient
+                if dpi.medecin_traitant_id == medecin.id:
+                    # Ajouter les informations nécessaires dans la réponse
+                    response_data.append({
+                        "id": dpi.id,
+                        "patient": {
+                            "first_name": user.first_name,
+                            "last_name": user.last_name
+                        }
+                    })
+                else:
+                    # Le médecin n'est pas autorisé à voir ce patient
+                    raise PermissionDenied("Vous n'êtes pas le médecin traitant de ce patient.")
 
             # Retourner la réponse avec un code HTTP 200 (OK)
             return Response(response_data, status=200)
@@ -338,18 +366,31 @@ class FirstThreePatientsView(APIView):
             raise NotFound("Aucun patient associé trouvé.")
 
 class SearchDPIByNSSView(APIView):
-    permission_classes = [AllowAny]  # Permet l'accès sans authentification
+    permission_classes = [AllowAny]  # Nécessite une authentification
 
     def get(self, request, nss):
         try:
             # Chercher le DPI par NSS
             dpi = DPI.objects.get(nss=nss)
-            
-            # Récupérer les informations du patient liées à ce DPI
-            patient = dpi.patient  # Assurez-vous que `patient` est une relation sur le modèle DPI
-            user = dpi.patient.user
-            
-            # Structurer les données à renvoyer : l'id du DPI et les champs du patient
+        except DPI.DoesNotExist:
+            raise NotFound("DPI non trouvé avec ce NSS.")
+
+        # Récupérer le username du médecin connecté
+        username = request.user.username
+
+        # Rechercher le médecin correspondant à ce username
+        try:
+            medecin = Medecin.objects.get(user__username=username)
+        except Medecin.DoesNotExist:
+            raise NotFound("Médecin non trouvé.")
+
+        # Vérifier si le médecin connecté est bien le médecin traitant du patient
+        if dpi.medecin_traitant_id != medecin.id:
+            raise PermissionDenied("Vous n'êtes pas le médecin traitant de ce patient.")
+
+        # Si le médecin est bien le médecin traitant, structurer les données à renvoyer
+        try:
+            user = dpi.patient.user  # Assurez-vous que DPI a une relation avec Patient et User
             response_data = {
                 "id": dpi.id,
                 "patient": {
@@ -359,12 +400,9 @@ class SearchDPIByNSSView(APIView):
             }
 
             return Response(response_data, status=status.HTTP_200_OK)
-        
-        except DPI.DoesNotExist:
-            raise NotFound("DPI non trouvé avec ce NSS.")
-        except Patient.DoesNotExist:
-            raise NotFound("Patient associé non trouvé.")
 
+        except ObjectDoesNotExist:
+            return Response({"detail": "Patient ou utilisateur associé non trouvé."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 

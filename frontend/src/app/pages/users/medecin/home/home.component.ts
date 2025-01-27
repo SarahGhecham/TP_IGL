@@ -7,6 +7,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -18,12 +19,13 @@ export class HomeMedComponent implements OnInit {
 
   patients: any[] = []; // Liste de patients pour l'affichage initial
   searchedPatient: any = null;
+  username: string | null = null;
 
   nss: string = ''; // Variable pour stocker la valeur du champ de recherche
   patient: any; // Variable pour stocker les résultats du patient
   private apiUrl = 'http://127.0.0.1:8000/api';
 
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private http: HttpClient,private router:Router,private authService: AuthService) {}
 
   goToConsultations(dpiId: any) {
     console.log(dpiId);
@@ -35,6 +37,7 @@ export class HomeMedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.username = this.authService.getUsername();
     this.loadPatients();  // Charger plusieurs patients initialement
   }
 
