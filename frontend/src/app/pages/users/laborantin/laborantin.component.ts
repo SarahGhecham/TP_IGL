@@ -5,6 +5,7 @@ import { Chart, registerables } from 'chart.js';
 import { NavbarComponent } from '../../../shared/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { BilanBiologiqueComponent } from '../../bilan-biologique/bilan-biologique.component';
+import { RouterLink, Router } from '@angular/router';
 @Component({
   selector: 'app-laborantin',
   imports: [NavbarComponent, ReactiveFormsModule, CommonModule , BilanBiologiqueComponent],
@@ -17,8 +18,9 @@ export class LaborantinComponent implements OnInit {
   bilans: any[] = []; // Initialize as an empty array
   graphData: any = null; // For graph data
   chart: any; // For Chart.js instance
+  dpiId: any;
 
-  constructor(private fb: FormBuilder, private laborantinService: LaborantinService) {
+  constructor(private fb: FormBuilder, private laborantinService: LaborantinService,private router: Router) {
     this.resultatForm = this.fb.group({
       type_examen: ['', Validators.required],
       resultat: ['', Validators.required],
@@ -26,10 +28,18 @@ export class LaborantinComponent implements OnInit {
     });
 
     this.courbeForm = this.fb.group({
-      examen_type: ['', Validators.required]
+      dpi_id: ['', Validators.required]
     });
 
     Chart.register(...registerables); // Register Chart.js
+  }
+
+  goToExamen() {
+    if (this.courbeForm.get('dpi_id') != null) {
+      this.dpiId = this.courbeForm.get('dpi_id')!.value;  // Utilisation de '!'
+      console.log(this.dpiId);
+      this.router.navigate(['/users/medecin/consultation-dpi/examen-trends', this.dpiId]);
+    }
   }
 
   ngOnInit(): void {

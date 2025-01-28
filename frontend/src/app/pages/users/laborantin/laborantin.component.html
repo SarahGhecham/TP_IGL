@@ -88,23 +88,21 @@
       </div>
 
       <!-- Generer Courbes Section -->
-      <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-4">Generer Courbes</h2>
-        <form [formGroup]="courbeForm" (ngSubmit)="onSubmitCourbe()" class="space-y-6">
-          <!-- Examen Type Field -->
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              Examen Type
-            </label>
-            <select
-              formControlName="examen_type"
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="glycemie">Glycémie</option>
-              <option value="cholesterol">Cholestérol</option>
-              <option value="pression_arterielle">Pression Artérielle</option>
-            </select>
-          </div>
+<div class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-xl font-semibold mb-4">Generer Courbes</h2>
+  <form [formGroup]="courbeForm" (ngSubmit)="goToExamen()" class="space-y-6">
+    <!-- Examen ID Field -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        DPI ID
+      </label>
+      <input
+        type="number"
+        formControlName="dpi_id"
+        class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+        placeholder="Entrez l'ID du DPI (1, 2, ...n)"
+      />
+    </div>
 
           <!-- Submit Button -->
           <div class="flex justify-end">
@@ -117,14 +115,6 @@
             </button>
           </div>
         </form>
-
-        <!-- Graph Section -->
-        <div *ngIf="graphData" class="mt-6">
-          <h3 class="text-lg font-semibold mb-4">Graphique de Tendances</h3>
-          <div>
-            <canvas id="trendChart"></canvas>
-          </div>
-        </div>
       </div>
     </div>
   </div>
