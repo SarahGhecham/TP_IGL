@@ -95,9 +95,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gdpi2',
+        'NAME': 'gdpi',
         'USER': 'root',
-        'PASSWORD': 'sarah&co2024',
+        'PASSWORD': 'followthewind00',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -135,7 +135,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 STATIC_URL = 'static/'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
